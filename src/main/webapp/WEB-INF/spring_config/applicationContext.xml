@@ -10,7 +10,7 @@
     <!-- DataSource defalut 설정 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://121.151.52.240:3306/bunjang?useSSL=false&amp;serverTimezone=Asia/Seoul&amp;allowPublicKeyRetrieval=true"/>
+        <property name="url" value="jdbc:mysql://210.123.132.237:3306/bunjang?useSSL=false&amp;serverTimezone=Asia/Seoul&amp;allowPublicKeyRetrieval=true"/>
         <property name="username" value="sungjae"/>
         <property name="password" value="1234"/>
     </bean>
