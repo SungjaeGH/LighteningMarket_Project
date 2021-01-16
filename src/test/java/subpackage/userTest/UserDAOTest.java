@@ -31,6 +31,11 @@ public class UserDAOTest {
             userVO.setEmail("dtc1674@naver.com");
             userVO.setpNumber("01075746799");
 
+            userDAO.signup(userVO);
+    }
+
+    @Test
+    public void testReadUser() throws Exception {
 
     }
 
