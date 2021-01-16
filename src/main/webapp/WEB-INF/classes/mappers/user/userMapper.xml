@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "~//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.lighteningmarket.mappers.user.UserMapper">
+
+    <insert id="register">
+        INSERT INTO tbl_member (
+            id
+            , nickname
+            , password
+            , name
+            , email
+            , p_number
+            , reg_date
+        ) VALUES (
+            #{id}
+            , #{nickname}
+            , #{password}
+            , #{name}
+            , #{email}
+            , #{pNumber}
+            , #{regDate}
+         )
+    </insert>
+</mapper>
