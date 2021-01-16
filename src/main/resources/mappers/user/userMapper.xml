@@ -5,7 +5,7 @@
 
 <mapper namespace="com.project.lighteningmarket.mappers.user.UserMapper">
 
-    <insert id="register">
+    <insert id="signup">
         INSERT INTO tbl_member (
             id
             , nickname
@@ -13,7 +13,6 @@
             , name
             , email
             , p_number
-            , reg_date
         ) VALUES (
             #{id}
             , #{nickname}
@@ -21,7 +20,6 @@
             , #{name}
             , #{email}
             , #{pNumber}
-            , #{regDate}
          )
     </insert>
 </mapper>
