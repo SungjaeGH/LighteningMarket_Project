@@ -30,10 +30,10 @@ public class UserSignupController {
     // 회원가입 처리
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signupPOST(UserVO userVO, RedirectAttributes redirectAttributes) throws Exception {
-        String hashedPw = BCrypt.hashpw(userVO.getpassword(), BCrypt.gensalt());
-        userVO.setpassword(hashedPw);
+        String hashedPw = BCrypt.hashpw(userVO.getPassword(), BCrypt.gensalt());
+        userVO.setPassword(hashedPw);
         userService.signup(userVO);
-        redirectAttributes.addFlashAttribute("msg", "SIGNUP");
+        redirectAttributes.addFlashAttribute("msg", "SIGNEDUP");
 
         return "redirect:/login/login";
     }
