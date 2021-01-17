@@ -11,7 +11,7 @@
     </appender>
 
     <!-- Application Loggers -->
-    <logger name="com.doubles.mvcboard">
+    <logger name="com.project.lighteningmarket">
         <level value="info" />
     </logger>
 
