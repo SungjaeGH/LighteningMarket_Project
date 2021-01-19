@@ -5,6 +5,17 @@
 
 <mapper namespace="com.project.lighteningmarket.mappers.user.UserMapper">
 
+    <resultMap id="userVOResultMap" type="UserVO">
+        <id property="id" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="email" column="email"/>
+        <result property="pNumber" column="p_number"/>
+        <result property="regDate" column="reg_date"/>
+    </resultMap>
+
+    <!-- 회원 등록 -->
     <insert id="signup">
         INSERT INTO tbl_member (
             id
@@ -22,4 +33,12 @@
             , #{pNumber}
          )
     </insert>
+
+    <!-- 로그인 처리 -->
+    <select id="login" resultMap="userVOResultMap">
+        SELECT
+            *
+        FROM tbl_member
+        WHERE id = #{id}
+    </select>
 </mapper>

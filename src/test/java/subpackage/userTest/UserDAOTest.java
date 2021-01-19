@@ -21,11 +21,12 @@ public class UserDAOTest {
     @Inject
     private UserDAO userDAO;
 
+    // 회원 가입 Test
     @Test
     public void testCreate() throws Exception {
             UserVO userVO = new UserVO();
             userVO.setId("test1");
-            userVO.setpassword("tjdwo135");
+            userVO.setPassword("tjdwo135");
             userVO.setName("정성재");
             userVO.setNickname("거북");
             userVO.setEmail("dtc1674@naver.com");
@@ -34,9 +35,10 @@ public class UserDAOTest {
             userDAO.signup(userVO);
     }
 
-    @Test
-    public void testReadUser() throws Exception {
-
-    }
+//    // 회원 조회 테스트 1 : 아이디만
+//    @Test
+//    public void testReadMember() throws Exception {
+//        userDAO.readMember("user00");
+//    }
 
 }

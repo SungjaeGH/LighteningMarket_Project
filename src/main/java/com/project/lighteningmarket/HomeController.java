@@ -12,7 +12,7 @@ public class HomeController {
     public String home(Model model) {
         model.addAttribute("greeting", "hello world");
 
-        return "user/signup";
+        return "home/home";
     }
 
     @RequestMapping("/login/login")

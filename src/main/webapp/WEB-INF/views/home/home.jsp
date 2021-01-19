@@ -14,6 +14,7 @@
 </head>
 <body>
 <h4>로그인/회원가입 Test</h4>
-<a href="login/login"> 로그인 </a>
+<a href="../login/login"> 로그인 </a>
+
 </body>
 </html>
