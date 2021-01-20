@@ -1,11 +1,10 @@
-/*
 package com.project.lighteningmarket.commons.interceptor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.portlet.ModelAndView;
-import org.springframework.web.portlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-
         HttpSession httpSession = request.getSession();
         ModelMap modelMap = modelAndView.getModelMap();
         Object userVO = modelMap.get("user");
@@ -36,12 +34,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         HttpSession httpSession = request.getSession();
         // 기존의 로그인 정보 제거
         if(httpSession.getAttribute(LOGIN) != null) {
-            logger.info("Clear login data before");
+            logger.info("clear login data before");
             httpSession.removeAttribute(LOGIN);
         }
 
         return true;
     }
-
 }
-*/

@@ -30,7 +30,7 @@
     <!-- 기본 패키지 설정 -->
     <context:component-scan base-package="com.project.lighteningmarket" />
 
-   <!--  LoginInterceptor 설정
+    <!-- LoginInterceptor 설정 -->
     <bean id="loginInterceptor" class="com.project.lighteningmarket.commons.interceptor.LoginInterceptor"/>
 
     <mvc:interceptors>
@@ -38,5 +38,5 @@
             <mvc:mapping path="/login/loginPost"/>
             <ref bean="loginInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors>-->
+    </mvc:interceptors>
 </beans>
