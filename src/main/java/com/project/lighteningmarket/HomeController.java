@@ -18,4 +18,8 @@ public class HomeController {
     @RequestMapping("/login/login")
     public void login( ) {
     }
+
+    @RequestMapping("/product/productRegister")
+    public void productsUpload( ) {
+    }
 }
