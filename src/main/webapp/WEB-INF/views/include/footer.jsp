@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<footer>
-    <p>
-        &lt;CopyRight 2019. <strong>번개장터 사이트</strong>. All rights reserved.
-        &gt;
-    </p>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
 </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../../resources/jquery/jquery.min.js"></script>
+    <script src="../../../resources/js/bootstrap.bundle.min.js"></script>
 </div>
 </body>
 </html>
