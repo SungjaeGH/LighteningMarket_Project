@@ -2,8 +2,6 @@ package com.project.lighteningmarket.user.domain;
 
 public class LoginDTO {
 
-
-
     private String id;
     private String password;
     private boolean useCookie;
@@ -40,4 +38,6 @@ public class LoginDTO {
                 ", useCookie=" + useCookie +
                 '}';
     }
+
+
 }

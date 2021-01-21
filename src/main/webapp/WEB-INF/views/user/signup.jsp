@@ -29,10 +29,11 @@
           <label for="_label-pw">비밀번호</label>
           <input type="text" name="password" id="_label-pw" class="input-text" aria-hidden="true" placeholder="비밀번호를 입력해 주세요. (8~16자 / 문자, 숫자, 특수문자 혼용)" required>
         </div>
-        <div class="form-row">
-          <label for="_label-pw-ck">비밀번호 확인</label>
-          <input type="text" name="password" id="_label-pw-ck" class="input-text" aria-hidden="true" placeholder="비밀번호를 확인해 주세요." required>
-        </div>
+<%--  BCrypt 암호화 문제 원인 (해결 봐야함)      --%>
+<%--        <div class="form-row">--%>
+<%--          <label for="_label-pw-ck">비밀번호 확인</label>--%>
+<%--          <input type="text" name="password" id="_label-pw-ck" class="input-text" aria-hidden="true" placeholder="비밀번호를 확인해 주세요." required>--%>
+<%--        </div>--%>
       </div>
 
       <%-- 회원 정보 --%>

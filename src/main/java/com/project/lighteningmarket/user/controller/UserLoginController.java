@@ -3,7 +3,7 @@ package com.project.lighteningmarket.user.controller;
 import com.project.lighteningmarket.user.domain.LoginDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 import com.project.lighteningmarket.user.service.UserService;
-import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,5 +41,6 @@ public class UserLoginController {
         }
 
         model.addAttribute("user", userVO);
+
     }
 }

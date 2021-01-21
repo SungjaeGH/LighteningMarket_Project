@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     private static final String LOGIN = "login";

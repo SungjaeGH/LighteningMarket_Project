@@ -20,7 +20,12 @@
                         <a class="nav-link" href="../product/productRegister">상품 등록</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../login/login">로그인</a>
+                        <c:if test="${not empty login}">
+                            <span class="hidden-xs nav-link">${login.name} 님</span>
+                        </c:if>
+                        <c:if test="${empty login}">
+                            <a class="nav-link" href="../login/login">로그인</a>
+                        </c:if>
                     </li>
                 </ul>
             </div>
