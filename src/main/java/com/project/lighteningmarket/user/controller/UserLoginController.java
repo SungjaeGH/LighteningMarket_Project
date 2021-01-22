@@ -4,14 +4,20 @@ import com.project.lighteningmarket.user.domain.LoginDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 import com.project.lighteningmarket.user.service.UserService;
 import org.mindrot.jbcrypt.BCrypt;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.WebUtils;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/login")
@@ -41,5 +47,28 @@ public class UserLoginController {
         }
 
         model.addAttribute("user", userVO);
+
     }
+
+    // 로그아웃 처리
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) throws Exception {
+
+        Object object = httpSession.getAttribute("login");
+        if(object != null) {
+            UserVO userVO = (UserVO) object;
+            httpSession.removeAttribute("login");
+            httpSession.invalidate();
+            Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+            if(loginCookie != null) {
+                loginCookie.setPath("/");
+                loginCookie.setMaxAge(0);
+                response.addCookie(loginCookie);
+//                userService.keepLogin(userVO.getId(), "none", new Date());
+            }
+        }
+
+        return "login/logout";
+    }
+
 }

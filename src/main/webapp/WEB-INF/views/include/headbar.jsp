@@ -17,10 +17,20 @@
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../product/productRegister">상품 등록</a>
+                        <c:if test="${not empty login}">
+                            <a class="nav-link" href="../product/productRegister">상품 등록</a>
+                        </c:if>
+                        <c:if test="${empty login}">
+                            <a class="nav-link" href="../login/login">상품 등록</a>
+                        </c:if>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../login/login">로그인</a>
+                        <c:if test="${not empty login}">
+                            <a class="nav-link" href="../login/logout">로그아웃</a>
+                        </c:if>
+                        <c:if test="${empty login}">
+                            <a class="nav-link" href="../login/login">로그인</a>
+                        </c:if>
                     </li>
                 </ul>
             </div>

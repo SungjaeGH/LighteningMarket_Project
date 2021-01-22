@@ -34,33 +34,38 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <h1><i class="fa fa-lock" aria-hidden="true"></i> 로그인</h1>
-    </div>
-    <br/><br/>
 
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+    <form action="${path}/login/loginPost" method="post">
+        <div class="row">
+            <h1><i class="fa fa-lock" aria-hidden="true"></i> 로그인</h1>
         </div>
-        <input type="text" name="id" class="form-control" placeholder="아이디"/>
-    </div>
-    <br/>
+        <br/><br/>
 
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+            </div>
+            <input type="text" name="id" class="form-control" placeholder="아이디"/>
         </div>
-        <input type="Password" name="password" class="form-control" aria-hidden="true" placeholder="비밀번호"/>
-    </div>
-    <br/>
-    <div class="checkbox">
-        <label><input type="checkbox" name="useCookie"/> 로그인 유지 </label>
-    </div>
-    <br/>
-    <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> 로그인</button>
-    <br/>
-    <br/>
+        <br/>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+            </div>
+            <input type="Password" name="password" class="form-control" aria-hidden="true" placeholder="비밀번호"/>
+        </div>
+        <br/>
+        <div class="checkbox">
+            <label><input type="checkbox" name="useCookie"/> 로그인 유지 </label>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> 로그인
+        </button>
+        <br/>
+        <br/>
+    </form>
+
     <center>
         <div style="border:1px solid black;height:1px;width:300px;"></div>
     </center>
@@ -76,9 +81,9 @@
 <script>
 
     var msg = "${msg}";
-    if(msg === "SIGNEDUP") {
+    if (msg === "SIGNEDUP") {
         alert("회원가입이 완료되었습니다. 로그인 해주세요!")
-    } else if(msg === "FAILURE") {
+    } else if (msg === "FAILURE") {
         alert("아이디와 비밀번호를 확인해주세요.");
     }
 
