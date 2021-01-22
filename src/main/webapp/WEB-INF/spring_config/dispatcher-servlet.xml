@@ -39,4 +39,14 @@
             <ref bean="loginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <!-- AuthInterceptor 설정 (사용자의 login 상태여부 확인) -->
+    <bean id="authInterceptor" class="com.project.lighteningmarket.commons.interceptor.AuthInterceptor"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/include/headbar"/>
+            <ref bean="authInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
