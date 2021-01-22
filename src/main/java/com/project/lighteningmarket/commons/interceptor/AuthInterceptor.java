@@ -25,4 +25,20 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
         return true;
     }
+/*
+    // 페이지 요청 정보 저장 (구현 아직 안됨 - 확인 필요)
+    private void saveDestination(HttpServletRequest request) {
+        String uri = request.getRequestURI();
+        String query = request.getQueryString();
+        if(query == null || query.equals("null")) {
+            query = "";
+        } else {
+            query = "?" + query;
+        }
+
+        if(request.getMethod().equals("GET")) {
+            logger.info("destination : " + (uri + query));
+            request.getSession().setAttribute("destination", uri + query);
+        }
+    }*/
 }
