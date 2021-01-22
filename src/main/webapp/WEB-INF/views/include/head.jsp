@@ -2,6 +2,8 @@
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <head>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
     <meta charset="UTF-8">
