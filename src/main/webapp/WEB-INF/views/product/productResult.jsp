@@ -37,6 +37,8 @@
                             <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
                         </div>
                     </div>
+                    파일이 업로드 되었습니다.
+                    파일명 : ${savedName}
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -45,12 +47,6 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                </div>
-                <div>
-                    <form action="${path}/product/productRegister" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file">
-                        <input type="submit" value="업로드">
-                    </form>
                 </div>
 
                 <!-- /.row -->

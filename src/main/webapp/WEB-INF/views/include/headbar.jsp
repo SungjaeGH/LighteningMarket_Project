@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="../home/home.jsp">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -29,7 +29,7 @@
                     </li>
                     <li class="nav-item">
                         <c:if test="${not empty login}">
-                            <span class="hidden-xs nav-link">${login.name} 님</span>
+                            <a class="nav-link" href="../login/logout">로그아웃</a>
                         </c:if>
                         <c:if test="${empty login}">
                             <a class="nav-link" href="../login/login">로그인</a>
