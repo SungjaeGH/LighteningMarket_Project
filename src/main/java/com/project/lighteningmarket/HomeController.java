@@ -15,11 +15,11 @@ public class HomeController {
         return "home/home";
     }
 
-    @RequestMapping("/login/login")
+/*    @RequestMapping("/login/login")
     public void login( ) {
     }
 
     @RequestMapping("/product/productRegister")
     public void productsUpload( ) {
-    }
+    }*/
 }
