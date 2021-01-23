@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.lighteningmarket.mappers.mystore.mystoreMapper">
+
+    <!--    상품 테이블 읽기 -->
+    <select id="product_listAll" parameterType="ProductVO" resultType="ProductVO">
+        <![CDATA[
+        SELECT DISTINCT tbl_product.title, tbl_product.price, tbl_product.regDate
+        FROM tbl_product
+--                  INNER JOIN tbl_images ON tbl_product.proIdx = tbl_images.proIdx
+        WHERE tbl_product.id = 'KJS';
+        ]]>
+    </select>
+
+
+
+    <!--    찜테이블 -->
+    <!--<select id="favorites_listAll" parameterType="FavoritesVO" resultMap="FavoritesVO">
+        <![CDATA[
+        SELECT DISTINCT tbl_images.img_url, tbl_product.title, tbl_product.price, tbl_product.regDate,
+                        tbl_product.description
+        FROM tbl_favorites
+                 INNER JOIN tbl_product ON tbl_product.proIdx = tbl_favorites.pro_idx
+                 INNER JOIN tbl_images ON tbl_images.proIdx = tbl_favorites.pro_idx
+        WHERE tbl_favorites.id = 'test1';
+        ]]>
+    </select>-->
+
+
+
+
+
+
+
+    <resultMap id="ProductResultMap" type="ProductVO">
+        <id property="proIdx" column="proIdx"/>
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="tradeArea" column="tradeArea"/>
+        <result property="statement" column="statement"/>
+        <result property="exchange" column="exchange"/>
+        <result property="price" column="price"/>
+        <result property="description" column="description"/>
+        <result property="count" column="count"/>
+        <result property="regDate" column="regDate"/>
+    </resultMap>
+
+</mapper>
