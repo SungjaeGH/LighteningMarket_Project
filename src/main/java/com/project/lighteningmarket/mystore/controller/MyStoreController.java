@@ -38,7 +38,7 @@ public class MyStoreController {
     @RequestMapping(value = "/favorites", method = RequestMethod.GET)
     public String FavoritesPOST(Model model) throws Exception {
 
-        model.addAttribute("favorites", mystoreservice.favorites_listAll()); // 상품 테이블 읽기
+        model.addAttribute("products", mystoreservice.favorites_listAll()); // 상품 테이블 읽기
 
         return "/mystore/favorites";
     }

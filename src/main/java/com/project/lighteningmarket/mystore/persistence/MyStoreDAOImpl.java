@@ -44,7 +44,7 @@ public class MyStoreDAOImpl implements MyStoreDAO{
 
     // 찜 테이블 읽기
     @Override
-    public List<FavoritesVO> favorites_listAll() throws Exception {
+    public List<ProductVO> favorites_listAll() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".favorites_listAll");
     }
 

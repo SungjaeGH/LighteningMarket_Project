@@ -17,7 +17,7 @@ public interface MyStoreDAO {
     //void productQa_create (ProductQaVO productQaVO) throws Exception;
 
     // 찜 테이블 읽기
-    List<FavoritesVO> favorites_listAll() throws Exception;
+    List<ProductVO> favorites_listAll() throws Exception;
 
     // 찜 테이블 삭제 기능
     //void favorites_delete (FavoritesVO favoritesVO) throws Exception;

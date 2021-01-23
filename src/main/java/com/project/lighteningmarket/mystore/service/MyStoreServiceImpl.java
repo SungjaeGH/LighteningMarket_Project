@@ -22,7 +22,7 @@ public class MyStoreServiceImpl implements MyStoreService{
 
     // 상품 테이블 읽기
     @Override
-    public List<FavoritesVO> favorites_listAll() throws Exception {
+    public List<ProductVO> favorites_listAll() throws Exception {
         return myStoreDAO.favorites_listAll();
     }
 
