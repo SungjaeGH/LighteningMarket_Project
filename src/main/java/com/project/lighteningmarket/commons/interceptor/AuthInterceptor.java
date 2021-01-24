@@ -12,21 +12,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
 
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-        HttpSession httpSession = request.getSession();
-
-        if(httpSession.getAttribute("login") == null) {
-            logger.info("current user is not loggered");
-            response.sendRedirect("/login/login");
-            return false;
-        }
-
-        return true;
-    }
-/*
-    // 페이지 요청 정보 저장 (구현 아직 안됨 - 확인 필요)
+    // 페이지 요청 정보 저장
     private void saveDestination(HttpServletRequest request) {
         String uri = request.getRequestURI();
         String query = request.getQueryString();
@@ -40,5 +26,20 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             logger.info("destination : " + (uri + query));
             request.getSession().setAttribute("destination", uri + query);
         }
-    }*/
+    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        HttpSession httpSession = request.getSession();
+
+        if(httpSession.getAttribute("login") == null) {
+            logger.info("current user is not loggered");
+            saveDestination(request);
+            response.sendRedirect("/login/login");
+            return false;
+        }
+
+        return true;
+    }
 }

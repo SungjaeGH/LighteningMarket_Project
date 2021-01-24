@@ -17,6 +17,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     private static final String LOGIN = "login";
     private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
+    // Controller 수행 후 실행
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         HttpSession httpSession = request.getSession();
@@ -26,7 +27,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if(userVO != null) {
             logger.info("new login success");
             httpSession.setAttribute(LOGIN, userVO);
-            response.sendRedirect("/");
+//          response.sendRedirect("/");
 
             // 자동 로그인
             if(request.getParameter("useCookie") != null) {
@@ -39,12 +40,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 response.addCookie(loginCookie);
             }
 
-//          자동 페이지 처리 (구현 x)
-//          Object destination = httpSession.getAttribute("destination");
-//          response.sendRedirect(destination != null ? (String) destination : "/");
+             // 자동 페이지 처리
+            Object destination = httpSession.getAttribute("destination");
+            response.sendRedirect(destination != null ? (String) destination : "/");
         }
     }
 
+    // Controller 수행 전 실행
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
