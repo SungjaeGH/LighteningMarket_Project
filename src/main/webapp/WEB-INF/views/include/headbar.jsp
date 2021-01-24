@@ -25,6 +25,9 @@
                         </c:if>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="../mystore/products">내상점</a>
+                    </li>
+                    <li class="nav-item">
                         <c:if test="${not empty login}">
                             <a class="nav-link" href="../login/logout">로그아웃</a>
                         </c:if>

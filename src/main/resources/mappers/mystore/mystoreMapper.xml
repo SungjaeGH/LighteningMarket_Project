@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.lighteningmarket.mappers.mystore.mystoreMapper">
+
+    <!--    상품에서 가져올 데이터 가져오기 -->
+    <select id="product_listAll" parameterType="ProductVO" resultType="ProductVO">
+        <![CDATA[
+        SELECT DISTINCT tbl_product.proIdx, tbl_product.title, tbl_product.price, tbl_product.regDate, tbl_product.tradeArea
+        FROM tbl_product
+--                  INNER JOIN tbl_images ON tbl_product.proIdx = tbl_images.proIdx
+        WHERE tbl_product.id = 'KJS';
+        ]]>
+    </select>
+
+
+
+<!--        찜에서 가져올 데이터 가져오기-->
+    <select id="favorites_listAll" resultType="ProductVO">
+        <![CDATA[
+        SELECT DISTINCT tbl_product.proIdx, tbl_product.title, tbl_product.price, tbl_product.regDate,
+                        tbl_product.tradeArea
+        FROM tbl_product
+                 INNER JOIN tbl_favorites ON tbl_product.proIdx = tbl_favorites.pro_idx
+        WHERE tbl_favorites.id = 'KJS';
+        ]]>
+    </select>
+
+
+
+
+
+
+
+    <resultMap id="ProductResultMap" type="ProductVO">
+        <id property="proIdx" column="proIdx"/>
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="tradeArea" column="tradeArea"/>
+        <result property="statement" column="statement"/>
+        <result property="exchange" column="exchange"/>
+        <result property="price" column="price"/>
+        <result property="description" column="description"/>
+        <result property="count" column="count"/>
+        <result property="regDate" column="regDate"/>
+        <collection property="FavoritesVO" resultMap="FavoritesVO"></collection>
+    </resultMap>
+
+    <resultMap id="FavoritesResultMap" type="FavoritesVO">
+        <id property="favor_idx" column="favor_idx"/>
+        <result property="id" column="id"/>
+        <result property="pro_idx" column="pro_idx"/>
+    </resultMap>
+
+</mapper>
