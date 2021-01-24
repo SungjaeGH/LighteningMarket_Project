@@ -1,3 +1,4 @@
+/*
 package com.project.lighteningmarket.commons.images.controller;
 
 import com.project.lighteningmarket.commons.images.domain.ImageDTO;
@@ -54,3 +55,4 @@ public class ImageController {
         return mav; // productResult.jsp(결과화면)로 포워딩
     }
 }
+*/
