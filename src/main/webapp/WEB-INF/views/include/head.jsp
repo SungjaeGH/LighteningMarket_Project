@@ -20,5 +20,10 @@
     <!-- Custom styles for this template -->
     <link href="../../../resources/css/shop-homepage.css" rel="stylesheet">
     <title>HelloMyPage</title>
+
+    <!-- login CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
+    <link href="../../../resources/css/login.css" rel="stylesheet" >
+
 </head>
 <body>
