@@ -34,14 +34,22 @@ public class MyStoreController {
         return "/mystore/products";
     }
 
-    // 상품 페이지로 이동
+    // 찜 페이지로 이동
     @RequestMapping(value = "/favorites", method = RequestMethod.GET)
     public String FavoritesPOST(Model model) throws Exception {
 
-        model.addAttribute("products", mystoreservice.favorites_listAll()); // 상품 테이블 읽기
+        model.addAttribute("favorites", mystoreservice.favorites_listAll()); // 상품 테이블 읽기
 
         return "/mystore/favorites";
     }
 
+    // 상점문의 페이지로 이동
+    @RequestMapping(value = "/storeQa", method = RequestMethod.GET)
+    public String storeQaPOST(Model model) throws Exception {
+
+        model.addAttribute("storeQa", mystoreservice.favorites_listAll()); // 상품 테이블 읽기
+
+        return "/mystore/storeQa";
+    }
 
 }
