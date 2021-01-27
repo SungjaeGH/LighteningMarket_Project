@@ -9,6 +9,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file ="../include/head.jsp" %>
+<title>Shop Homepage - Start Bootstrap Template</title>
 <section>
     <%@include file ="../include/headbar.jsp" %>
     <!-- Page Content -->

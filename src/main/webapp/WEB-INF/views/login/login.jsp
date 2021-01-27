@@ -1,94 +1,71 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-         pageEncoding="EUC-KR" %>
-<html>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="../include/head.jsp" %>
 
-<head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
-    <style>
-        .container {
-            border: 2px solid blue;
-            text-align: center;
+<section>
+    <%@include file="../include/headbar.jsp" %>
+    <!-- Page Content -->
+    <div class="login_container">
+        <div class="login_row">
+            <form action="${path}/login/loginPost" method="post">
+                <div class="login_title_row">
+                    <h1 class="login_title"><i class="fa fa-lock" aria-hidden="true"></i> ë¡œê·¸ì¸</h1>
+                </div>
+                <br/><br/>
 
-            height: 500px;
-            width: 400px;
-        }
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                    </div>
+                    <input type="text" name="id" class="form-control" placeholder="ì•„ì´ë””"/>
+                </div>
+                <br/>
 
-        body {
-            padding: 70px;
-        }
-
-        h1 {
-            margin: auto;
-        }
-
-        .row {
-            height: 90px;
-            width: 396px;
-            background-color: paleturquoise;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-
-    <form action="${path}/login/loginPost" method="post">
-        <div class="row">
-            <h1><i class="fa fa-lock" aria-hidden="true"></i> ·Î±×ÀÎ</h1>
-        </div>
-        <br/><br/>
-
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+                    </div>
+                    <input type="Password" name="password" class="form-control" aria-hidden="true"
+                           placeholder="ë¹„ë°€ë²ˆí˜¸"/>
+                </div>
+                <br/>
+                <div class="checkbox">
+                    <label><input type="checkbox" name="useCookie"/> ë¡œê·¸ì¸ ìœ ì§€ </label>
+                </div>
+                <br/>
+                <button type="submit" class="btn btn-primary btn-block"><span
+                        class="glyphicon glyphicon-off"></span> ë¡œê·¸ì¸
+                </button>
+                <br/>
+            </form>
+            <center>
+                <div style="border:1px solid black;height:1px;width:295px;"></div>
+            </center>
+            <br/>
+            <div class="login_footer">
+                <a href="#">ID ì°¾ê¸°</a> |
+                <a href="#">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a> |
+                <a href="${path}/user/signup">íšŒì›ê°€ì…</a>
             </div>
-            <input type="text" name="id" class="form-control" placeholder="¾ÆÀÌµğ"/>
-        </div>
-        <br/>
 
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-key icon"></i></span>
-            </div>
-            <input type="Password" name="password" class="form-control" aria-hidden="true" placeholder="ºñ¹Ğ¹øÈ£"/>
         </div>
-        <br/>
-        <div class="checkbox">
-            <label><input type="checkbox" name="useCookie"/> ·Î±×ÀÎ À¯Áö </label>
-        </div>
-        <br/>
-        <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> ·Î±×ÀÎ
-        </button>
-        <br/>
-        <br/>
-    </form>
-
-    <center>
-        <div style="border:1px solid black;height:1px;width:300px;"></div>
-    </center>
-    <br/>
-    <div class="footer">
-        <a href="#">ID Ã£±â</a> |
-        <a href="#">ºñ¹Ğ¹øÈ£ Ã£±â</a> |
-        <a href="${path}/user/signup">È¸¿ø°¡ÀÔ</a>
+        <!-- /.row -->
     </div>
 
-</div>
+    <!-- /.container -->
+</section>
+<%@include file="../include/footer.jsp" %>
 
 <script>
 
     var msg = "${msg}";
     if (msg === "SIGNEDUP") {
-        alert("È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. ·Î±×ÀÎ ÇØÁÖ¼¼¿ä!")
+        alert("íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ë¡œê·¸ì¸ í•´ì£¼ì„¸ìš”!")
     } else if (msg === "FAILURE") {
-        alert("¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.");
+        alert("ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.");
     }
 
 </script>
 
-
-</body>
 </html>

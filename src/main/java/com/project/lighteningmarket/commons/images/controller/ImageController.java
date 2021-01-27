@@ -1,3 +1,4 @@
+/*
 package com.project.lighteningmarket.commons.images.controller;
 
 import com.project.lighteningmarket.commons.images.domain.ImageDTO;
@@ -44,3 +45,4 @@ public class ImageController {
 
 
 }
+*/
