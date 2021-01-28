@@ -1,4 +1,5 @@
 /*
+
 package com.project.lighteningmarket.commons.images.controller;
 
 import com.project.lighteningmarket.commons.images.domain.ImageDTO;
@@ -17,20 +18,24 @@ public class ImageController {
 
     private ImageDAO dao;
 
-    /**
+    */
+/**
      * 파일태그를 위한 폼태그
      * @return
-     */
+     *//*
+
     @RequestMapping(value="/home/home")
     public String formFile() {
         return "/home/home";
     }
 
-    /**
+    */
+/**
      * 파일처리 컨트롤러
      * @param imageDTO
      * @return
-     */
+     *//*
+
     @RequestMapping(value="/saveImage", method = RequestMethod.POST)
     public String saveImage(ImageDTO imageDTO) {
         try {
@@ -45,4 +50,5 @@ public class ImageController {
 
 
 }
+
 */
