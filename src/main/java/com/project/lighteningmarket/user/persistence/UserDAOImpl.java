@@ -34,6 +34,8 @@ public class UserDAOImpl implements UserDAO {
     // 아이디 찾기
     @Override
     public UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception {
-        return sqlSession.selectOne(NAMESPACE + ".idsearch", userSearchDTO);
+        UserVO userVO= sqlSession.selectOne(NAMESPACE + ".idsearch", userSearchDTO);
+        System.out.println(userVO);
+        return userVO;
     }
 }

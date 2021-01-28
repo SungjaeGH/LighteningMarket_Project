@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../include/head.jsp" %>
 
-<section
+<section>
     <%@include file="../include/headbar.jsp" %>
     <!-- Page Content -->
     <div class="login_container">
         <div class="login_row">
             <form action="${path}/login/idSearchPost" method="post">
                 <div class="login_title_row">
-                    <h1 class="login_title"><i class="fa fa-lock" aria-hidden="true"></i>아이디 찾기</h1>
+                    <h1 class="login_title"><i class="fa fa-lock" aria-hidden="true"></i> 아이디 찾기</h1>
                 </div>
                 <br/><br/>
 
@@ -51,15 +51,5 @@
 </section>
 <%@include file="../include/footer.jsp" %>
 
-<script>
-
-    var msg = "${msg}";
-    if (msg === "IDSEARCH") {
-        alert("회원가입이 완료되었습니다. 로그인 해주세요!")
-    } else if (msg === "FAILURE") {
-        alert("아이디와 비밀번호를 확인해주세요.");
-    }
-
-</script>
 
 </html>

@@ -45,9 +45,9 @@
     <!-- 아이디 찾기 -->
     <select id="idsearch" resultMap="userVOResultMap">
         SELECT
-            id
+            id, name, email
         FROM tbl_member
-        WHERE email = #{email}
-           OR p_number = #{pNumber}
+        WHERE name = #{name}
+          AND email = #{email}
     </select>
 </mapper>

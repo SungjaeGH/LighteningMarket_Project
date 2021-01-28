@@ -1,5 +1,6 @@
 package com.project.lighteningmarket.user.controller;
 
+import com.project.lighteningmarket.user.domain.LoginDTO;
 import com.project.lighteningmarket.user.domain.UserSearchDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 import com.project.lighteningmarket.user.service.UserService;
@@ -26,21 +27,24 @@ public class UserIdSearchController {
     }
 
     // 아이디 찾기 페이지
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signupPOST(UserSearchDTO userSearchDTO, RedirectAttributes redirectAttributes) throws Exception {
-        userService.idsearch(userSearchDTO);
-
-        return "/login/idSearch";
+    @RequestMapping(value = "/idSearch", method = {RequestMethod.GET})
+    public String idSearchGET(@ModelAttribute("UserSearchDTO") UserSearchDTO userSearchDTO) {
+        return "login/idSearch";
     }
 
-//    // 아이디 찾기
-//    @RequestMapping(value = "/idSearchPost", method = RequestMethod.POST)
-//    public String idsearch(UserSearchDTO userSearchDTO, HttpServletResponse response) throws Exception {
-//        System.out.println(userSearchDTO.toString());
-//
-//        UserVO userVO = userService.idsearch(userSearchDTO);
-//        System.out.println(userVO);
-//        return "/login/idSearchPost";
-//    }
+    // 아이디 찾기
+    @RequestMapping(value = "/idSearchPost", method = RequestMethod.POST)
+    public String idsearch(UserSearchDTO userSearchDTO, RedirectAttributes redirectAttributes) throws Exception {
+        System.out.println(userSearchDTO.toString());
+
+        UserVO userVO = userService.idsearch(userSearchDTO);
+        System.out.println(userVO);
+
+        if(userVO.getEmail().equals(userSearchDTO.getEmail())) {
+            redirectAttributes.addFlashAttribute("msg", "IDSEARCH");
+        }
+
+        return "redirect:/login/idSearchPost";
+    }
 
 }
