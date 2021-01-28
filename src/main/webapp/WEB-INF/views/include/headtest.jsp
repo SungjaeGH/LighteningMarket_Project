@@ -20,27 +20,5 @@
     <!-- Custom styles for this template -->
     <link href="../../../resources/css/shop-homepage.css" rel="stylesheet">
     <title>HelloMyPage</title>
-
     <script type="text/javascript" src="../../../resources/jquery/jquery.js"></script>
-    <style>
-        /* iframe 스타일 설정 */
-        iframe {
-            width: 600px;
-            height: 100px;
-            border: 1px;
-            border-style: solid;
-        }
-        .fileDrop {
-            width:600px;
-            height: 200px;
-            border: 1px dotted blue;
-        }
 
-        small {
-            margin-left: 3px;
-            font-weight: bold;
-            color: gray;
-        }
-    </style>
-</head>
-<body>
