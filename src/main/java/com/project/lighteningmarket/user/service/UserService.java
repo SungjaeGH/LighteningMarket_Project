@@ -1,6 +1,7 @@
 package com.project.lighteningmarket.user.service;
 
 import com.project.lighteningmarket.user.domain.LoginDTO;
+import com.project.lighteningmarket.user.domain.UserSearchDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 
 public interface UserService {
@@ -11,4 +12,6 @@ public interface UserService {
     // 로그인 처리
     UserVO login(LoginDTO loginDTO) throws Exception;
 
+    // 아이디 찾기
+    UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception;
 }

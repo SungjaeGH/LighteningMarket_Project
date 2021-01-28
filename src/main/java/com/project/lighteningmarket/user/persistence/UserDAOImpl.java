@@ -1,6 +1,7 @@
 package com.project.lighteningmarket.user.persistence;
 
 import com.project.lighteningmarket.user.domain.LoginDTO;
+import com.project.lighteningmarket.user.domain.UserSearchDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -28,5 +29,11 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public UserVO login(LoginDTO loginDTO) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".login", loginDTO);
+    }
+
+    // 아이디 찾기
+    @Override
+    public UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".idsearch", userSearchDTO);
     }
 }

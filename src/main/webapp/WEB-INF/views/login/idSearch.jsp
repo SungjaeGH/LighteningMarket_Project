@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../include/head.jsp" %>
 
-<section>
+<section
     <%@include file="../include/headbar.jsp" %>
     <!-- Page Content -->
     <div class="login_container">
         <div class="login_row">
-            <form action="${path}/login/loginPost" method="post">
+            <form action="${path}/login/idSearchPost" method="post">
                 <div class="login_title_row">
-                    <h1 class="login_title"><i class="fa fa-lock" aria-hidden="true"></i> 로그인</h1>
+                    <h1 class="login_title"><i class="fa fa-lock" aria-hidden="true"></i>아이디 찾기</h1>
                 </div>
                 <br/><br/>
 
@@ -18,7 +18,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                     </div>
-                    <input type="text" name="id" class="form-control" placeholder="아이디"/>
+                    <input type="text" name="name" class="form-control" placeholder="이름"/>
                 </div>
                 <br/>
 
@@ -26,16 +26,12 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key icon"></i></span>
                     </div>
-                    <input type="Password" name="password" class="form-control" aria-hidden="true"
-                           placeholder="비밀번호"/>
-                </div>
-                <br/>
-                <div class="checkbox">
-                    <label><input type="checkbox" name="useCookie"/> 로그인 유지 </label>
+                    <input type="text" name="email" class="form-control" aria-hidden="true"
+                           placeholder="이메일"/>
                 </div>
                 <br/>
                 <button type="submit" class="btn btn-primary btn-block"><span
-                        class="glyphicon glyphicon-off"></span> 로그인
+                        class="glyphicon glyphicon-off"></span> 아이디 찾기
                 </button>
                 <br/>
             </form>
@@ -44,9 +40,7 @@
             </center>
             <br/>
             <div class="login_footer">
-                <a href="${path}/login/idSearch">ID 찾기</a> |
-                <a href="#">비밀번호 찾기</a> |
-                <a href="${path}/user/signup">회원가입</a>
+                <a href="#">비밀번호 찾기</a>
             </div>
 
         </div>
@@ -60,9 +54,12 @@
 <script>
 
     var msg = "${msg}";
-    if (msg === "SIGNEDUP") {
+    if (msg === "IDSEARCH") {
         alert("회원가입이 완료되었습니다. 로그인 해주세요!")
+    } else if (msg === "FAILURE") {
+        alert("아이디와 비밀번호를 확인해주세요.");
     }
+
 </script>
 
 </html>
