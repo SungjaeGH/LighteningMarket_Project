@@ -1,6 +1,7 @@
 package com.project.lighteningmarket.user.service;
 
 import com.project.lighteningmarket.user.domain.LoginDTO;
+import com.project.lighteningmarket.user.domain.UserSearchDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 import com.project.lighteningmarket.user.persistence.UserDAO;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,13 @@ public class UserServiceImpl implements UserService {
     public UserVO login(LoginDTO loginDTO) throws Exception {
         return userDAO.login(loginDTO);
     }
+
+    // 아이디 찾기
+    @Override
+    public UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception {
+        return userDAO.idsearch(userSearchDTO);
+    }
+
+
 
 }
