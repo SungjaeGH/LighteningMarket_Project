@@ -13,7 +13,8 @@
         alert("이메일을 확인해주세요.");
         self.location = "/login/idSearch";
     }
-
+    console.log(msg);
+    console.log(id);
 </script>
 </body>
 </html>
