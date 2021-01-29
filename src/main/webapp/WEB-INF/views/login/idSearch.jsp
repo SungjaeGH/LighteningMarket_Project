@@ -50,6 +50,17 @@
     <!-- /.container -->
 </section>
 <%@include file="../include/footer.jsp" %>
+<script>
+    var msg = "${map.msg}";
+    var id = "${map.id}";
+    console.log(msg);
+    console.log(id);
+    if (msg === "IDSEARCH") {
+        alert("아이디는 " + id + " 입니다.");
+    } else if(msg === "NOID"){
+        alert("이메일을 확인해주세요.");
+    }
+</script>
 
 
 </html>
