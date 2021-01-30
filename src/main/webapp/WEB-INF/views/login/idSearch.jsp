@@ -8,7 +8,7 @@
     <!-- Page Content -->
     <div class="login_container">
         <div class="login_row">
-            <form action="${path}/login/idSearchPost" method="post">
+            <form action="${path}/login/idSearch" method="post">
                 <div class="login_title_row">
                     <h1 class="login_title"><i class="fa fa-lock" aria-hidden="true"></i> 아이디 찾기</h1>
                 </div>
@@ -50,6 +50,17 @@
     <!-- /.container -->
 </section>
 <%@include file="../include/footer.jsp" %>
+<script>
+    var msg = "${map.msg}";
+    var id = "${map.id}";
+    if (msg === "IDSEARCH") {
+        alert("아이디는 " + id + " 입니다.");
+        self.location = "/login/login";
+    } else if(msg === "NOID"){
+        alert("이메일을 확인해주세요.");
+        self.location = "/login/idSearch";
+    }
+</script>
 
 
 </html>
