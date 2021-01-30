@@ -36,13 +36,13 @@ public class UploadController {
     /****************************** # 일반적인 방식의 업로드 처리  *********************************/
 
     // 1. 일반적인 업로드 매핑
-    @RequestMapping(value="/upload/uploadForm", method=RequestMethod.GET)
-    public void uplodaForm(){
+    @RequestMapping(value="/product/productRegister", method=RequestMethod.GET)
+    public void uploadForm(){
 
     }
 
     // 2. 일반적인 업로드 처리 매핑
-    @RequestMapping(value="/upload/uploadForm", method=RequestMethod.POST)
+    @RequestMapping(value="/product/productRegister", method=RequestMethod.POST)
     public ModelAndView uploadForm(MultipartFile file, ModelAndView mav) throws Exception{
         // 파일의 원본이름 저장
         String savedName = file.getOriginalFilename();

@@ -61,10 +61,4 @@
         <constructor-arg value="C:/images"/>
     </bean>
 
-    <!-- String uploadPath = new String("업로드 경로") TEST -->
-    <bean id="uploadPathTest" class="java.lang.String">
-        <!-- 파일업로드 디렉토리-->
-        <constructor-arg value="C:/images"/>
-    </bean>
-
 </beans>
