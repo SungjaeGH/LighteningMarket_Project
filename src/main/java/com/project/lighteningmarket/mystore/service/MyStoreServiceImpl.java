@@ -20,20 +20,40 @@ public class MyStoreServiceImpl implements MyStoreService{
         return myStoreDAO.product_listAll();
     }
 
-    // 상품 테이블 읽기
+    // 찜 테이블 읽기
     @Override
     public List<ProductVO> favorites_listAll() throws Exception {
         return myStoreDAO.favorites_listAll();
     }
 
-   /* @Override
-    public Object product_read(Integer proIdx) throws Exception {
-       myStoreDAO.product_read(proIdx);
-        return null;
-    }*/
 
     // 이미지 테이블 읽기
     public ImagesVO image_read(int imgIdx) throws Exception {
         return myStoreDAO.image_read(imgIdx);
     }
+
+    // 상점문의 테이블 읽기
+    @Override
+    public List<StoreQaVO> storeQa_listAll() throws Exception {
+        return myStoreDAO.storeQa_listAll();
+    }
+
+    // 상점문의 테이블 추가
+    @Override
+    public void storeQaCreate(StoreQaVO storeQaVO) throws Exception {
+        myStoreDAO.storeQaCreate(storeQaVO);
+    }
+
+    // 상점문의 테이블 수정
+    @Override
+    public void storeQaUpdate(StoreQaVO storeQaVO) throws Exception {
+        myStoreDAO.storeQaUpdate(storeQaVO);
+    }
+
+    // 상점문의 테이블 삭제
+    @Override
+    public void storeQaDelete(StoreQaVO storeQaVO) throws Exception {
+        myStoreDAO.storeQaDelete(storeQaVO);
+    }
+
 }

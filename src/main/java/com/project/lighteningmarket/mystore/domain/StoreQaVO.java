@@ -1,16 +1,27 @@
 package com.project.lighteningmarket.mystore.domain;
 
 public class StoreQaVO {
-    private String storeQaIdx; // 상점문의번호
+    private int storeQaIdx; // 상점문의번호
     private String nickname; // 닉네임(member.nickname)
     private String storeQaDes; // 상점문의내용
     private String unknownCheck; // 익명여부
 
-    public String getStoreQaIdx() {
+
+    @Override
+    public String toString() {
+        return "StoreQaVO{" +
+                "storeQaIdx=" + storeQaIdx +
+                ", nickname='" + nickname + '\'' +
+                ", storeQaDes='" + storeQaDes + '\'' +
+                ", unknownCheck='" + unknownCheck + '\'' +
+                '}';
+    }
+
+    public int getStoreQaIdx() {
         return storeQaIdx;
     }
 
-    public void setStoreQaIdx(String storeQaIdx) {
+    public void setStoreQaIdx(int storeQaIdx) {
         this.storeQaIdx = storeQaIdx;
     }
 
@@ -38,13 +49,7 @@ public class StoreQaVO {
         this.unknownCheck = unknownCheck;
     }
 
-    @Override
-    public String toString() {
-        return "StoreQaVO{" +
-                "storeQaIdx='" + storeQaIdx + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", storeQaDes='" + storeQaDes + '\'' +
-                ", unknownCheck='" + unknownCheck + '\'' +
-                '}';
-    }
+
+
+
 }
