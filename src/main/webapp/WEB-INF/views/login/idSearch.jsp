@@ -10,7 +10,7 @@
         <div class="login_row">
             <form action="${path}/login/idSearch" method="post">
                 <div class="login_title_row">
-                    <h1 class="login_title"><i class="fa fa-lock" aria-hidden="true"></i> 아이디 찾기</h1>
+                    <h1 class="login_title"><i aria-hidden="true"></i> 아이디 찾기</h1>
                 </div>
                 <br/><br/>
 
@@ -35,14 +35,6 @@
                 </button>
                 <br/>
             </form>
-            <center>
-                <div style="border:1px solid black;height:1px;width:295px;"></div>
-            </center>
-            <br/>
-            <div class="login_footer">
-                <a href="#">비밀번호 찾기</a>
-            </div>
-
         </div>
         <!-- /.row -->
     </div>
