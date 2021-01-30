@@ -35,13 +35,12 @@ public class UserIdSearchController {
 
 
     // 아이디 찾기
-    @RequestMapping(value = "/idSearchPost", method = RequestMethod.POST)
-    public String idsearchPOST(UserSearchDTO userSearchDTO, RedirectAttributes redirectAttributes, Model model) throws Exception {
+    @RequestMapping(value = "/idSearch", method = RequestMethod.POST)
+    public String idsearchPOST(UserSearchDTO userSearchDTO, RedirectAttributes redirectAttributes) throws Exception {
         Map<String, Object> map = new HashMap<String,Object>();
-
+        // userSearchDTO 값 출력
         System.out.println(userSearchDTO.toString());
-
-
+        // mapper에서 query 실행한 결과값 출력
         UserVO userVO = userService.idsearch(userSearchDTO);
         System.out.println(userVO);
 
@@ -49,8 +48,6 @@ public class UserIdSearchController {
             map.put("msg", "IDSEARCH");
             map.put("id", userVO.getId());
             redirectAttributes.addFlashAttribute("map", map);
-
-            System.out.println("들어옴색갸");
         }
         else {
             map.put("msg", "NOID");
