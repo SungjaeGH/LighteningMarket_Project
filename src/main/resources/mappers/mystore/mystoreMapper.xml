@@ -8,11 +8,11 @@
     <!--    상품페이지 -->
     <select id="product_listAll" parameterType="ProductVO" resultType="ProductVO">
         <![CDATA[
-        SELECT DISTINCT tbl_product.proIdx,
-                        tbl_product.title,
-                        tbl_product.price,
-                        tbl_product.regDate,
-                        tbl_product.tradeArea
+        SELECT DISTINCT proIdx,
+                        title,
+                        price,
+                        regDate,
+                        tradeArea
         FROM tbl_product
 --                  INNER JOIN tbl_images ON tbl_product.proIdx = tbl_images.proIdx
         WHERE tbl_product.id = 'gold01130';
@@ -23,11 +23,11 @@
     <!--        찜페이지-->
     <select id="favorites_listAll" resultType="ProductVO">
         <![CDATA[
-        SELECT DISTINCT tbl_product.proIdx,
-                        tbl_product.title,
-                        tbl_product.price,
-                        tbl_product.regDate,
-                        tbl_product.tradeArea
+        SELECT DISTINCT proIdx,
+                        title,
+                        price,
+                        regDate,
+                        tradeArea
         FROM tbl_product
                  INNER JOIN tbl_favorites ON tbl_product.proIdx = tbl_favorites.pro_idx
         WHERE tbl_favorites.id = 'gold01130';
@@ -36,10 +36,10 @@
 
 
     <!--        상점문의 페이지-->
-    <select id="storeQa_listAll" resultMap="StoreQaVO">
+    <select id="storeQa_listAll" resultMap="StoreQaResultMap">
         <![CDATA[
         SELECT DISTINCT store_qa_idx
-                      , nickname
+                      , tbl_store_qa.nickname
                       , store_qa_des
                       , unknown_check
         FROM tbl_store_qa
@@ -49,7 +49,7 @@
     </select>
 
     <!--    상점문의 테이블에 추가하기-->
-    <!--<insert id="storeQa_create">
+    <insert id="storeQa_create">
         INSERT INTO tbl_store_qa (
                                    store_qa_idx
                                  , nickname
@@ -63,7 +63,7 @@
                  )
     </insert>
 
-&lt;!&ndash;    상점문의 테이블에 수정하기&ndash;&gt;
+<!--    상점문의 테이블에 수정하기-->
     <update id="update">
         UPDATE tbl_store_qa
         SET
@@ -71,12 +71,11 @@
         WHERE store_qa_idx = #{store_qa_idx}
     </update>
 
-&lt;!&ndash;    상점문의 테이블에 삭제하기&ndash;&gt;
+<!--    상점문의 테이블에 삭제하기-->
     <delete id="delete">
         DELETE FROM tbl_store_qa
         WHERE store_qa_idx = #{store_qa_idx}
     </delete>
--->
 
 
     <resultMap id="ProductResultMap" type="ProductVO">
