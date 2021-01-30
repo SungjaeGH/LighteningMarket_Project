@@ -6,7 +6,7 @@
 <mapper namespace="com.project.lighteningmarket.mappers.mystore.mystoreMapper">
 
     <!--    상품페이지 -->
-    <select id="product_listAll" parameterType="ProductVO" resultType="ProductVO">
+    <select id="product_listAll"  resultMap="ProductResultMap">
         <![CDATA[
         SELECT DISTINCT proIdx,
                         title,
@@ -21,7 +21,7 @@
 
 
     <!--        찜페이지-->
-    <select id="favorites_listAll" resultType="ProductVO">
+    <select id="favorites_listAll" resultMap="ProductResultMap">
         <![CDATA[
         SELECT DISTINCT proIdx,
                         title,
