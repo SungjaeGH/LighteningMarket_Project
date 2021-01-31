@@ -38,6 +38,20 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
+    <!-- 구글 계정으로 비밀번호 인증번호 발송에 필요한 bean -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="587"/>
+        <property name="username" value="dtc13579@gmail.com"/>
+        <property name="password" value="tjdwo13579~"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+
     <context:component-scan base-package="com.project.lighteningmarket"/>
 
 </beans>

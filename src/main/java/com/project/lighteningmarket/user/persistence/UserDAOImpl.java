@@ -36,4 +36,10 @@ public class UserDAOImpl implements UserDAO {
     public UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception {
         return sqlSession.selectOne(NAMESPACE + ".idsearch", userSearchDTO);
     }
+
+    // 비밀번호 찾기
+    @Override
+    public void pwsearch(UserSearchDTO userSearchDTO) throws Exception {
+        sqlSession.update(NAMESPACE + ".pwsearch", userSearchDTO);
+    }
 }

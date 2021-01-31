@@ -13,7 +13,6 @@
 <section>
     <%@include file ="../include/headbar.jsp" %>
     <!-- Page Content -->
-    test: ${test} <!-- asdfasdfasdf -->
     <div class="container">
 
         <div class="row">
