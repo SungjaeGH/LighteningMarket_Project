@@ -3,6 +3,8 @@ package com.project.lighteningmarket.mystore.controller;
 import com.project.lighteningmarket.mystore.service.MyStoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,5 +50,19 @@ public class MyStoreController {
 
         return "/mystore/storeQa";
     }
+
+    // 상점문의 페이지 추가
+/*    @RequestMapping(value = "/storeQaInsert", method = RequestMethod.POST)
+    public ResponseEntity<String> register(@RequestBody StoreQaVO storeQaVO) {
+        ResponseEntity<String> entity = null;
+        try {
+            MyStoreService.storeQaAddReply(storeQaVO);
+            entity = new ResponseEntity<>("regSuccess", HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return entity;
+    }*/
 
 }

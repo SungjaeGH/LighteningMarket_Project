@@ -19,7 +19,7 @@ public interface MyStoreService {
     List<StoreQaVO> storeQa_listAll() throws Exception;
 
     // 상점문의 테이블 추가
-    void storeQaCreate(StoreQaVO storeQaVO) throws Exception;
+    void storeQaAddReply(StoreQaVO storeQaVO) throws Exception;
 
     // 상점문의 테이블 수정
     void storeQaUpdate(StoreQaVO storeQaVO) throws Exception;

@@ -3,6 +3,7 @@ package com.project.lighteningmarket.mystore.service;
 import com.project.lighteningmarket.mystore.domain.*;
 import com.project.lighteningmarket.mystore.persistence.MyStoreDAO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -39,8 +40,9 @@ public class MyStoreServiceImpl implements MyStoreService{
     }
 
     // 상점문의 테이블 추가
+    @Transactional
     @Override
-    public void storeQaCreate(StoreQaVO storeQaVO) throws Exception {
+    public void storeQaAddReply(StoreQaVO storeQaVO) throws Exception {
         myStoreDAO.storeQaCreate(storeQaVO);
     }
 

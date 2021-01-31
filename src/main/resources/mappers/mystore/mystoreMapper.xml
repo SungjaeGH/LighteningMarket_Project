@@ -64,12 +64,12 @@
     </insert>
 
 <!--    상점문의 테이블에 수정하기-->
-    <update id="update">
+<!--    <update id="update">
         UPDATE tbl_store_qa
         SET
             store_qa_des = #{store_qa_des}
         WHERE store_qa_idx = #{store_qa_idx}
-    </update>
+    </update>-->
 
 <!--    상점문의 테이블에 삭제하기-->
     <delete id="delete">
