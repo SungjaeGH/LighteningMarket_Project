@@ -46,14 +46,24 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+
+
+
                 <div>
                     <!-- enctype="multipart/form-data" 파일업로드 필수 옵션 -->
                     <!-- application/x-www-form-urlencoded 기본옵션 -->
-                    <form id="form1" target="iframePhoto" action="${path}/upload/uploadForm" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file">
-                        <input type="submit" value="업로드">
+                    <form action="/saveImage" enctype="multipart/form-data" method="post">
+                        <input type="file" name="imgFile" />
+                        <input type="submit" value="이미지저장"/>
+                    </form>
+                    <form action="/viewImage" method="get">
+                        <button value="이미지저장"></button>
                     </form>
                     <!-- form data가 이곳으로 이동 -->
+
+                    <!-- img태그의 src 경로는 byte이미지 가져오는 컨트롤러 호출(/getByteImage) -->
+                    <img alt="" src="/getByteImage" />
+
                     <iframe name="iframePhoto"></iframe>
                     <!-- iframe 적용 존-->
                     <script>
