@@ -45,7 +45,7 @@
             <br/>
             <div class="login_footer">
                 <a href="${path}/login/idSearch">ID 찾기</a> |
-                <a href="#">비밀번호 찾기</a> |
+                <a href="${path}/login/pwSearch">비밀번호 찾기</a> |
                 <a href="${path}/user/signup">회원가입</a>
             </div>
 

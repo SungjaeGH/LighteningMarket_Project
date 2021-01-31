@@ -50,4 +50,11 @@
         WHERE name = #{name}
           AND email = #{email}
     </select>
+
+<!--    &lt;!&ndash; 비밀번호 찾기 &ndash;&gt;-->
+<!--    <update id="pwsearch" parameterMap="userVOResultMap">-->
+<!--        UPDATE tbl_member-->
+<!--           SET password = #{password}-->
+<!--         WHERE id = #{id}-->
+<!--    </update>-->
 </mapper>

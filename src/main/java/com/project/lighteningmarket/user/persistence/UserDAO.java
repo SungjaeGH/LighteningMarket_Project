@@ -14,4 +14,7 @@ public interface UserDAO {
 
     // 아이디 찾기
     UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception;
+
+    // 비밀번호 찾기
+    void pwsearch(UserSearchDTO userSearchDTO) throws Exception;
 }

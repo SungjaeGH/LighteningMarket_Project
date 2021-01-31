@@ -35,6 +35,12 @@ public class UserServiceImpl implements UserService {
         return userDAO.idsearch(userSearchDTO);
     }
 
+    // 비밀번호 찾기
+    @Override
+    public void pwsearch(UserSearchDTO userSearchDTO) throws Exception {
+        userDAO.pwsearch(userSearchDTO);
+    }
+
 
 
 }
