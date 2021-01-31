@@ -35,7 +35,6 @@
 
                 <%--                    상점문의 댓글 쓰기--%>
                 <div class="row">
-
                     <div class="col-lg-12">
                         <div class="box box-primary">
                             <div class="box-header with-border">
@@ -63,11 +62,17 @@
                             <div class="box box-primary">
                                 <c:forEach items="${storeQa}" var="storeQa">
                                     <div class="box-header with-border">
-                                        <h5 class="box-title">${storeQa.nickname}</h5>
+                                        <c:if test="${storeQa.unknownCheck eq 'Y'}">
+                                            <h5 class="box-title">익명</h5>
+                                        </c:if>
+                                        <c:if test="${storeQa.unknownCheck eq 'N'}">
+                                            <h5 class="box-title">${storeQa.nickname}</h5>
+                                        </c:if>
                                         <h5 class="box-title">${storeQa.storeQaDes}</h5>
                                         <button type="button" id="replyDeleteBtn" class="btn btn-danger"><i
                                                 class="fas fa-eraser"></i> 삭제
                                         </button>
+                                        <h5 class="box-title"></h5>
                                     </div>
                                 </c:forEach>
                             </div>
@@ -85,16 +90,17 @@
 <%@include file="../include/footer.jsp" %>
 
 <script>
-    var chkbox = document.unknown.checked;
+    var chkbox = document.getElementsByName('unknown');
+    var chk;
+    if(chkbox.checked) { chk = true; } else { chk = false; }
 
-
+    // 댓글 등록 이벤트 처리
     $("#replyAddBtn").on("click", function () {
-        var chk = true;
-        if (chk == true)
+        if (chk)
         {
             alert("댓글 등록 완료!");
         }
-        else
+        else (!chk)
         {
             alert("댓글 등록 실패!");
         }
@@ -127,6 +133,12 @@
                 replyWriter.val("");
             }
         });*/
+    });
+
+
+    // 댓글 삭제 버튼 이벤트 처리
+    $("#replyDeleteBtn").on("click", function () {
+        alert("댓글을 삭제하였습니다.");
     });
 </script>
 </html>
