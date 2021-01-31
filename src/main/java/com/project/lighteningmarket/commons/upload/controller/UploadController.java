@@ -31,52 +31,7 @@ public class UploadController {
     @Resource(name="uploadPath")
     String uploadPath;
 
-    // 업로드 흐름 : 업로드 버튼클릭 => 임시디렉토리에 업로드=> 지정된 디렉토리에 저장 => 파일정보가 file에 저장
 
-    /****************************** # 일반적인 방식의 업로드 처리  *********************************/
-
-    // 1. 일반적인 업로드 매핑
-    @RequestMapping(value="/product/productRegister", method=RequestMethod.GET)
-    public void uploadForm(){
-
-    }
-
-    // 2. 일반적인 업로드 처리 매핑
-    @RequestMapping(value="/product/productRegister", method=RequestMethod.POST)
-    public ModelAndView uploadForm(MultipartFile file, ModelAndView mav) throws Exception{
-        // 파일의 원본이름 저장
-        String savedName = file.getOriginalFilename();
-
-        logger.info("파일이름 :"+file.getOriginalFilename());
-        logger.info("파일크기 : "+file.getSize());
-        logger.info("컨텐트 타입 : "+file.getContentType());
-
-        File target = new File(uploadPath, savedName);
-
-        // 랜덤생성+파일이름 저장
-        // 파일명 랜덤생성 메서드호출
-        savedName = uploadFile(savedName, file.getBytes());
-
-        mav.setViewName("product/productResult");
-        mav.addObject("savedName", savedName);
-
-        return mav; // uploadResult.jsp(결과화면)로 포워딩
-    }
-
-    // 3. 파일명 랜덤생성 메서드
-    private String uploadFile(String originalName, byte[] fileData) throws Exception{
-        // uuid 생성(Universal Unique IDentifier, 범용 고유 식별자)
-        UUID uuid = UUID.randomUUID();
-        // 랜덤생성+파일이름 저장
-        String savedName = uuid.toString()+"_"+originalName;
-        File target = new File(uploadPath, savedName);
-        // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
-        // FileCopyUtils.copy(바이트배열, 파일객체)
-        FileCopyUtils.copy(fileData, target);
-        return savedName;
-    }
-
-    /****************************** # 일반적인 방식의 업로드 처리  *********************************/
 
     /****************************** # ajax 방식의 업로드 처리  *********************************/
 
