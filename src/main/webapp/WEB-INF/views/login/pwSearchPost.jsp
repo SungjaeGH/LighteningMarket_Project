@@ -14,8 +14,6 @@
 <script>
   var dice = "${dice}";
   var email = "${email}";
-  console.log(dice);
-  console.log(email);
 
   if (dice !== "NOEMAIL") {
     alert("인증번호를 입력해주세요.");
