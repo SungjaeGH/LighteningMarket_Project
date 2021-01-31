@@ -50,6 +50,14 @@
         WHERE name = #{name}
           AND email = #{email}
     </select>
+    
+    <!-- 비밀번호 찾기 (1.인증번호 받기) -->
+    <select id="emaildice" resultMap="userVOResultMap">
+        SELECT id, email
+        FROM tbl_member
+        WHERE id = #{id}
+          OR email = #{email}
+    </select>
 
 <!--    &lt;!&ndash; 비밀번호 찾기 &ndash;&gt;-->
 <!--    <update id="pwsearch" parameterMap="userVOResultMap">-->

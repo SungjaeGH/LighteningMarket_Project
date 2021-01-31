@@ -8,11 +8,18 @@
     <!-- Page Content -->
     <div class="login_container">
         <div class="login_row">
-            <form action="${path}/login/pwSearch" method="post">
+            <form action="${path}/login/pwSearchPost" method="post">
                 <div class="login_title_row">
                     <h1 class="login_title"><i aria-hidden="true"></i> 비밀번호 찾기</h1>
                 </div>
                 <br/><br/>
+
+<%--                <c:if test="${not empty login}">--%>
+<%--                    <a class="nav-link" href="../product/productRegister">상품 등록</a>--%>
+<%--                </c:if>--%>
+<%--                <c:if test="${empty login}">--%>
+<%--                    <a class="nav-link" href="../login/login">상품 등록</a>--%>
+<%--                </c:if>--%>
 
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -41,7 +48,6 @@
         </div>
         <!-- /.row -->
     </div>
-
 
     <!-- /.container -->
 </section>
