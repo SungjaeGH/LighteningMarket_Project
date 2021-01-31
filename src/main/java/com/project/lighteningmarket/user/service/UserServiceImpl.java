@@ -35,6 +35,12 @@ public class UserServiceImpl implements UserService {
         return userDAO.idsearch(userSearchDTO);
     }
 
+    // 비밀번호 찾기 (1.인증번호 받기)
+    @Override
+    public UserVO emaildice(UserSearchDTO userSearchDTO) throws Exception {
+        return userDAO.emaildice(userSearchDTO);
+    }
+
     // 비밀번호 찾기
     @Override
     public void pwsearch(UserSearchDTO userSearchDTO) throws Exception {

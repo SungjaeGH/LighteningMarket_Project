@@ -37,6 +37,12 @@ public class UserDAOImpl implements UserDAO {
         return sqlSession.selectOne(NAMESPACE + ".idsearch", userSearchDTO);
     }
 
+    // 비밀번호 찾기 (1. 인증번호 받기)
+    @Override
+    public UserVO emaildice(UserSearchDTO userSearchDTO) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".emaildice", userSearchDTO);
+    }
+
     // 비밀번호 찾기
     @Override
     public void pwsearch(UserSearchDTO userSearchDTO) throws Exception {

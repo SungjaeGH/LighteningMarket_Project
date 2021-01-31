@@ -15,6 +15,9 @@ public interface UserService {
     // 아이디 찾기
     UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception;
 
+    // 비밀번호 찾기 (1. 인증번호 받기)
+    UserVO emaildice(UserSearchDTO userSearchDTO) throws Exception;
+
     // 비밀번호 찾기
     void pwsearch(UserSearchDTO userSearchDTO) throws Exception;
 }
