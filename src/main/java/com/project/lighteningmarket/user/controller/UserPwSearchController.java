@@ -101,12 +101,7 @@ public class UserPwSearchController {
             System.out.println("mv : " + mv);
         }
 
-//        response.setContentType("text/html; charset=UTF-8");
-//        PrintWriter out_email = response.getWriter();
-//
-//        out_email.println("<script>alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');</script>");
-//        out_email.flush();
-
         return mv;
     }
+
 }

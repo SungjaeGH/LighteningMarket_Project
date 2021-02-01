@@ -46,7 +46,9 @@
                                            placeholder="상품문의 입력">
                                 </div>
                                 <div class="fa-pull-right">
-                                    <input type='checkbox' id = "unknown"  name='unknown' value='unknown_check' />익명
+                                    <input type='checkbox' id = "unknown"  name='unknown' value='unknown_check' onclick="function click() {
+
+                                    }" />익명
                                     <button type="button" id="replyAddBtn" class="btn btn-primary"><i
                                             class="fa fa-pen-square"></i> 등록
                                     </button>
@@ -90,11 +92,20 @@
 <%@include file="../include/footer.jsp" %>
 
 <script>
-    var chkbox = document.getElementsByName('unknown');
-    var chk;
-    if(chkbox.checked) { chk = true; } else { chk = false; }
+    var unknown_check; // 익명체크 여부
+<%--    등록 버튼 이벤트 처리--%>
+    $("#replyAddBtn").click(function () {
+        if ($("#unknown").is(":checked")) {
+            unknown_check = 'Y';
+            alert(unknown_check);
+        } else {
+            unknown_check = 'N';
+            alert(unknown_check);
+        }
+    });
+</script>
 
-    // 댓글 등록 이벤트 처리
+<%--    // 댓글 등록 이벤트 처리
     $("#replyAddBtn").on("click", function () {
         if (chk)
         {
@@ -102,10 +113,11 @@
         }
         else (!chk)
         {
+            console.log(chk);
             alert("댓글 등록 실패!");
         }
-/*        var replyText = $("#newReplyText");
-        var replyWriter = 'sdfqwe';
+/*        var replyText = $("#newReplyText");--%>
+<%--        var replyWriter = 'sdfqwe';
 
         var replyTextVal = replyText.val();
         var replyWriterVal = replyWriter.val();
@@ -139,6 +151,5 @@
     // 댓글 삭제 버튼 이벤트 처리
     $("#replyDeleteBtn").on("click", function () {
         alert("댓글을 삭제하였습니다.");
-    });
-</script>
+    });--%>
 </html>
