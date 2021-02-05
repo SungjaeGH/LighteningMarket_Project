@@ -48,18 +48,16 @@
         ]]>
     </select>
 
-    <!--    상점문의 테이블에 추가하기-->
+    <!--    상점문의 테이블에 추가하기 + 번호 자동으로 정렬하기-->
     <insert id="storeQa_create">
         INSERT INTO tbl_store_qa (
-                                   store_qa_idx
-                                 , nickname
+                                    nickname
                                  , store_qa_des
                                  , unknown_check
         ) VALUES (
-                     #{store_qa_idx}
-                 , #{nickname}
-                 , #{store_qa_des}
-                 , #{unknown_check}
+                   'sdfqwe'
+                 , #{storeQaDes}
+                 , 'N'
                  )
     </insert>
 
@@ -72,10 +70,18 @@
     </update>-->
 
 <!--    상점문의 테이블에 삭제하기-->
-    <delete id="delete">
+    <delete id="storeQa_delete">
         DELETE FROM tbl_store_qa
-        WHERE store_qa_idx = #{store_qa_idx}
+        WHERE store_qa_idx = #{storeQaIdx}
     </delete>
+
+    <!--    상점문의 테이블에 수정하기-->
+        <update id="storeQa_sort">
+            UPDATE tbl_store_qa
+            <set>
+            SET tbl_store_qa.store_qa_idx = @CNT:=@CNT+1;
+            </set>
+        </update>
 
 
     <resultMap id="ProductResultMap" type="ProductVO">

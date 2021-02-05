@@ -48,21 +48,28 @@ public class MyStoreController {
 
         model.addAttribute("storeQa", mystoreservice.storeQa_listAll()); // 상품 테이블 읽기
 
+        System.out.println(model);
         return "/mystore/storeQa";
     }
 
     // 상점문의 페이지 추가
-/*    @RequestMapping(value = "/storeQaInsert", method = RequestMethod.POST)
-    public ResponseEntity<String> register(@RequestBody StoreQaVO storeQaVO) {
-        ResponseEntity<String> entity = null;
-        try {
-            MyStoreService.storeQaAddReply(storeQaVO);
-            entity = new ResponseEntity<>("regSuccess", HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-        return entity;
-    }*/
+    @RequestMapping(value = "/storeQaInsert", method = RequestMethod.POST)
+    public String storeQaInsertPOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
+        mystoreservice.storeQaAddReply(storeQaVO);
+//        redirectAttributes.addFlashAttribute("msg", "SIGNEDUP");
+        System.out.println(storeQaVO);
+       return "redirect:/mystore/storeQa";
+    }
+
+    // 상점문의 페이지 삭제
+    @RequestMapping(value = "/storeQaDelete", method = RequestMethod.POST)
+    public String storeQaDeletePOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
+        mystoreservice.storeQaDelete(storeQaVO);
+        mystoreservice.storeQaIdxSort(storeQaVO);
+//        redirectAttributes.addFlashAttribute("msg", "SIGNEDUP");
+        System.out.println(storeQaVO);
+        return "redirect:/mystore/storeQa";
+    }
+
 
 }

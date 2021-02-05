@@ -35,6 +35,7 @@
 
                 <%--                    상점문의 댓글 쓰기--%>
                 <div class="row">
+                    <form class="form-detail" action="${path}/mystore/storeQaInsert" method="post">
                     <div class="col-lg-12">
                         <div class="box box-primary">
                             <div class="box-header with-border">
@@ -42,43 +43,44 @@
                             </div>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <input class="form-control" id="newReplyText" name="replyText"
-                                           placeholder="상품문의 입력">
+                                    <input type="text" name="storeQaDes" id="_label-storeQaDes" class="input-text" placeholder="상점문의 입력" required>
                                 </div>
                                 <div class="fa-pull-right">
-                                    <input type='checkbox' id = "unknown"  name='unknown' value='unknown_check' onclick="function click() {
-
-                                    }" />익명
-                                    <button type="button" id="replyAddBtn" class="btn btn-primary"><i
-                                            class="fa fa-pen-square"></i> 등록
+                                    <input type='checkbox' id = "unknown"  name='_label-unknownCheck' class="input-checkbox" onclick="function click() {}" />익명
+                                    <button type="submit" id="storeQaInsert" class="btn btn-primary">
+                                        <i class="fa fa-pen-square"></i> 등록
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
 
                     <%--                    상점문의 댓글 목록 및 삭제--%>
                     <div class="row">
+                        <form class="form-detail" action="${path}/mystore/storeQaDelete" method="post">
                         <div class="col-lg-12">
                             <div class="box box-primary">
                                 <c:forEach items="${storeQa}" var="storeQa">
                                     <div class="box-header with-border">
+                                        <input type="hidden" name="storeQaIdx" id="_label-storeQaIdx" class="input-text" value="${storeQa.storeQaIdx}" />
                                         <c:if test="${storeQa.unknownCheck eq 'Y'}">
-                                            <h5 class="box-title">익명</h5>
+                                            <h5 class="box-title" >익명</h5>
                                         </c:if>
                                         <c:if test="${storeQa.unknownCheck eq 'N'}">
                                             <h5 class="box-title">${storeQa.nickname}</h5>
                                         </c:if>
                                         <h5 class="box-title">${storeQa.storeQaDes}</h5>
-                                        <button type="button" id="replyDeleteBtn" class="btn btn-danger"><i
-                                                class="fas fa-eraser"></i> 삭제
+                                        <button type="submit" id="storeQaDelete" class="btn btn-danger">
+                                            삭제
                                         </button>
                                         <h5 class="box-title"></h5>
                                     </div>
                                 </c:forEach>
                             </div>
                         </div>
+                        </form>
                     </div>
             </div>
 
@@ -98,9 +100,11 @@
         if ($("#unknown").is(":checked")) {
             unknown_check = 'Y';
             alert(unknown_check);
+            return 'Y';
         } else {
             unknown_check = 'N';
             alert(unknown_check);
+            return 'N';
         }
     });
 </script>
