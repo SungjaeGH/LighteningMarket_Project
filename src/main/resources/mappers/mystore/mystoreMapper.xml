@@ -57,7 +57,7 @@
         ) VALUES (
                    'sdfqwe'
                  , #{storeQaDes}
-                 , 'N'
+                 , #{unknownCheck}
                  )
     </insert>
 
@@ -74,14 +74,6 @@
         DELETE FROM tbl_store_qa
         WHERE store_qa_idx = #{storeQaIdx}
     </delete>
-
-    <!--    상점문의 테이블에 번호 자동정렬하기-->
-        <update id="storeQa_sort">
-<!--            UPDATE tbl_store_qa
-            <set>
-            SET tbl_store_qa.store_qa_idx = @CNT:=@CNT+1;
-            </set>-->
-        </update>
 
 
     <resultMap id="ProductResultMap" type="ProductVO">

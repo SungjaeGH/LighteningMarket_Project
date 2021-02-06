@@ -65,7 +65,6 @@ public class MyStoreController {
     @RequestMapping(value = "/storeQaDelete", method = RequestMethod.POST)
     public String storeQaDeletePOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
         mystoreservice.storeQaDelete(storeQaVO);
-//        mystoreservice.storeQaIdxSort(storeQaVO);
 //        redirectAttributes.addFlashAttribute("msg", "SIGNEDUP");
         System.out.println(storeQaVO);
         return "redirect:/mystore/storeQa";
