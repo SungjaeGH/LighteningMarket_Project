@@ -33,31 +33,33 @@
 
                 </div>
 
-                <%--                    상점문의 댓글 쓰기--%>
-                <div class="row">
+                    <%--                    상점문의 댓글 쓰기--%>
                     <form class="form-detail" action="${path}/mystore/storeQaInsert" method="post">
-                    <div class="col-lg-12">
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">상점 문의</h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <input type="text" name="storeQaDes" id="_label-storeQaDes" class="input-text" placeholder="상점문의 입력" required>
-                                </div>
-                                <div class="fa-pull-right">
-                                    <input type='checkbox' id = "unknown"  name='_label-unknownCheck' class="input-checkbox" onclick="function click() {}" />익명
-                                    <button type="submit" id="storeQaInsert" class="btn btn-primary">
-                                        <i class="fa fa-pen-square"></i> 등록
-                                    </button>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">상점 문의</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <input type="text" name="storeQaDes" id="_label-storeQaDes"
+                                                   class="input-text" placeholder="상점문의 입력" required>
+                                        </div>
+                                        <div class="fa-pull-right">
+                                            <input type='checkbox' id="unknown" name='_label-unknownCheck'
+                                                   class="input-checkbox" onclick="function click() {}"/>익명
+                                            <button type="submit" id="storeQaInsert" class="btn btn-primary">
+                                                <i class="fa fa-pen-square"></i> 등록
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </form>
-                </div>
 
-                    <%--                    상점문의 댓글 목록 및 삭제--%>
+                <%--                    상점문의 댓글 목록 및 삭제--%>
                     <div class="row">
                         <form class="form-detail" action="${path}/mystore/storeQaDelete" method="post">
                         <div class="col-lg-12">

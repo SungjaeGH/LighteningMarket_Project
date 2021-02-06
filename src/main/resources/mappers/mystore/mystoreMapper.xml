@@ -75,12 +75,12 @@
         WHERE store_qa_idx = #{storeQaIdx}
     </delete>
 
-    <!--    상점문의 테이블에 수정하기-->
+    <!--    상점문의 테이블에 번호 자동정렬하기-->
         <update id="storeQa_sort">
-            UPDATE tbl_store_qa
+<!--            UPDATE tbl_store_qa
             <set>
             SET tbl_store_qa.store_qa_idx = @CNT:=@CNT+1;
-            </set>
+            </set>-->
         </update>
 
 
