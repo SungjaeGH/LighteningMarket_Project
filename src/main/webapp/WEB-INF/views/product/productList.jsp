@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file ="../include/headtest.jsp" %>
 <style>
     .fileDrop {
@@ -35,33 +36,26 @@
             <div class="col-lg-9">
 
                 <h2>상품목록</h2>
-                <table border="1">
-                    <tr>
-                        <th>상품ID번호</th>
-                        <th>상품이미지</th>
-                        <th>상품명</th>
-                        <th>가격</th>
-                    </tr>
-                    <c:forEach var="row" items="${list}">
-                        <tr>
-                            <td>
-                                    ${row.productId}
-                            </td>
-                            <td>
-                                <a href="${path}/shop/product/detail/${row.productId}">
-                                    <img src="${path}/images/${row.productUrl}" width="120ox" height="110px">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="${path}/shop/product/detail/${row.productId}">${row.productName}</a>
-                            </td>
-                            <td>
-                                <fmt:formatNumber value="${row.productPrice}" pattern="###,###,###"/>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
+                <div class="row">
+                    <c:forEach var="products" items="${list}">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
 
+                                <a href="${products.productIdx}"><img class="card-img-top" src="http://placehold.it/700x400"
+                                                                  alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="${path}/product/detail/${products.productIdx}">${products.productTitle}</a>
+                                    </h4>
+                                    <h5>${products.productPrice}</h5>
+                                    <p class="card-text">${products.regDate}</p>
+                                    <h5>${products.tradeArea}</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
                 <!-- /.row -->
 
             </div>

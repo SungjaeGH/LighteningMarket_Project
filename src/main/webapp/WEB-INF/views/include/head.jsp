@@ -21,6 +21,8 @@
     <link href="../../../resources/css/shop-homepage.css" rel="stylesheet">
     <title>HelloMyPage</title>
 
+    <!-- image CSS -->
+    <link href="../../../resources/css/image.css" rel="stylesheet" >
 
     <!-- login CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
