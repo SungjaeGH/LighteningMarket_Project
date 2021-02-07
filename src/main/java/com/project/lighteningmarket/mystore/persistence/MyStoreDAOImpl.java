@@ -62,4 +62,10 @@ public class MyStoreDAOImpl implements MyStoreDAO{
         sqlSession.delete(NAMESPACE + ".storeQa_delete", storeQaVO);
     }
 
+    // 상점문의 테이블 번호 재정렬
+    @Override
+    public void storeQaIdxSort(StoreQaVO storeQaVO) throws Exception {
+        sqlSession.update(NAMESPACE + ".storeQa_sort", storeQaVO);
+    }
+
 }

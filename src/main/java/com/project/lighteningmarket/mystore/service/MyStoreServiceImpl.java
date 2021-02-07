@@ -40,10 +40,9 @@ public class MyStoreServiceImpl implements MyStoreService{
     }
 
     // 상점문의 테이블 추가
-    @Transactional
     @Override
     public void storeQaAddReply(StoreQaVO storeQaVO) throws Exception {
-        myStoreDAO.storeQaCreate(storeQaVO);
+       myStoreDAO.storeQaCreate(storeQaVO);
     }
 
     // 상점문의 테이블 수정
@@ -56,6 +55,12 @@ public class MyStoreServiceImpl implements MyStoreService{
     @Override
     public void storeQaDelete(StoreQaVO storeQaVO) throws Exception {
         myStoreDAO.storeQaDelete(storeQaVO);
+    }
+
+    // 상점문의 테이블 번호 재정렬
+    @Override
+    public void storeQaIdxSort(StoreQaVO storeQaVO) throws Exception {
+        myStoreDAO.storeQaIdxSort(storeQaVO);
     }
 
 }

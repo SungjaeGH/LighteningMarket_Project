@@ -8,9 +8,9 @@
     <!-- Page Content -->
     <div class="login_container">
         <div class="login_row">
-            <form action="${path}/login/pwCheck" method="post">
+            <form action="${path}/login/login" method="post">
                 <div class="login_title_row">
-                    <h1 class="login_title"><i aria-hidden="true"></i> 비밀번호 찾기</h1>
+                    <h1 class="login_title"><i aria-hidden="true"></i> 비밀번호 변경</h1>
                 </div>
                 <br/><br/>
 
@@ -18,34 +18,32 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                     </div>
-                    <input type="text" name="id" class="form-control" placeholder="아이디"/>
+                    <input type="text" name="password" class="form-control" placeholder="비밀번호 변경"/>
                 </div>
-                <br/>
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-key icon"></i></span>
-                    </div>
-                    <input type="text" name="email" class="form-control" aria-hidden="true"
-                           placeholder="이메일"/>
-                </div>
-
                 <br/>
 
                 <button type="submit" class="btn btn-primary btn-block"><span
-                        class="glyphicon glyphicon-off"></span> 인증번호 받기
+                        class="glyphicon glyphicon-off"></span> 변경
                 </button>
-
                 <br/>
             </form>
-        </div>
-        <div class="login_footer">
-            ID를 모르면 <a href="/login/idSearch">ID 찾기</a>를 누르세요!
         </div>
         <!-- /.row -->
     </div>
     <!-- /.container -->
 </section>
 <%@include file="../include/footer.jsp" %>
+
+<script>
+    let result = "${result}";
+
+    if(result === "SAMEDICE") {
+        alert("인증번호가 일치합니다.");
+    } else if(result === "DIFFERENTDICE") {
+        alert("인증번호가 틀렸습니다. 인증번호를 다시 입력해주세요.");
+        history.go(-1);
+    }
+</script>
+
 
 </html>

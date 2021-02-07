@@ -48,7 +48,7 @@
           <input type="text" name="nickname" id="_label-nickname" class="input-text" placeholder="닉네임을 입력해 주세요." required>
         </div>
         <div class="form-row">
-          <label for="_label-email">이메일</label>
+          <label f or="_label-email">이메일</label>
           <input type="text" name="email" id="_label-email" class="input-text" placeholder="이메일을 입력해 주세요." required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
         </div>
         <div class="form-row">

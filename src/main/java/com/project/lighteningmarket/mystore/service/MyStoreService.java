@@ -27,4 +27,7 @@ public interface MyStoreService {
     // 상점문의 테이블 삭제
     void storeQaDelete(StoreQaVO storeQaVO) throws Exception;
 
+    // 상점문의 테이블 번호 재정렬
+    void storeQaIdxSort(StoreQaVO storeQaVO) throws Exception;
+
 }
