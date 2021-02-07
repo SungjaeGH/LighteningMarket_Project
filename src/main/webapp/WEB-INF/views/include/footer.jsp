@@ -14,5 +14,9 @@
 
 
 </div>
+
+
+<script type="text/javascript" src="../../../resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../../resources/jquery/jquery.min.js"></script>
 </body>
 </html>
