@@ -35,18 +35,21 @@
 
                 <%--                    상점문의 댓글 쓰기--%>
                 <div class="row">
-                    <form class="form-detail" action="${path}/mystore/storeQaInsert" method="post">
                     <div class="col-lg-12">
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <h3 class="box-title">상점 문의</h3>
                             </div>
                             <div class="box-body">
-                                <div class="form-group">
-                                    <input type="text" name="storeQaDes" id="_label-storeQaDes" class="input-text" placeholder="상점문의 입력" required>
-                                </div>
+                                <form class="form-detail" action="${path}/mystore/storeQaInsert" method="post">
+                                    <div class="form-group">
+                                        <input type="text" name="storeQaDes" id="_label-storeQaDes"
+                                               class="input-text" placeholder="상점문의 입력" required>
+                                    </div>
+                                </form>
                                 <div class="fa-pull-right">
-                                    <input type='checkbox' id = "unknown"  name='_label-unknownCheck' class="input-checkbox" onclick="function click() {}" />익명
+                                    <input type='checkbox' id="unknown" name='_label-unknownCheck'
+                                           class="input-checkbox" onclick="function click() {}"/>익명
                                     <button type="submit" id="storeQaInsert" class="btn btn-primary">
                                         <i class="fa fa-pen-square"></i> 등록
                                     </button>
@@ -54,19 +57,19 @@
                             </div>
                         </div>
                     </div>
-                    </form>
                 </div>
 
-                    <%--                    상점문의 댓글 목록 및 삭제--%>
-                    <div class="row">
-                        <form class="form-detail" action="${path}/mystore/storeQaDelete" method="post">
+                <%--                    상점문의 댓글 목록 및 삭제--%>
+                <div class="row">
+                    <form class="form-detail" action="${path}/mystore/storeQaDelete" method="post">
                         <div class="col-lg-12">
                             <div class="box box-primary">
                                 <c:forEach items="${storeQa}" var="storeQa">
                                     <div class="box-header with-border">
-                                        <input type="hidden" name="storeQaIdx" id="_label-storeQaIdx" class="input-text" value="${storeQa.storeQaIdx}" />
+                                        <input type="hidden" name="storeQaIdx" id="_label-storeQaIdx" class="input-text"
+                                               value="${storeQa.storeQaIdx}"/>
                                         <c:if test="${storeQa.unknownCheck eq 'Y'}">
-                                            <h5 class="box-title" >익명</h5>
+                                            <h5 class="box-title">익명</h5>
                                         </c:if>
                                         <c:if test="${storeQa.unknownCheck eq 'N'}">
                                             <h5 class="box-title">${storeQa.nickname}</h5>
@@ -80,8 +83,8 @@
                                 </c:forEach>
                             </div>
                         </div>
-                        </form>
-                    </div>
+                    </form>
+                </div>
             </div>
 
 
@@ -95,7 +98,7 @@
 
 <script>
     var unknown_check; // 익명체크 여부
-<%--    등록 버튼 이벤트 처리--%>
+    <%--    등록 버튼 이벤트 처리--%>
     $("#replyAddBtn").click(function () {
         if ($("#unknown").is(":checked")) {
             unknown_check = 'Y';
