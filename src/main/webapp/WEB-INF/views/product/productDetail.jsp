@@ -39,7 +39,7 @@
                 <table class="table" border="1">
                     <tr>
                         <td>
-                            <img width="340" height="300">
+                            <img src="../../../resources/upload/img/${vo.productUrl}" width="340" height="300">
                         </td>
                         <td>
                             <table class="table" border="1" style="height: 300px; width: 400px;">

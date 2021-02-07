@@ -50,12 +50,15 @@
                         </tr>
                         <tr>
                             <td colspan="2">상품설명</td>
-                            <td colspan="6" align="center"><textarea rows="5" cols="60" name="productDesc" id="productDesc"></textarea></td>
+                            <td colspan="6" align="center">
+                                <textarea rows="5" cols="60" name="description" id="description">
+                                </textarea>
+                            </td>
                         </tr>
-<%--                        <tr>--%>
-<%--                            <td colspan="2">상품이미지</td>--%>
-<%--                            <td colspan="6"><input type="file" name="productPhoto" id="productPhoto"></td>--%>
-<%--                        </tr>--%>
+                        <tr>
+                            <td colspan="2">상품이미지</td>
+                            <td colspan="6"><input type="file" name="productPhoto" id="productPhoto"></td>
+                        </tr>
                         <tr>
                             <td colspan="8" align="center">
                                 <input type="button" value="등록" id="addBtn">
@@ -104,6 +107,7 @@
             var productPrice = $("#productPrice").val();
             var description = $("#description").val();
             var count = $("#count").val();
+            var productPhoto = $("#productPhoto").val();
 
             if(id == "") {
                 alert("id를 입력해주세요");
@@ -129,6 +133,9 @@
             } else if (count == "") {
                 alert("상품 개수를 입력해주세요");
                 count.focus();
+            } else if (productPhoto == "") {
+                alert("이미지를 업로드 해주세요");
+                productPhoto.focus();
             }
             // 상품 정보 전송
             document.form1.action = "${path}/product/insert.do";

@@ -31,7 +31,7 @@ public class ProductsDAOImpl implements ProductsDAO {
     // 03. 상품 등록
     @Override
     public void insertProduct(ProductsVO vo) throws Exception {
-        sqlSession.insert(NAMESPACE + ".detailProduct", vo);
+        sqlSession.insert(NAMESPACE + ".insertProduct", vo);
     }
 
     // 03. 상품수정
