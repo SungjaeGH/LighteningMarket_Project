@@ -18,6 +18,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                     </div>
+                    <input type="hidden" name="id" value="${id}">
+                    <input type="hidden" name="email" value="${email}">
                     <input type="text" name="password" class="form-control" placeholder="비밀번호 변경"/>
                 </div>
                 <br/>

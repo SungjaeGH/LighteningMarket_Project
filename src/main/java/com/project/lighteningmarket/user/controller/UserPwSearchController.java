@@ -3,12 +3,14 @@ package com.project.lighteningmarket.user.controller;
 import com.project.lighteningmarket.user.domain.UserSearchDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 import com.project.lighteningmarket.user.service.UserService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
@@ -119,5 +121,17 @@ public class UserPwSearchController {
         System.out.println("pwChange mv : " + mv);
 
         return mv;
+    }
+
+    // 비밀번호 찾기 (3. 인증번호 확인된 회원 비밀번호 수정)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String pwchangePost(UserVO userVO, RedirectAttributes redirectAttributes) throws Exception {
+
+        String changePw = BCrypt.hashpw(userVO.getPassword(), BCrypt.gensalt());
+        userVO.setPassword(changePw);
+        userService.pwchange(userVO);
+        redirectAttributes.addFlashAttribute("msg", "UPDATEPW");
+
+        return "redirect:/login/login";
     }
 }

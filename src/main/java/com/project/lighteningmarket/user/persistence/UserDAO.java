@@ -18,6 +18,6 @@ public interface UserDAO {
     // 비밀번호 찾기 (1. 인증번호 받기)
     UserVO emaildice(UserSearchDTO userSearchDTO) throws Exception;
 
-    // 비밀번호 찾기
-    void pwsearch(UserSearchDTO userSearchDTO) throws Exception;
+    // 비밀번호 찾기 (2. 인증번호 확인된 회원 비밀번호 수정)
+    void pwchange(UserVO userVO) throws Exception;
 }
