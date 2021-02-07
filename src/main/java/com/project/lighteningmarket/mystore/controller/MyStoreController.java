@@ -56,8 +56,6 @@ public class MyStoreController {
     @RequestMapping(value = "/storeQaInsert", method = RequestMethod.POST)
     public String storeQaInsertPOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
         mystoreservice.storeQaAddReply(storeQaVO);
-//        redirectAttributes.addFlashAttribute("msg", "SIGNEDUP");
-        System.out.println(storeQaVO);
        return "redirect:/mystore/storeQa";
     }
 
@@ -65,8 +63,6 @@ public class MyStoreController {
     @RequestMapping(value = "/storeQaDelete", method = RequestMethod.POST)
     public String storeQaDeletePOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
         mystoreservice.storeQaDelete(storeQaVO);
-//        redirectAttributes.addFlashAttribute("msg", "SIGNEDUP");
-        System.out.println(storeQaVO);
         return "redirect:/mystore/storeQa";
     }
 

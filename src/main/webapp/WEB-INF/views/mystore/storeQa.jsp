@@ -33,66 +33,62 @@
 
                 </div>
 
-                    <%--                    상점문의 댓글 쓰기--%>
-                    <form class="form" action="${path}/mystore/storeQaInsert" method="post">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="box box-primary">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">상점 문의</h3>
+                <%--                    상점문의 댓글 쓰기--%>
+                <form class="form" action="${path}/mystore/storeQaInsert" method="post">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">상점 문의</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <input type="text" size="100%" name="storeQaDes" id="_label-storeQaDes"
+                                               class="input-text" placeholder="상점문의 입력" required>
                                     </div>
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <input type="text" size="100%" name="storeQaDes" id="_label-storeQaDes"
-                                                   class="input-text" placeholder="상점문의 입력" required>
-                                        </div>
-                                        <div class="fa-pull-right">
-                                            <input type="checkbox" name="unknownChecked" />익명
-                                            <input type="hidden" name="unknownCheck" id="_label-unknownCheck"  />
-                                            <button type="submit" id="storeQaInsert" class="btn btn-primary">
-                                                <i class="fa fa-pen-square"></i> 등록
-                                            </button>
-                                        </div>
+                                    <div class="fa-pull-right">
+                                        <input type="checkbox" name="unknownChecked"/>익명
+                                        <input type="hidden" name="unknownCheck" id="_label-unknownCheck"/>
+                                        <button type="submit" id="storeQaInsert" class="btn btn-primary">
+                                            <i class="fa fa-pen-square"></i> 등록
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                </form>
 
-                    <%--                    상점문의 댓글 목록 및 삭제--%>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="box box-primary">
-                                    <c:forEach items="${storeQa}" var="storeQa">
-                                        <form class="form" action="${path}/mystore/storeQaDelete" name="remove" method="post">
-                                        <div class="box-header with-border">
-                                            <input type="hidden" name="storeQaIdx" id="_label-storeQaIdx"
-                                                   class="input-text" value="${storeQa.storeQaIdx}"/>
-                                            <c:if test="${storeQa.unknownCheck eq 'Y'}">
-                                                <h5 class="box-title">익명</h5>
-                                            </c:if>
-                                            <c:if test="${storeQa.unknownCheck eq 'N'}">
-                                                <h5 class="box-title">${storeQa.nickname}</h5>
-                                            </c:if>
-                                            <h5 class="box-title">${storeQa.storeQaDes}</h5>
-                                            <button type="submit" id="storeQaDelete" class="btn btn-danger"  onclick="removeCheck()">
-                                                <i class="fa fa-eraser"></i> 삭제
-                                            </button>
-                                            <hr>
-                                        </form>
-                                        </div>
-                                    </c:forEach>
-                                </div>
-                            </div>
+                <%--                    상점문의 댓글 목록 및 삭제--%>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="box box-primary">
+                            <c:forEach items="${storeQa}" var="storeQa">
+                            <form class="form" action="${path}/mystore/storeQaDelete" onsubmit="return removeCheck()"
+                                  method="post">
+                                <div class="box-header with-border">
+                                    <input type="hidden" name="storeQaIdx" id="_label-storeQaIdx"
+                                           class="input-text" value="${storeQa.storeQaIdx}"/>
+                                    <c:if test="${storeQa.unknownCheck eq 'Y'}">
+                                    <h5 class="box-title">익명</h5>
+                                    </c:if>
+                                    <c:if test="${storeQa.unknownCheck eq 'N'}">
+                                    <h5 class="box-title">${storeQa.nickname}</h5>
+                                    </c:if>
+                                    <h5 class="box-title">${storeQa.storeQaDes}</h5>
+                                    <button type="submit" id="storeQaDelete" class="btn btn-danger">
+                                        <i class="fa fa-eraser"></i> 삭제
+                                    </button>
+                                    <hr>
+                            </form>
                         </div>
-
+                        </c:forEach>
+                    </div>
+                </div>
             </div>
-
-
         </div>
-        <!-- /.row -->
-
+    </div>
+    <!-- /.row -->
     </div>
     <!-- /.container -->
 </section>
@@ -100,21 +96,23 @@
 
 <script>
     var unknown_check; // 익명체크 여부
-<%--    등록 버튼 이벤트 처리--%>
+    <%--    등록 버튼 이벤트 처리--%>
     $("#storeQaInsert").click(function () {
-            if ($('input[name=unknownChecked]').is(":checked")) {
-                $('input[name=unknownCheck]').val('Y');
+        if ($('input[name=unknownChecked]').is(":checked")) {
+            $('input[name=unknownCheck]').val('Y');
 
-            } else {
-                $('input[name=unknownCheck]').val('N');
-            }
+        } else {
+            $('input[name=unknownCheck]').val('N');
+        }
     });
 
+    // 댓글 삭제 버튼 이벤트 처리
     function removeCheck() {
-        if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-            return;
-        }else{   //취소
-            return;
+        if (confirm("삭제하시겠습니까?") == true) {    //확인
+            alert('삭제되었습니다.');
+            return true;
+        } else {   //취소
+            return false;
         }
     }
 </script>
