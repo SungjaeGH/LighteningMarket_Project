@@ -49,6 +49,16 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <!-- RememberMeInterceptor 설정 (사용자가 접속할 경우, 자동으로 로그인 처리) -->
+    <bean id="rememberMeInterceptor" class="com.project.lighteningmarket.commons.interceptor.RememberMeInterceptor"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**/"/>
+            <ref bean="rememberMeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 파일업로드에 필요한 bean -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 파일업로드 용량 -->
