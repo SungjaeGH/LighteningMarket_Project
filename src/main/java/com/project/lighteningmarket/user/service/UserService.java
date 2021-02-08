@@ -19,5 +19,5 @@ public interface UserService {
     UserVO emaildice(UserSearchDTO userSearchDTO) throws Exception;
 
     // 비밀번호 찾기
-    void pwsearch(UserSearchDTO userSearchDTO) throws Exception;
+    void pwchange(UserVO userVO) throws Exception;
 }

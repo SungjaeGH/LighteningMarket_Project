@@ -16,7 +16,8 @@
             price AS productPrice,
             description AS description,
             count AS count,
-	        regDate AS regDate
+	        regDate AS regDate,
+            url AS productUrl
         FROM tbl_product
         ORDER BY title;
     </select>
@@ -32,14 +33,15 @@
             price AS productPrice,
             description AS description,
             count AS count,
-	        regDate AS regDate
+	        regDate AS regDate,
+            url AS productUrl
         FROM tbl_product
         WHERE proIdx = #{productIdx}
     </select>
 
     <!-- 03. 상품 추가하기 -->
-    <insert id="insertProduct">
-        INSERT INTO INSERT INTO tbl_product
+    <insert id="insertProduct" parameterType="com.project.lighteningmarket.products.domain.ProductsVO">
+        INSERT INTO tbl_product
 				(id,
                 title,
                 tradeArea,
@@ -47,7 +49,8 @@
                 exchange,
                 price,
                 description,
-                count
+                count,
+				url
                 )
         VALUES (
                  #{id},
@@ -57,7 +60,8 @@
                  #{exchange},
                  #{productPrice},
                  #{description},
-                 #{count}
+                 #{count},
+                 #{productUrl}
                )
     </insert>
 

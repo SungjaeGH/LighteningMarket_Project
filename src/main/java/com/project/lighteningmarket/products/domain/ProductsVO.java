@@ -3,13 +3,6 @@ package com.project.lighteningmarket.products.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductsVO {
-//    private int productId; // 상품번호
-//    private String productName; // 상품이름
-//    private int productPrice; // 상품가격
-//    private String productDesc; // 상품 상세정보
-//    private String productUrl; // 상품이미지 경로
-//    private MultipartFile productPhoto; // 상품이미지파일
-
     private int productIdx; // 상품번호
     private String id; // 등록자아이디
     private String productTitle;// 상품제목
@@ -17,9 +10,11 @@ public class ProductsVO {
     private String statement; // 상품상태
     private String exchange; // 교환 가능 여부
     private String productPrice; // 상품 가격
-    private MultipartFile description; // 상품설명
+    private String description; // 상품설명
     private String count; // 상품 수량
     private String regDate; // 등록일자
+    private String productUrl; // 경로
+    private MultipartFile productPhoto; // 상품이미지 파일
 
     public int getProductIdx() {
         return productIdx;
@@ -77,11 +72,11 @@ public class ProductsVO {
         this.productPrice = productPrice;
     }
 
-    public MultipartFile getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(MultipartFile description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -101,6 +96,22 @@ public class ProductsVO {
         this.regDate = regDate;
     }
 
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
+    }
+
+    public MultipartFile getProductPhoto() {
+        return productPhoto;
+    }
+
+    public void setProductPhoto(MultipartFile productPhoto) {
+        this.productPhoto = productPhoto;
+    }
+
     @Override
     public String toString() {
         return "ProductsVO{" +
@@ -111,9 +122,11 @@ public class ProductsVO {
                 ", statement='" + statement + '\'' +
                 ", exchange='" + exchange + '\'' +
                 ", productPrice='" + productPrice + '\'' +
-                ", description=" + description +
+                ", description='" + description + '\'' +
                 ", count='" + count + '\'' +
                 ", regDate='" + regDate + '\'' +
+                ", productUrl='" + productUrl + '\'' +
+                ", productPhoto=" + productPhoto +
                 '}';
     }
 }

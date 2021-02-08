@@ -43,9 +43,9 @@ public class UserDAOImpl implements UserDAO {
         return sqlSession.selectOne(NAMESPACE + ".emaildice", userSearchDTO);
     }
 
-    // 비밀번호 찾기
+    // 비밀번호 찾기 (2. 인증번호 확인된 회원 비밀번호 수정)
     @Override
-    public void pwsearch(UserSearchDTO userSearchDTO) throws Exception {
-        sqlSession.update(NAMESPACE + ".pwsearch", userSearchDTO);
+    public void pwchange(UserVO userVO) throws Exception {
+        sqlSession.update(NAMESPACE + ".pwchange", userVO);
     }
 }

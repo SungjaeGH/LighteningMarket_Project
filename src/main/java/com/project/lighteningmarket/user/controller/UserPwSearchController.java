@@ -3,19 +3,20 @@ package com.project.lighteningmarket.user.controller;
 import com.project.lighteningmarket.user.domain.UserSearchDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 import com.project.lighteningmarket.user.service.UserService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.Random;
 
@@ -39,12 +40,12 @@ public class UserPwSearchController {
         return "login/pwSearch";
     }
 
-    // 비밀번호 찾기 (이메일 발송)
-    @RequestMapping(value = "/pwSearchPost", method = RequestMethod.POST)
-    public ModelAndView pwSearchPOST(UserSearchDTO userSearchDTO, String id, String email, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    // 비밀번호 찾기 (1. 이메일 발송)
+    @RequestMapping(value = "/pwCheck", method = RequestMethod.POST)
+    public ModelAndView pwSearchPOST(UserSearchDTO userSearchDTO, String id, String email, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView();    // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-        mv.setViewName("/login/pwSearchPost");     // 인증번호 view
+        mv.setViewName("/login/pwCheck");    // 인증번호 view
 
         // email 일치하는 사용자 mapping
         UserVO userVO = userService.emaildice(userSearchDTO);
@@ -88,20 +89,49 @@ public class UserPwSearchController {
                 System.out.println(e);
             }
 
-            mv.addObject("dice", dice);
+            mv.addObject("id", id);
             mv.addObject("email", email);
-
-            System.out.println("mv : " + mv);
-
+            mv.addObject("dice", dice);
         }
         // email이 일치하지 않은 사용자
         else {
             mv.addObject("dice", "NOEMAIL");
-
-            System.out.println("mv : " + mv);
         }
+
+        System.out.println("pwCheck mv : " + mv);
 
         return mv;
     }
 
+    // 비밀번호 찾기 (2. 인증번호 일치 시, 비밀번호 수정 페이지로 넘어가기)
+    @RequestMapping(value = "/pwChange", method = RequestMethod.POST)
+    public ModelAndView correctdicePost(String requestdice, String id, String email, String dice) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/login/pwChange");
+
+        if(requestdice.equals(dice)) {
+            mv.addObject("id", id);
+            mv.addObject("email", email);
+            mv.addObject("result", "SAMEDICE");
+        }
+        else {
+            mv.addObject("result", "DIFFERENTDICE");
+        }
+
+        System.out.println("pwChange mv : " + mv);
+
+        return mv;
+    }
+
+    // 비밀번호 찾기 (3. 인증번호 확인된 회원 비밀번호 수정)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String pwchangePost(UserVO userVO, RedirectAttributes redirectAttributes) throws Exception {
+
+        String changePw = BCrypt.hashpw(userVO.getPassword(), BCrypt.gensalt());
+        userVO.setPassword(changePw);
+        userService.pwchange(userVO);
+        redirectAttributes.addFlashAttribute("msg", "UPDATEPW");
+
+        return "redirect:/login/login";
+    }
 }

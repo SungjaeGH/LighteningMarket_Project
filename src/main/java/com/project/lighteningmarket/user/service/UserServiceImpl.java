@@ -41,10 +41,10 @@ public class UserServiceImpl implements UserService {
         return userDAO.emaildice(userSearchDTO);
     }
 
-    // 비밀번호 찾기
+    // 비밀번호 찾기 (2. 인증번호 확인된 회원 비밀번호 수정)
     @Override
-    public void pwsearch(UserSearchDTO userSearchDTO) throws Exception {
-        userDAO.pwsearch(userSearchDTO);
+    public void pwchange(UserVO userVO) throws Exception {
+        userDAO.pwchange(userVO);
     }
 
 
