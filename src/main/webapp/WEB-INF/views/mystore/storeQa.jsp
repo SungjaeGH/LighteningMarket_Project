@@ -30,7 +30,12 @@
                     </button>
                     <button type="button" class="btn btn-info" onClick="location.href='../mystore/storeQa'">상점문의
                     </button>
-
+                    <button type="button" class="btn btn-warning" onClick="location.href='../mystore/storeReview'">상점후기
+                    </button>
+                    <button type="button" class="btn btn-light" onClick="location.href='../mystore/following'">팔로잉
+                    </button>
+                    <button type="button" class="btn btn-dark" onClick="location.href='../mystore/follower'">팔로워
+                    </button>
                 </div>
 
                 <%--                    상점문의 댓글 쓰기--%>
@@ -105,64 +110,14 @@
             $('input[name=unknownCheck]').val('N');
         }
     });
-</script>
-
-
-// 댓글 삭제 버튼 이벤트 처리
-function removeCheck() {
-if (confirm("삭제하시겠습니까?") == true) {    //확인
-alert('삭제되었습니다.');
-return true;
-} else {   //취소
-return false;
-}
-}
-
-<%--    // 댓글 등록 이벤트 처리
-    $("#replyAddBtn").on("click", function () {
-        if (chk)
-        {
-            alert("댓글 등록 완료!");
-        }
-        else (!chk)
-        {
-            console.log(chk);
-            alert("댓글 등록 실패!");
-        }
-/*        var replyText = $("#newReplyText");--%>
-<%--        var replyWriter = 'sdfqwe';
-
-        var replyTextVal = replyText.val();
-        var replyWriterVal = replyWriter.val();
-
-        $.ajax({
-            type : "post",
-            url : "'../mystore/storeQaInsert'",
-            headers : {
-                "Content-type" : "application/json",
-                "X-HTTP-Method-Override" : "POST"
-            },
-            dataType : "text",
-            data : JSON.stringify({
-                storeQaIdx : storeQaIdx,
-                replyText : replyTextVal,
-                replyWriter : replyWriterVal
-            }),
-            success : function (result) {
-                if (result == "regSuccess") {
-                    alert("댓글 등록 완료!");
-                }
-                //getReplies();
-                getRepliesPaging(replyPageNum);
-                replyText.val("");
-                replyWriter.val("");
-            }
-        });*/
-    });
-
-
     // 댓글 삭제 버튼 이벤트 처리
-    $("#replyDeleteBtn").on("click", function () {
-        alert("댓글을 삭제하였습니다.");
-    });--%>
+    function removeCheck() {
+        if (confirm("삭제하시겠습니까?") == true) {    //확인
+            alert('삭제되었습니다.');
+            return true;
+        } else {   //취소
+            return false;
+        }
+    }
+</script>
 </html>
