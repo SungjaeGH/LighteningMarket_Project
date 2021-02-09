@@ -48,6 +48,14 @@ public class UserLoginController {
 
         model.addAttribute("user", userVO);
 
+        // 로그인 유지를 선택할 경우
+        if(loginDTO.isUseCookie()) {
+            int amount = 60 * 60 * 24; // 1일
+            Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount)); // 로그인 유지기간 설정
+            userService.keepLogin(userVO.getId(), httpSession.getId(), sessionLimit);
+
+        }
+
     }
 
     // 로그아웃 처리
@@ -64,7 +72,7 @@ public class UserLoginController {
                 loginCookie.setPath("/");
                 loginCookie.setMaxAge(0);
                 response.addCookie(loginCookie);
-//              userService.keepLogin(userVO.getId(), "none", new Date());
+                userService.keepLogin(userVO.getId(), "none", new Date());
             }
         }
 

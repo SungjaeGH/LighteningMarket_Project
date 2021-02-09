@@ -10,6 +10,8 @@ public class UserVO {
     private String email;
     private String pNumber;
     private Date regDate;
+    private String sessionKey;
+    private Date sessionLimit;
 
     public String getId() {
         return id;
@@ -67,6 +69,22 @@ public class UserVO {
         this.regDate = regDate;
     }
 
+    public String getSessionKey() {
+        return sessionKey;
+    }
+
+    public void setSessionKey(String sessionKey) {
+        this.sessionKey = sessionKey;
+    }
+
+    public Date getSessionLimit() {
+        return sessionLimit;
+    }
+
+    public void setSessionLimit(Date sessionLimit) {
+        this.sessionLimit = sessionLimit;
+    }
+
     @Override
     public String toString() {
         return "UserVO{" +
@@ -77,6 +95,8 @@ public class UserVO {
                 ", email='" + email + '\'' +
                 ", pNumber='" + pNumber + '\'' +
                 ", regDate=" + regDate +
+                ", sessionKey='" + sessionKey + '\'' +
+                ", sessionLimit=" + sessionLimit +
                 '}';
     }
 }

@@ -4,6 +4,8 @@ import com.project.lighteningmarket.user.domain.LoginDTO;
 import com.project.lighteningmarket.user.domain.UserSearchDTO;
 import com.project.lighteningmarket.user.domain.UserVO;
 
+import java.util.Date;
+
 public interface UserDAO {
 
     // 회원가입 처리
@@ -11,6 +13,12 @@ public interface UserDAO {
 
     // 로그인 처리
     UserVO login(LoginDTO loginDTO) throws Exception;
+
+    // 로그인 유지 처리
+    void keepLogin(String id, String sessionId, Date sessionLimit) throws Exception;
+
+    // 세션키 인증
+    UserVO checkUserWithSessionKey(String value) throws Exception;
 
     // 아이디 찾기
     UserVO idsearch(UserSearchDTO userSearchDTO) throws Exception;
