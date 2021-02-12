@@ -15,24 +15,20 @@
                 <br/><br/>
 
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                    </div>
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                     <input type="text" name="id" class="form-control" placeholder="아이디"/>
                 </div>
                 <br/>
 
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-key icon"></i></span>
-                    </div>
+                    <span class="input-group-text"><i class="fa fa-key icon"></i></span>
                     <input type="text" name="email" class="form-control" aria-hidden="true"
                            placeholder="이메일"/>
                 </div>
 
                 <br/>
 
-                <button type="submit" class="btn btn-primary btn-block"><span
+                <button type="submit" class="d-grid col-12 btn btn-primary"><span
                         class="glyphicon glyphicon-off"></span> 인증번호 받기
                 </button>
 
@@ -46,6 +42,6 @@
     </div>
     <!-- /.container -->
 </section>
-<%@include file="../include/footer.jsp" %>
+<%@include file="../include/loginFooter.jsp" %>
 
 </html>

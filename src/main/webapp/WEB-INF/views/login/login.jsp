@@ -15,17 +15,13 @@
                 <br/><br/>
 
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                    </div>
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                     <input type="text" name="id" class="form-control" placeholder="아이디"/>
                 </div>
                 <br/>
 
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-key icon"></i></span>
-                    </div>
+                    <span class="input-group-text"><i class="fa fa-key icon"></i></span>
                     <input type="Password" name="password" class="form-control" aria-hidden="true"
                            placeholder="비밀번호"/>
                 </div>
@@ -34,7 +30,7 @@
                     <label><input type="checkbox" name="useCookie"/> 로그인 유지 </label>
                 </div>
                 <br/>
-                <button type="submit" class="btn btn-primary btn-block"><span
+                <button type="submit" class="d-grid col-12 btn btn-primary"><span
                         class="glyphicon glyphicon-off"></span> 로그인
                 </button>
                 <br/>
@@ -55,7 +51,7 @@
 
     <!-- /.container -->
 </section>
-<%@include file="../include/footer.jsp" %>
+<%@include file="../include/loginFooter.jsp" %>
 
 <script>
 

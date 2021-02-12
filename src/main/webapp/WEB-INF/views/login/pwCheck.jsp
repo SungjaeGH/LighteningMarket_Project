@@ -20,16 +20,15 @@
                 <br/><br/>
 
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-key icon"></i></span>
-                    </div>
+
+                    <span class="input-group-text"><i class="fa fa-key icon"></i></span>
                     <input type="text" name="requestdice" class="form-control" aria-hidden="true"
                            placeholder="인증번호를 입력하세요."/>
                 </div>
 
                 <br/>
 
-                <button type="submit" class="btn btn-primary btn-block"><span
+                <button type="submit" class="d-grid col-12 btn btn-primary"><span
                         class="glyphicon glyphicon-off"></span> 다음
                 </button>
             </form>
@@ -38,7 +37,7 @@
     </div>
     <!-- /.container -->
 </section>
-<%@include file="../include/footer.jsp" %>
+<%@include file="../include/loginFooter.jsp" %>
 
 <script>
 
