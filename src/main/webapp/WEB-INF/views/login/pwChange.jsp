@@ -15,16 +15,14 @@
                 <br/><br/>
 
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                    </div>
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                     <input type="hidden" name="id" value="${id}">
                     <input type="hidden" name="email" value="${email}">
                     <input type="text" name="password" class="form-control" placeholder="비밀번호 변경"/>
                 </div>
                 <br/>
 
-                <button type="submit" class="btn btn-primary btn-block"><span
+                <button type="submit" class="d-grid col-12 btn btn-primary"><span
                         class="glyphicon glyphicon-off"></span> 변경
                 </button>
                 <br/>
@@ -34,14 +32,14 @@
     </div>
     <!-- /.container -->
 </section>
-<%@include file="../include/footer.jsp" %>
+<%@include file="../include/loginFooter.jsp" %>
 
 <script>
     let result = "${result}";
 
-    if(result === "SAMEDICE") {
+    if (result === "SAMEDICE") {
         alert("인증번호가 일치합니다.");
-    } else if(result === "DIFFERENTDICE") {
+    } else if (result === "DIFFERENTDICE") {
         alert("인증번호가 틀렸습니다. 인증번호를 다시 입력해주세요.");
         history.go(-1);
     }
