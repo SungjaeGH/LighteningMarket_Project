@@ -35,14 +35,14 @@
             <!-- /.col-lg-3 -->
             <div class="col-lg-9">
 
-                <h2>상품 상세정보</h2>
-                <table class="table" border="1">
+                <br/>
+                <table class="table table-bordered">
                     <tr>
-                        <td>
+                        <td align="center">
                             <img src="../../../resources/upload/img/${vo.productUrl}" width="340" height="300">
                         </td>
                         <td>
-                            <table class="table" border="1" style="height: 300px; width: 400px;">
+                            <table class="table table-bordered">
                                 <tr align="center">
                                     <td>상품명</td>
                                     <td>${vo.productTitle}</td>

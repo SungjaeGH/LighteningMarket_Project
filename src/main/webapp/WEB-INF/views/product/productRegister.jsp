@@ -24,44 +24,71 @@
 
                 </br>
 
-                <h2>상품 등록</h2>
+                <br/>
                 <form id="form1" name="form1" enctype="multipart/form-data" method="post">
-                    <table border="1">
+                    <table class="table table-bordered">
                         <tr>
                             <td colspan="2">상품 제목</td>
-                            <td colspan="6"><input type="text" name="productTitle" id="productTitle"></td>
+                            <td colspan="4"><input type="text" name="productTitle" id="productTitle"></td>
                         </tr>
                         <tr>
-                            <td colspan="2">id</td>
-                            <td colspan="2" align="center"><input type="text" name="id" id="id"></td>
                             <td colspan="2">가격</td>
-                            <td colspan="2" align="center"><input type="text" name="productPrice" id="productPrice"></td>
+                            <td colspan="4"><input type="text" name="productPrice" id="productPrice"></td>
                         </tr>
                         <tr>
                             <td colspan="2">거래지역</td>
-                            <td colspan="2" align="center"><input type="text" name="tradeArea" id="tradeArea"></td>
+                            <td colspan="1">
+                                <select name="tradeArea" id="tradeArea">
+                                    <option value="서울">서울</option>
+                                    <option value="대구">대구</option>
+                                    <option value="대전">대전</option>
+                                    <option value="부산">부산</option>
+                                    <option value="경기도">경기도</option>
+                                    <option value="울산">울산</option>
+                                </select>
+                            </td>
                             <td colspan="2">상품상태</td>
-                            <td colspan="2" align="center"><input type="text" name="statement" id="statement"></td>
+                            <td colspan="1">
+                                <select name="statement" id="statement">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">수량</td>
-                            <td colspan="2"><input type="text" name="count" id="count"></td>
+                            <td colspan="1"><input type="text" name="count" id="count"></td>
                             <td colspan="2">교환 가능 여부</td>
-                            <td colspan="2"><input type="text" name="exchange" id="exchange"></td>
+                            <td colspan="1">
+                                <select name="exchange" id="exchange">
+                                    <option value="O">가능</option>
+                                    <option value="X">불가능</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">상품설명</td>
-                            <td colspan="6" align="center">
-                                <textarea rows="5" cols="60" name="description" id="description">
+                            <td colspan="4">
+                                <textarea rows="5" cols="97" name="description" id="description">
                                 </textarea>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">상품이미지</td>
-                            <td colspan="6"><input type="file" name="productPhoto" id="productPhoto"></td>
+                            <td colspan="4">
+                                <div class="inputArea">
+                                    <input type="file" name="productPhoto" id="productPhoto">
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <td colspan="8" align="center">
+                            <td colspan="6">
+                                <div class="select_img"><img src="" /></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="center">
                                 <input type="button" value="등록" id="addBtn">
                                 <input type="button" value="목록" id="listBtn">
                             </td>
@@ -71,19 +98,32 @@
 
 
                 </br>
-                여기는 타임
-                <div>
-                    <!-- enctype="multipart/form-data" 파일업로드 필수 옵션 -->
-                    <!-- application/x-www-form-urlencoded 기본옵션 -->
-                    <form action="/saveImage" enctype="multipart/form-data" method="post">
-                        <input type="file" name="imgFile" />
-                        <input type="submit" value="이미지저장"/>
-                    </form>
-                    <!-- form data가 이곳으로 이동 -->
 
-                    <!-- img태그의 src 경로는 byte이미지 가져오는 컨트롤러 호출(/getByteImage) -->
-                    <img class = "image_box" alt="" src="/getByteImage" />
-                </div>
+                <script>
+                    $("#productPhoto").change(function(){
+                        if(this.files && this.files[0]) {
+                            var reader = new FileReader;
+                            reader.onload = function(data) {
+                                $(".select_img img").attr("src", data.target.result).width(350);
+                            }
+                            reader.readAsDataURL(this.files[0]);
+                        }
+                    });
+                </script>
+
+<%--                여기는 타임--%>
+<%--                <div>--%>
+<%--                    <!-- enctype="multipart/form-data" 파일업로드 필수 옵션 -->--%>
+<%--                    <!-- application/x-www-form-urlencoded 기본옵션 -->--%>
+<%--                    <form action="/saveImage" enctype="multipart/form-data" method="post">--%>
+<%--                        <input type="file" name="imgFile" />--%>
+<%--                        <input type="submit" value="이미지저장"/>--%>
+<%--                    </form>--%>
+<%--                    <!-- form data가 이곳으로 이동 -->--%>
+
+<%--                    <!-- img태그의 src 경로는 byte이미지 가져오는 컨트롤러 호출(/getByteImage) -->--%>
+<%--                    <img class = "image_box" alt="" src="/getByteImage" />--%>
+<%--                </div>--%>
 
                 <!-- /.row -->
 
@@ -110,10 +150,7 @@
             var count = $("#count").val();
             var productPhoto = $("#productPhoto").val();
 
-            if(id == "") {
-                alert("id를 입력해주세요");
-                id.focus();
-            } else if (productTitle == "") {
+            if (productTitle == "") {
                 alert("상품 제목을 입력해주세요");
                 productTitle.focus();
             } else if (tradeArea == "") {

@@ -35,7 +35,7 @@
             <!-- /.col-lg-3 -->
             <div class="col-lg-9">
 
-                <h2>상품목록</h2>
+                <br/>
                 <div class="row">
                     <c:forEach var="products" items="${list}">
                         <div class="col-lg-4 col-md-6 mb-4">
