@@ -71,12 +71,6 @@ public class MyStoreController {
         return "/mystore/storeReview";
     }
 
-    // 팔로잉 페지로 이동
-    @RequestMapping(value = "/following", method = RequestMethod.GET)
-    public String followingGET(Model model) throws Exception {
-
-        return "/mystore/following";
-    }
 
     // 팔로워 페이지로 이동
     @RequestMapping(value = "/follower", method = RequestMethod.GET)

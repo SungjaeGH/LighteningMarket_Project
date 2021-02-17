@@ -2,42 +2,48 @@ package com.project.lighteningmarket.mystore.domain;
 
 public class FollowerVO {
 
-    private int followerIdx; // 팔로워 인덱스
-    private String fromUser; // 팔로워하는 사람
-    private String toUser; // 팔로워 받는 사람
+    private String followerNickname; // 팔로워하는 사람
+    private int followerProdutCount; // 팔로워 상품개수
+    private int followerCount; // 팔로워 팔로워수
 
-    public int getFollowerIdx() {
-        return followerIdx;
+    public String getFollowerNickname() {
+        return followerNickname;
     }
 
-    public void setFollowerIdx(int followerIdx) {
-        this.followerIdx = followerIdx;
+    public void setFollowerNickname(String followerNickname) {
+        this.followerNickname = followerNickname;
     }
 
-    public String getFromUser() {
-        return fromUser;
+    public int getFollowerProdutCount() {
+        return followerProdutCount;
     }
 
-    public void setFromUser(String fromUser) {
-        this.fromUser = fromUser;
+    public void setFollowerProdutCount(int followerProdutCount) {
+        this.followerProdutCount = followerProdutCount;
     }
 
-    public String getToUser() {
-        return toUser;
+    public int getFollowerCount() {
+        return followerCount;
     }
 
-    public void setToUser(String toUser) {
-        this.toUser = toUser;
+    public void setFollowerCount(int followerCount) {
+        this.followerCount = followerCount;
     }
 
     @Override
     public String toString() {
         return "FollowerVO{" +
-                "followerIdx=" + followerIdx +
-                ", fromUser='" + fromUser + '\'' +
-                ", toUser='" + toUser + '\'' +
+                "followerNickname='" + followerNickname + '\'' +
+                ", followerProdutCount=" + followerProdutCount +
+                ", followerCount=" + followerCount +
                 '}';
     }
+
+
+
+
+
+
 
 
 

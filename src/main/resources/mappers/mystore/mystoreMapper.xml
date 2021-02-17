@@ -48,7 +48,7 @@
         ]]>
     </select>
 
-    <!--    상점문의 테이블에 추가하기 + 번호 자동으로 정렬하기-->
+    <!--    상점문의 테이블에 추가하기-->
     <insert id="storeQa_create">
         INSERT INTO tbl_store_qa (
                                     nickname
@@ -61,19 +61,40 @@
                  )
     </insert>
 
-<!--    상점문의 테이블에 수정하기-->
-<!--    <update id="update">
-        UPDATE tbl_store_qa
-        SET
-            store_qa_des = #{store_qa_des}
-        WHERE store_qa_idx = #{store_qa_idx}
-    </update>-->
-
 <!--    상점문의 테이블에 삭제하기-->
     <delete id="storeQa_delete">
         DELETE FROM tbl_store_qa
         WHERE store_qa_idx = #{storeQaIdx}
     </delete>
+
+
+    <!--     팔로워 페이지 (팔로워한 유저들 불러오기)-->
+    <select id="follower_listAll" resultMap="FollowerNicknameResultMap">
+        <![CDATA[
+        select DISTINCT tbl_follower.from_user
+        from tbl_member
+                 INNER JOIN tbl_product INNER JOIN tbl_follower
+        WHERE tbl_follower.to_user = 'gold01130';
+        ]]>
+    </select>
+
+<!--
+    &lt;!&ndash;     팔로워 페이지 (상품수)&ndash;&gt;
+    <select id="follower_listAll" resultMap="FollowerProductCountResultMap">
+        <![CDATA[
+        select count(*) from tbl_product
+        where tbl_product.id = #{followerNickname};
+        ]]>
+    </select>
+
+    &lt;!&ndash;     팔로워 페이지 (팔로워 수)&ndash;&gt;
+    <select id="follower_listAll" resultMap="FollowerCountResultMap">
+        <![CDATA[
+        select count(*) from tbl_follower
+        where tbl_follower.to_user = #{followerNickname};
+        ]]>
+    </select>
+-->
 
 
     <resultMap id="ProductResultMap" type="ProductVO">
@@ -96,11 +117,18 @@
         <result property="unknownCheck" column="unknown_check"/>
     </resultMap>
 
+    <resultMap id="FollowerNicknameResultMap" type="FollowerVO">
+        <id property="followerNickname" column="follwer_idx"/>
+    </resultMap>
 
-    <!--    <resultMap id="FavoritesResultMap" type="FavoritesVO">
-            <id property="favor_idx" column="favor_idx"/>
-            <result property="id" column="id"/>
-            <result property="pro_idx" column="pro_idx"/>
-        </resultMap>-->
+<!--    <resultMap id="FollowerProductCountResultMap" type="FollowerVO">
+        <id property="followerNickname" column="follwer_idx"/>
+        <result property="followerProdutCount" column="from_user"/>
+    </resultMap>
+
+    <resultMap id="FollowerCountResultMap" type="FollowerVO">
+        <id property="followerNickname" column="follwer_idx"/>
+        <result property="followerCount" column="to_user"/>
+    </resultMap>-->
 
 </mapper>

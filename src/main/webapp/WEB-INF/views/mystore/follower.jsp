@@ -38,6 +38,25 @@
                     </button>
                 </div>
 
+                    <%--                리스트 부분--%>
+                    <div class="row">
+<%--                        <c:forEach items="${followers}" var="followers">--%>
+<%--                            <div class="col-lg-4 col-md-6 mb-4">--%>
+<%--                                <div class="card h-100">--%>
+<%--                                    <div class="card-body">--%>
+<%--                                        <h4 class="card-title">--%>
+<%--                                            <a href="${products.proIdx}">${products.title}</a>--%>
+<%--                                        </h4>--%>
+<%--                                        <h5>${products.price}</h5>--%>
+<%--                                        <p class="card-text">${products.regDate}</p>--%>
+<%--                                        <h5>${products.tradeArea}</h5>--%>
+<%--                                    </div>--%>
+
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </c:forEach>--%>
+                    </div>
+
             </div>
             <!-- /.container -->
         </div>
