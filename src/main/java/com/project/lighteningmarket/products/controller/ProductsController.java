@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 @Controller
@@ -34,8 +36,25 @@ public class ProductsController {
 
     // 3. 상품등록 처리 매핑
     @RequestMapping("insert.do")
-    public String insert(ProductsVO vo) throws Exception {
+    public String insert(ProductsVO vo, HttpServletRequest request) throws Exception {
         String filename = "";
+
+        Cookie[] cookies = request.getCookies();
+        String a = "";
+        if(cookies != null){
+
+            for(int i=0; i < cookies.length; i++){
+                Cookie c = cookies[i] ;
+                // 저장된 쿠키 이름을 가져온다
+                String cName = c.getName();
+                if(cName.equals("loginCookie")){
+                    a = c.getValue();
+                    break;
+                }
+            }
+        }
+        System.out.println("쿠키 값 : " + a);
+
         if(!vo.getProductPhoto().isEmpty()) {
             filename = vo.getProductPhoto().getOriginalFilename();
             // 개발디렉토리 - 파일 업로드 경로
@@ -48,6 +67,7 @@ public class ProductsController {
                 e.printStackTrace();
             }
             vo.setProductUrl(filename);
+            vo.setId(a);
             productService.insertProduct(vo);
         }
         System.out.println(vo);

@@ -31,6 +31,10 @@ public class ProductsDAOImpl implements ProductsDAO {
     // 03. 상품 등록
     @Override
     public void insertProduct(ProductsVO vo) throws Exception {
+        String sessionValue = vo.getId();
+        String id = sqlSession.selectOne(NAMESPACE + ".searchId", sessionValue);
+        System.out.println("id는 "+ id);
+        vo.setId(id);
         sqlSession.insert(NAMESPACE + ".insertProduct", vo);
     }
 

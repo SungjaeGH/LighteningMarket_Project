@@ -65,4 +65,10 @@
                )
     </insert>
 
+    <!-- ID 찾기 -->
+    <select id="searchId" parameterType="string" resultType="string">
+        SELECT id
+        FROM bunjang.tbl_member
+        where session_key = #{id};
+    </select>
 </mapper>
