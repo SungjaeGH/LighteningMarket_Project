@@ -1,5 +1,6 @@
 package com.project.lighteningmarket.products.controller;
 
+import com.project.lighteningmarket.commons.category.domain.CategoryDTO;
 import com.project.lighteningmarket.products.domain.ProductsVO;
 import com.project.lighteningmarket.products.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,12 @@ public class ProductsController {
 
     // 1. 상품 전체 목록
     @RequestMapping("/productList")
-    public ModelAndView list(ModelAndView mav) throws Exception {
+    public ModelAndView list(CategoryDTO categoryDTO, ModelAndView mav, HttpServletRequest request) throws Exception {
+        System.out.println(categoryDTO.getCateCode());
+        String[] liValues = request.getParameterValues("cateCode");
+        for(int i = 0; i < liValues.length; i++){
+            System.out.println(liValues[i]);
+        }
         mav.setViewName("/product/productList");
         mav.addObject("list", productService.listProduct());
         return mav;

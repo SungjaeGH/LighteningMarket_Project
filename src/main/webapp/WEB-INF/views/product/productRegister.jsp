@@ -140,7 +140,6 @@
     $(document).ready(function(){
         // 상품 등록 유효성검사
         $("#addBtn").click(function(){
-            var id = $("#id").val();
             var productTitle = $("#productTitle").val();
             var tradeArea = $("#tradeArea").val();
             var statement = $("#statement").val();
