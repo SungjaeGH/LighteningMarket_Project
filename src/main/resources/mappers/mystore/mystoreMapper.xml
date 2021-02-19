@@ -71,12 +71,16 @@
     <!--     팔로워 페이지 (팔로워한 유저들 불러오기)-->
     <select id="follower_listAll" resultMap="FollowerNicknameResultMap">
         <![CDATA[
-        select DISTINCT tbl_follower.from_user
+        select DISTINCT tbl_member.nickname
         from tbl_member
-                 INNER JOIN tbl_product INNER JOIN tbl_follower
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.from_user
         WHERE tbl_follower.to_user = 'gold01130';
         ]]>
     </select>
+
+<!--    현재 로그인된 아이디를 쿠키값을 이용해서 받아오기-->
+
+
 
 <!--
     &lt;!&ndash;     팔로워 페이지 (상품수)&ndash;&gt;
@@ -118,7 +122,7 @@
     </resultMap>
 
     <resultMap id="FollowerNicknameResultMap" type="FollowerVO">
-        <id property="followerNickname" column="follwer_idx"/>
+        <id property="followerNickname" column="nickname"/>
     </resultMap>
 
 <!--    <resultMap id="FollowerProductCountResultMap" type="FollowerVO">

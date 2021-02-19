@@ -62,6 +62,10 @@ public class MyStoreDAOImpl implements MyStoreDAO{
         sqlSession.delete(NAMESPACE + ".storeQa_delete", storeQaVO);
     }
 
-
+    // 팔로워 테이블 팔로워 아아디 읽기
+    @Override
+    public  List<FollowerVO> follower_listAll() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".follower_listAll");
+    }
 
 }

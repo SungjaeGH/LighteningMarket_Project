@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.project.lighteningmarket.mystore.domain.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/mystore")
@@ -61,21 +63,33 @@ public class MyStoreController {
     @RequestMapping(value = "/storeQaDelete", method = RequestMethod.POST)
     public String storeQaDeletePOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
         mystoreservice.storeQaDelete(storeQaVO);
+
         return "redirect:/mystore/storeQa";
     }
 
-    // 상점후기 페이지로 이동
-    @RequestMapping(value = "/storeReview", method = RequestMethod.GET)
-    public String storeReviewGET(Model model) throws Exception {
-
-        return "/mystore/storeReview";
-    }
-
-
     // 팔로워 페이지로 이동
     @RequestMapping(value = "/follower", method = RequestMethod.GET)
-    public String followerGET(Model model) throws Exception {
+    public String followerGET(Model model, HttpServletRequest request) throws Exception {
 
+        Cookie[] cookies = request.getCookies();
+        String a = "";
+        if(cookies != null){
+
+            for(int i=0; i < cookies.length; i++){
+                Cookie c = cookies[i] ;
+                // 저장된 쿠키 이름을 가져온다
+                String cName = c.getName();
+                if(cName.equals("loginCookie")){
+                    a = c.getValue();
+                    break;
+                }
+            }
+        }
+        System.out.println("쿠키 값 : " + a);
+
+
+        model.addAttribute("follower", mystoreservice.follower_listAll()); // 상품 테이블 읽기
+        System.out.println(model);
         return "/mystore/follower";
     }
 }
