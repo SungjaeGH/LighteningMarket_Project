@@ -23,6 +23,7 @@ public class MyStoreDAOImpl implements MyStoreDAO{
     // 상품 테이블 읽기
     @Override
     public List<ProductVO> product_listAll() throws Exception {
+
         return sqlSession.selectList(NAMESPACE + ".product_listAll");
     }
 
@@ -65,11 +66,21 @@ public class MyStoreDAOImpl implements MyStoreDAO{
     // 팔로워 테이블 팔로워 아아디 읽기
     @Override
     public  List<FollowerVO> follower_listAll(FollowerVO followerVO) throws Exception {
+//       로그인한 아이디
         String sessionValue = followerVO.getLoginId();
         String id = sqlSession.selectOne(NAMESPACE + ".searchId", sessionValue);
         followerVO.setLoginId(id);
 
-        return sqlSession.selectList(NAMESPACE + ".follower_listAll", followerVO.getLoginId());
-    }
 
+        List<FollowerVO> fo = sqlSession.selectList(NAMESPACE + ".follower_listAll", followerVO.getLoginId());
+        for(int i = 0; i < fo.size(); i++)
+        {
+            System.out.println(sqlSession.selectOne(NAMESPACE + ".follower_productCount", fo.get(i).getFollowerNickname()).getClass().getName());
+            int a = Integer.parseInt(String.valueOf(sqlSession.selectOne(NAMESPACE + ".follower_productCount", fo.get(i).getFollowerNickname())));
+            fo.set(i,followerVO).setFollowerProdutCount(a);
+        }
+        System.out.println(fo.get(0));
+
+        return fo;
+    }
 }

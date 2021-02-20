@@ -69,31 +69,25 @@
 
 
     <!--     팔로워 페이지 (팔로워한 유저들 불러오기)-->
-    <select id="follower_listAll" parameterType="string" resultMap="FollowerNicknameResultMap">
+    <select id="follower_listAll" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultMap="FollowerNicknameResultMap">
         <![CDATA[
-        select DISTINCT tbl_member.nickname
+        select DISTINCT nickname
         from tbl_member
                  INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.from_user
         WHERE tbl_follower.to_user = #{loginId};
         ]]>
     </select>
 
-    <!-- 쿠키를 이용해서 ID 찾기 -->
-    <select id="searchId" parameterType="string" resultType="string">
-        SELECT id
-        FROM bunjang.tbl_member
-        where session_key = #{loginId};
-    </select>
-
-<!--
-    &lt;!&ndash;     팔로워 페이지 (상품수)&ndash;&gt;
-    <select id="follower_listAll" resultMap="FollowerProductCountResultMap">
+<!--    팔로워 페이지 (상품수) -->
+    <select id="follower_productCount" parameterType="int" resultMap="int">
         <![CDATA[
-        select count(*) from tbl_product
-        where tbl_product.id = #{followerNickname};
+        select count(*) AS productCount
+        from tbl_product inner join tbl_member
+        where tbl_member.nickname = #{followerNickname};
         ]]>
     </select>
 
+<!--
     &lt;!&ndash;     팔로워 페이지 (팔로워 수)&ndash;&gt;
     <select id="follower_listAll" resultMap="FollowerCountResultMap">
         <![CDATA[
@@ -103,6 +97,12 @@
     </select>
 -->
 
+    <!-- 쿠키를 이용해서 ID 찾기 -->
+    <select id="searchId" parameterType="string" resultType="string">
+        SELECT id
+        FROM bunjang.tbl_member
+        where session_key = #{loginId};
+    </select>
 
     <resultMap id="ProductResultMap" type="ProductVO">
         <id property="proIdx" column="proIdx"/>
@@ -128,5 +128,8 @@
         <result property="followerNickname" column="nickname"/>
     </resultMap>
 
+    <resultMap id="FollowerProductCountResultMap" type="FollowerVO">
+        <result property="followerProdutCount" column="productCount"/>
+    </resultMap>
 
 </mapper>

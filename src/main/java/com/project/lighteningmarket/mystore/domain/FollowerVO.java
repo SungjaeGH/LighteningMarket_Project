@@ -1,5 +1,7 @@
 package com.project.lighteningmarket.mystore.domain;
 
+import java.util.List;
+
 public class FollowerVO {
 
     private String loginId; // 로그인한 아이디
@@ -49,16 +51,5 @@ public class FollowerVO {
                 ", followerCount=" + followerCount +
                 '}';
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

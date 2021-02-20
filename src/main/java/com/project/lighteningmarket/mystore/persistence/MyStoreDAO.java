@@ -29,4 +29,5 @@ public interface MyStoreDAO {
     // 팔로워 테이블 팔로워 아이디 읽기
     List<FollowerVO> follower_listAll(FollowerVO followerVO) throws Exception;
 
+
 }
