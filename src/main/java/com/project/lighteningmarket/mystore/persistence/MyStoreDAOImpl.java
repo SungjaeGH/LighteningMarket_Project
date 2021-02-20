@@ -71,13 +71,13 @@ public class MyStoreDAOImpl implements MyStoreDAO{
         String id = sqlSession.selectOne(NAMESPACE + ".searchId", sessionValue);
         followerVO.setLoginId(id);
 
-
         List<FollowerVO> fo = sqlSession.selectList(NAMESPACE + ".follower_listAll", followerVO.getLoginId());
         for(int i = 0; i < fo.size(); i++)
         {
-            System.out.println(fo.get(i).getFollowerNickname());
             FollowerVO a = sqlSession.selectOne(NAMESPACE + ".follower_productCount", fo.get(i).getFollowerNickname());
             fo.get(i).setFollowerProdutCount(a.getFollowerProdutCount());
+            a = sqlSession.selectOne(NAMESPACE + ".follower_followerCount", fo.get(i).getFollowerNickname());
+            fo.get(i).setFollowerCount(a.getFollowerCount());
         }
 
         return fo;

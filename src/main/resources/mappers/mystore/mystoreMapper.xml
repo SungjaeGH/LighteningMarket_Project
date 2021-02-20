@@ -88,15 +88,15 @@
         ]]>
     </select>
 
-<!--
-    &lt;!&ndash;     팔로워 페이지 (팔로워 수)&ndash;&gt;
-    <select id="follower_listAll" resultMap="FollowerCountResultMap">
+    <!--     팔로워 페이지 (팔로워 수)-->
+    <select id="follower_followerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultMap="FollowerCountResultMap">
         <![CDATA[
-        select count(*) from tbl_follower
-        where tbl_follower.to_user = #{followerNickname};
+        select count(*) AS followerCount
+        from tbl_member
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.to_user
+        WHERE tbl_member.nickname = #{followerNickname};
         ]]>
     </select>
--->
 
     <!-- 쿠키를 이용해서 ID 찾기 -->
     <select id="searchId" parameterType="string" resultType="string">
@@ -131,6 +131,10 @@
 
     <resultMap id="FollowerProductCountResultMap" type="FollowerVO">
         <result property="followerProdutCount" column="productCount"/>
+    </resultMap>
+
+    <resultMap id="FollowerCountResultMap" type="FollowerVO">
+        <result property="followerCount" column="followerCount"/>
     </resultMap>
 
 </mapper>
