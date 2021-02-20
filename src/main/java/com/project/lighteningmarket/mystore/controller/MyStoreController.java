@@ -12,6 +12,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.project.lighteningmarket.mystore.domain.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("/mystore")
@@ -29,7 +32,7 @@ public class MyStoreController {
     public String productGET(Model model) throws Exception {
 
         model.addAttribute("products", mystoreservice.product_listAll()); // 상품 테이블 읽기
-
+        System.out.println(model);
         return "/mystore/products";
     }
 
@@ -61,27 +64,32 @@ public class MyStoreController {
     @RequestMapping(value = "/storeQaDelete", method = RequestMethod.POST)
     public String storeQaDeletePOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
         mystoreservice.storeQaDelete(storeQaVO);
+
         return "redirect:/mystore/storeQa";
-    }
-
-    // 상점후기 페이지로 이동
-    @RequestMapping(value = "/storeReview", method = RequestMethod.GET)
-    public String storeReviewGET(Model model) throws Exception {
-
-        return "/mystore/storeReview";
-    }
-
-    // 팔로잉 페지로 이동
-    @RequestMapping(value = "/following", method = RequestMethod.GET)
-    public String followingGET(Model model) throws Exception {
-
-        return "/mystore/following";
     }
 
     // 팔로워 페이지로 이동
     @RequestMapping(value = "/follower", method = RequestMethod.GET)
-    public String followerGET(Model model) throws Exception {
+    public String followerGET(Model model, HttpServletRequest request, FollowerVO followerVO) throws Exception {
 
+        Cookie[] cookies = request.getCookies();
+        String sessionkey = "";
+        if(cookies != null){
+            for(int i=0; i < cookies.length; i++){
+                Cookie cookie = cookies[i] ;
+                // 저장된 쿠키 이름을 가져온다
+                String cName = cookie.getName();
+                if(cName.equals("loginCookie")){
+                    sessionkey = cookie.getValue();
+                    break;
+                }
+            }
+        }
+        followerVO.setLoginId(sessionkey); // 세션키를 로그인된 아이디값에 넣는다
+        List<FollowerVO> fo = mystoreservice.follower_listAll(followerVO); // 직접 VO에 값넣기
+        model.addAttribute("follower", mystoreservice.follower_listAll(followerVO)); // 팔로워 테이블 읽기 (jsp로 값만 넘기고 실제로 VO에 값은 넣지않음)
+
+        System.out.println(fo);
         return "/mystore/follower";
     }
 }

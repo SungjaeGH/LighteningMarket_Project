@@ -57,5 +57,11 @@ public class MyStoreServiceImpl implements MyStoreService{
         myStoreDAO.storeQaDelete(storeQaVO);
     }
 
+    // 팔로워 테이블 팔로워 아이디 읽기
+    @Override
+    public List<FollowerVO> follower_listAll(FollowerVO followerVO) throws Exception {
+        return myStoreDAO.follower_listAll(followerVO);
+    }
+
 
 }
