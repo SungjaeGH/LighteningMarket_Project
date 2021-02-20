@@ -69,18 +69,21 @@
 
 
     <!--     팔로워 페이지 (팔로워한 유저들 불러오기)-->
-    <select id="follower_listAll" resultMap="FollowerNicknameResultMap">
+    <select id="follower_listAll" parameterType="string" resultMap="FollowerNicknameResultMap">
         <![CDATA[
         select DISTINCT tbl_member.nickname
         from tbl_member
                  INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.from_user
-        WHERE tbl_follower.to_user = 'gold01130';
+        WHERE tbl_follower.to_user = #{loginId};
         ]]>
     </select>
 
-<!--    현재 로그인된 아이디를 쿠키값을 이용해서 받아오기-->
-
-
+    <!-- 쿠키를 이용해서 ID 찾기 -->
+    <select id="searchId" parameterType="string" resultType="string">
+        SELECT id
+        FROM bunjang.tbl_member
+        where session_key = #{loginId};
+    </select>
 
 <!--
     &lt;!&ndash;     팔로워 페이지 (상품수)&ndash;&gt;
@@ -122,17 +125,8 @@
     </resultMap>
 
     <resultMap id="FollowerNicknameResultMap" type="FollowerVO">
-        <id property="followerNickname" column="nickname"/>
+        <result property="followerNickname" column="nickname"/>
     </resultMap>
 
-<!--    <resultMap id="FollowerProductCountResultMap" type="FollowerVO">
-        <id property="followerNickname" column="follwer_idx"/>
-        <result property="followerProdutCount" column="from_user"/>
-    </resultMap>
-
-    <resultMap id="FollowerCountResultMap" type="FollowerVO">
-        <id property="followerNickname" column="follwer_idx"/>
-        <result property="followerCount" column="to_user"/>
-    </resultMap>-->
 
 </mapper>

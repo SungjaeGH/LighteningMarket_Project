@@ -64,8 +64,12 @@ public class MyStoreDAOImpl implements MyStoreDAO{
 
     // 팔로워 테이블 팔로워 아아디 읽기
     @Override
-    public  List<FollowerVO> follower_listAll() throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".follower_listAll");
+    public  List<FollowerVO> follower_listAll(FollowerVO followerVO) throws Exception {
+        String sessionValue = followerVO.getLoginId();
+        String id = sqlSession.selectOne(NAMESPACE + ".searchId", sessionValue);
+        followerVO.setLoginId(id);
+
+        return sqlSession.selectList(NAMESPACE + ".follower_listAll", followerVO.getLoginId());
     }
 
 }

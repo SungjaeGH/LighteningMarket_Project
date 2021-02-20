@@ -69,27 +69,25 @@ public class MyStoreController {
 
     // 팔로워 페이지로 이동
     @RequestMapping(value = "/follower", method = RequestMethod.GET)
-    public String followerGET(Model model, HttpServletRequest request) throws Exception {
+    public String followerGET(Model model, HttpServletRequest request, FollowerVO followerVO) throws Exception {
 
         Cookie[] cookies = request.getCookies();
-        String a = "";
+        String sessionkey = "";
         if(cookies != null){
-
             for(int i=0; i < cookies.length; i++){
-                Cookie c = cookies[i] ;
+                Cookie cookie = cookies[i] ;
                 // 저장된 쿠키 이름을 가져온다
-                String cName = c.getName();
+                String cName = cookie.getName();
                 if(cName.equals("loginCookie")){
-                    a = c.getValue();
+                    sessionkey = cookie.getValue();
                     break;
                 }
             }
         }
-        System.out.println("쿠키 값 : " + a);
+        followerVO.setLoginId(sessionkey); // 세션키를 로그인된 아이디값에 넣는다
 
-
-        model.addAttribute("follower", mystoreservice.follower_listAll()); // 상품 테이블 읽기
-        System.out.println(model);
+        model.addAttribute("follower", mystoreservice.follower_listAll(followerVO)); // 팔로워 테이블 읽기
+        System.out.println(followerVO.getFollowerNickname());
         return "/mystore/follower";
     }
 }
