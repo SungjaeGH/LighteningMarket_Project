@@ -74,4 +74,18 @@
     <!-- 파일업로드를 위한 디렉토리 설정 -->
     <!-- String uploadPath = new String("업로드 경로") -->
     <bean id="imagePath" class="java.lang.String"/>
+
+    <!-- MessageSource -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="defaultEncoding">
+            <value>utf-8</value>
+        </property>
+
+        <property name="basenames">
+            <list>
+                <value>messages.messages</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>

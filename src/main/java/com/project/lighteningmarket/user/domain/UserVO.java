@@ -1,14 +1,36 @@
 package com.project.lighteningmarket.user.domain;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class UserVO {
+    @NotEmpty
+    @Size(min = 6, max = 10)
     private String id;
+
+    @NotEmpty
+    @Size(min = 8, max = 16)
+    @Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}")
     private String password;
+
+    @NotEmpty
+    @Size(min = 2, max = 5)
     private String name;
+
+    @NotEmpty
+    @Size(min = 2, max = 10)
     private String nickname;
+
+    @NotEmpty
+    @Email
     private String email;
+
+    @NotEmpty
     private String pNumber;
+
     private Date regDate;
     private String sessionKey;
     private Date sessionLimit;

@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
     <link href="../../../resources/css/login.css" rel="stylesheet" >
 
+    <!-- signup CSS -->
+    <link href="../../../resources/css/signup.css" rel="stylesheet" >
+
     <script type="text/javascript" src="../../../resources/jquery/jquery.js"></script>
     <style>
         /* iframe 스타일 설정 */
