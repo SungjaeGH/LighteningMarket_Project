@@ -79,11 +79,12 @@
     </select>
 
 <!--    팔로워 페이지 (상품수) -->
-    <select id="follower_productCount" parameterType="int" resultMap="int">
+    <select id="follower_productCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultMap="FollowerProductCountResultMap">
         <![CDATA[
         select count(*) AS productCount
-        from tbl_product inner join tbl_member
-        where tbl_member.nickname = #{followerNickname};
+        from tbl_product join tbl_member
+        where tbl_product.id = tbl_member.id
+        and tbl_member.nickname = #{followerNickname};
         ]]>
     </select>
 

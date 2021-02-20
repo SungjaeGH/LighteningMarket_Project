@@ -87,9 +87,8 @@ public class MyStoreController {
         }
         followerVO.setLoginId(sessionkey); // 세션키를 로그인된 아이디값에 넣는다
         List<FollowerVO> fo = mystoreservice.follower_listAll(followerVO); // 직접 VO에 값넣기
-        model.addAttribute("follower", mystoreservice.follower_listAll(followerVO)); // 팔로워 테이블 읽기 (jsp로 값만 넘기고 실제로 VO에 값은 넣지않음)
+        model.addAttribute("follower", fo); // 팔로워 테이블 읽기 (jsp로 값만 넘기고 실제로 VO에 값은 넣지않음)
 
-        System.out.println(fo);
         return "/mystore/follower";
     }
 }
