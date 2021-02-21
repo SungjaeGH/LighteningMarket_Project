@@ -14,8 +14,7 @@
                         regDate,
                         tradeArea
         FROM tbl_product
---                  INNER JOIN tbl_images ON tbl_product.proIdx = tbl_images.proIdx
-        WHERE tbl_product.id = 'gold01130';
+        WHERE tbl_product.id = #{id};
         ]]>
     </select>
 
@@ -30,7 +29,7 @@
                         tradeArea
         FROM tbl_product
                  INNER JOIN tbl_favorites ON tbl_product.proIdx = tbl_favorites.pro_idx
-        WHERE tbl_favorites.id = 'gold01130';
+        WHERE tbl_favorites.id = #{id};
         ]]>
     </select>
 
@@ -44,7 +43,7 @@
                       , unknown_check
         FROM tbl_store_qa
                  INNER JOIN tbl_member ON tbl_store_qa.nickname = tbl_member.nickname
-        WHERE tbl_member.nickname = 'sdfqwe';
+        WHERE tbl_member.nickname = #{loginId};
         ]]>
     </select>
 
@@ -55,7 +54,7 @@
                                  , store_qa_des
                                  , unknown_check
         ) VALUES (
-                   'sdfqwe'
+                   #{nickname}
                  , #{storeQaDes}
                  , #{unknownCheck}
                  )
@@ -98,6 +97,21 @@
         ]]>
     </select>
 
+    <!--     팔로워 페이지 (팔로워 수)-->
+    <select id="follower_selectFollowerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultType="FollowerVO">
+        <![CDATA[
+        select count(*) AS followerCount
+        from tbl_member
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.to_user
+        WHERE tbl_member.nickname = #{followerNickname}
+            < foreach
+            collection="fo" item="item" separator=","> #{item.followerCount}
+            </foreach
+            >
+        ]]>
+    </select>
+
+
     <!-- 쿠키를 이용해서 ID 찾기 -->
     <select id="searchId" parameterType="string" resultType="string">
         SELECT id
@@ -105,16 +119,20 @@
         where session_key = #{loginId};
     </select>
 
+    <!-- 쿠키를 이용해서 NickName 찾기 -->
+    <select id="searchNickname" parameterType="string" resultType="string">
+        SELECT nickname
+        FROM bunjang.tbl_member
+        where session_key = #{loginId};
+    </select>
+
+
     <resultMap id="ProductResultMap" type="ProductVO">
         <id property="proIdx" column="proIdx"/>
         <result property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="tradeArea" column="tradeArea"/>
-        <result property="statement" column="statement"/>
-        <result property="exchange" column="exchange"/>
         <result property="price" column="price"/>
-        <result property="description" column="description"/>
-        <result property="count" column="count"/>
         <result property="regDate" column="regDate"/>
     </resultMap>
 
