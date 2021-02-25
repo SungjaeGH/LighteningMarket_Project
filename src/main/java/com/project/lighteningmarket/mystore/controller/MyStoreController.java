@@ -27,6 +27,7 @@ public class MyStoreController {
     @Inject
     public MyStoreController(MyStoreService mystoreservice) {this.mystoreservice = mystoreservice;}
 
+    //------------------------------------------------------------------------------------------------------------------
     // 상품 페이지로 이동
     @RequestMapping(value = "/products", method = RequestMethod.GET)
     public String productGET(Model model, HttpServletRequest request, ProductVO productVO) throws Exception {
@@ -48,7 +49,9 @@ public class MyStoreController {
         model.addAttribute("products", mystoreservice.product_listAll(productVO)); // 상품 테이블 읽어서 jsp로 보내기
         return "/mystore/products";
     }
+    //------------------------------------------------------------------------------------------------------------------
 
+    //------------------------------------------------------------------------------------------------------------------
     // 찜 페이지로 이동
     @RequestMapping(value = "/favorites", method = RequestMethod.GET)
     public String FavoritesGET(Model model, HttpServletRequest request, ProductVO productVO) throws Exception {
@@ -70,7 +73,9 @@ public class MyStoreController {
         model.addAttribute("products", mystoreservice.favorites_listAll(productVO)); // 상품 테이블 읽어서 jsp로 보내기
         return "/mystore/favorites";
     }
+    //------------------------------------------------------------------------------------------------------------------
 
+    // ------------------------------------------------------------------------------------------------------------------
     // 상점문의 페이지로 이동
     @RequestMapping(value = "/storeQa", method = RequestMethod.GET)
     public String storeQaGET(Model model, HttpServletRequest request, StoreQaVO storeQaVO) throws Exception {
@@ -124,7 +129,9 @@ public class MyStoreController {
 
        return "redirect:/mystore/storeQa";
     }
+    //------------------------------------------------------------------------------------------------------------------
 
+    //------------------------------------------------------------------------------------------------------------------
     // 팔로워 페이지로 이동
     @RequestMapping(value = "/follower", method = RequestMethod.GET)
     public String followerGET(Model model, HttpServletRequest request, FollowerVO followerVO) throws Exception {
@@ -143,9 +150,36 @@ public class MyStoreController {
             }
         }
         followerVO.setLoginId(sessionkey); // 세션키를 로그인된 아이디값에 넣는다
-        List<FollowerVO> fo = mystoreservice.follower_listAll(followerVO); // 직접 VO에 값넣기
-        model.addAttribute("follower", fo); // 팔로워 테이블 읽기 (jsp로 값만 넘기고 실제로 VO에 값은 넣지않음)
+        List<FollowerVO> followerVOList = mystoreservice.follower_listAll(followerVO); // 직접 VO에 값넣기
+        model.addAttribute("follower", followerVOList); // 팔로워 테이블 읽기 (jsp로 값만 넘기고 실제로 VO에 값은 넣지않음)
 
         return "/mystore/follower";
     }
+    //------------------------------------------------------------------------------------------------------------------
+
+    //------------------------------------------------------------------------------------------------------------------
+    // 팔로잉 페이지로 이동
+    @RequestMapping(value = "/following", method = RequestMethod.GET)
+    public String followingGET(Model model, HttpServletRequest request, FollowingVO followingVO) throws Exception {
+        Cookie[] cookies = request.getCookies();
+        String sessionkey = "";
+        if(cookies != null){
+            for(int i=0; i < cookies.length; i++){
+                Cookie cookie = cookies[i] ;
+                // 저장된 쿠키 이름을 가져온다
+                String cName = cookie.getName();
+                if(cName.equals("loginCookie")){
+                    sessionkey = cookie.getValue();
+                    break;
+                }
+            }
+        }
+        followingVO.setLoginId(sessionkey); // 세션키를 로그인된 아이디값에 넣는다
+        List<FollowingVO> followingVOList = mystoreservice.following_listAll(followingVO); // 직접 VO에 값넣기
+        model.addAttribute("following", followingVOList); // 팔로잉 테이블 읽기 (jsp로 값만 넘기고 실제로 VO에 값은 넣지않음)
+
+        return "/mystore/following";
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
 }

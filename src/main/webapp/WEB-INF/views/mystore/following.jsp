@@ -37,7 +37,26 @@
                     <button type="button" class="btn btn-dark" onClick="location.href='../mystore/follower'">팔로워
                     </button>
                 </div>
+<%--                   리스트 부분--%>
+                    <div class="row">
+                        <c:forEach items="${following}" var="following">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                                ${following.followingNickname}
+                                        </h4>
 
+                                        <h5>상품수  ${following.followingProdutCount}  | 팔로워 수 ${following.followerCount}</h5>
+                                        <button type="submit" id="storeQaInsert" class="w3-button">
+                                            <i class="far fa-paper-plane"></i> 팔로워하기
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
             </div>
             <!-- /.container -->
         </div>

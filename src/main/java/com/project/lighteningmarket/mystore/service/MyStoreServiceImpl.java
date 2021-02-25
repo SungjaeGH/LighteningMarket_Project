@@ -58,5 +58,10 @@ public class MyStoreServiceImpl implements MyStoreService{
         return myStoreDAO.follower_listAll(followerVO);
     }
 
+    // 팔로잉 테이블 읽기
+    @Override
+    public List<FollowingVO> following_listAll(FollowingVO followingVO) throws Exception {
+        return myStoreDAO.following_listAll(followingVO);
+    }
 
 }

@@ -1,43 +1,60 @@
 package com.project.lighteningmarket.mystore.domain;
 
 public class FollowingVO {
-    private int followerIdx; // 팔로워 인덱스
-    private String fromUser; // 팔로워하는 사람
-    private String toUser; // 팔로워 받는 사람
 
-
-    public int getFollowerIdx() {
-        return followerIdx;
-    }
-
-    public void setFollowerIdx(int followerIdx) {
-        this.followerIdx = followerIdx;
-    }
-
-    public String getFromUser() {
-        return fromUser;
-    }
-
-    public void setFromUser(String fromUser) {
-        this.fromUser = fromUser;
-    }
-
-    public String getToUser() {
-        return toUser;
-    }
-
-    public void setToUser(String toUser) {
-        this.toUser = toUser;
-    }
+    private String loginId; // 로그인한 아이디
+    private String followingNickname; // 팔로잉 할 사람
+    private int followingProdutCount; // 팔로잉 한 유저 상품개수
+    private int followerCount; // 팔로잉 한 유저 팔로워수
 
     @Override
     public String toString() {
         return "FollowingVO{" +
-                "followerIdx=" + followerIdx +
-                ", fromUser='" + fromUser + '\'' +
-                ", toUser='" + toUser + '\'' +
+                "loginId='" + loginId + '\'' +
+                ", followingNickname='" + followingNickname + '\'' +
+                ", followingProdutCount=" + followingProdutCount +
+                ", followerCount=" + followerCount +
                 '}';
     }
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
+    public String getFollowingNickname() {
+        return followingNickname;
+    }
+
+    public void setFollowingNickname(String followingNickname) {
+        this.followingNickname = followingNickname;
+    }
+
+    public int getFollowingProdutCount() {
+        return followingProdutCount;
+    }
+
+    public void setFollowingProdutCount(int followingProdutCount) {
+        this.followingProdutCount = followingProdutCount;
+    }
+
+    public int getFollowerCount() {
+        return followerCount;
+    }
+
+    public void setFollowerCount(int followerCount) {
+        this.followerCount = followerCount;
+    }
+
+
+
+
+
+
+
 
 
 }

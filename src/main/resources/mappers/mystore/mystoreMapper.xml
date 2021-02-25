@@ -97,7 +97,7 @@
         ]]>
     </select>
 
-    <!--     팔로워 페이지 (팔로워 수)-->
+<!--    &lt;!&ndash;     팔로워 페이지 (팔로워 수)&ndash;&gt;
     <select id="follower_selectFollowerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultType="FollowerVO">
         <![CDATA[
         select count(*) AS followerCount
@@ -108,6 +108,37 @@
             collection="fo" item="item" separator=","> #{item.followerCount}
             </foreach
             >
+        ]]>
+    </select>-->
+
+
+    <!--     팔로잉 페이지 (팔로워한 유저들 불러오기)-->
+    <select id="following_listAll" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingNicknameResultMap">
+        <![CDATA[
+        select DISTINCT nickname
+        from tbl_member
+                 INNER JOIN tbl_following ON tbl_member.id = tbl_following.to_user
+        WHERE tbl_following.from_user = #{loginId};
+        ]]>
+    </select>
+
+    <!--    팔로잉 페이지 (상품수) -->
+    <select id="following_productCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingProductCountResultMap">
+        <![CDATA[
+        select count(*) AS productCount
+        from tbl_product join tbl_member
+        where tbl_product.id = tbl_member.id
+          and tbl_member.nickname = #{followingNickname};
+        ]]>
+    </select>
+
+    <!--     팔로잉 페이지 (팔로워 수)-->
+    <select id="following_followerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingCountResultMap">
+        <![CDATA[
+        select count(*) AS followerCount
+        from tbl_member
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.to_user
+        WHERE tbl_member.nickname = #{followingNickname};
         ]]>
     </select>
 
@@ -125,6 +156,8 @@
         FROM bunjang.tbl_member
         where session_key = #{loginId};
     </select>
+
+
 
 
     <resultMap id="ProductResultMap" type="ProductVO">
@@ -152,6 +185,18 @@
     </resultMap>
 
     <resultMap id="FollowerCountResultMap" type="FollowerVO">
+        <result property="followerCount" column="followerCount"/>
+    </resultMap>
+
+    <resultMap id="FollowingNicknameResultMap" type="FollowingVO">
+        <result property="followingNickname" column="nickname"/>
+    </resultMap>
+
+    <resultMap id="FollowingProductCountResultMap" type="FollowingVO">
+        <result property="followingProdutCount" column="productCount"/>
+    </resultMap>
+
+    <resultMap id="FollowingCountResultMap" type="FollowingVO">
         <result property="followerCount" column="followerCount"/>
     </resultMap>
 

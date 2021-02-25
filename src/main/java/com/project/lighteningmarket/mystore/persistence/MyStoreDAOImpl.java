@@ -81,7 +81,7 @@ public class MyStoreDAOImpl implements MyStoreDAO{
         sqlSession.delete(NAMESPACE + ".storeQa_delete", storeQaVO);
     }
 
-    // 팔로워 테이블 팔로워 아아디 읽기
+    // 팔로워 테이블 - 팔로워 아아디, 상품수, 팔로워 수 읽기
     @Override
     public  List<FollowerVO> follower_listAll(FollowerVO followerVO) throws Exception {
         // 받은 쿠키 세션키값을 이용해 ID찾기
@@ -89,15 +89,35 @@ public class MyStoreDAOImpl implements MyStoreDAO{
         String id = sqlSession.selectOne(NAMESPACE + ".searchId", sessionValue);
         followerVO.setLoginId(id);
 
-        List<FollowerVO> fo = sqlSession.selectList(NAMESPACE + ".follower_listAll", followerVO.getLoginId());
-         for(int i = 0; i < fo.size(); i++)
+        List<FollowerVO> followerVOList = sqlSession.selectList(NAMESPACE + ".follower_listAll", followerVO.getLoginId());
+         for(int i = 0; i < followerVOList.size(); i++)
         {
-            FollowerVO a = sqlSession.selectOne(NAMESPACE + ".follower_productCount", fo.get(i).getFollowerNickname());
-            fo.get(i).setFollowerProdutCount(a.getFollowerProdutCount());
-            a = sqlSession.selectOne(NAMESPACE + ".follower_followerCount", fo.get(i).getFollowerNickname());
-            fo.get(i).setFollowerCount(a.getFollowerCount());
+            FollowerVO result = sqlSession.selectOne(NAMESPACE + ".follower_productCount", followerVOList.get(i).getFollowerNickname());
+            followerVOList.get(i).setFollowerProdutCount(result.getFollowerProdutCount());
+            result = sqlSession.selectOne(NAMESPACE + ".follower_followerCount", followerVOList.get(i).getFollowerNickname());
+            followerVOList.get(i).setFollowerCount(result.getFollowerCount());
         }
 
-        return fo;
+        return followerVOList;
+    }
+
+    // 팔로잉 테이블 팔로잉 아아디, 상품수, 팔로워 수 읽기
+    @Override
+    public  List<FollowingVO> following_listAll(FollowingVO followingVO) throws Exception {
+        // 받은 쿠키 세션키값을 이용해 ID찾기
+        String sessionValue = followingVO.getLoginId();
+        String id = sqlSession.selectOne(NAMESPACE + ".searchId", sessionValue);
+        followingVO.setLoginId(id);
+
+        List<FollowingVO> followingVOList = sqlSession.selectList(NAMESPACE + ".following_listAll", followingVO.getLoginId());
+        for(int i = 0; i < followingVOList.size(); i++)
+        {
+            FollowingVO result = sqlSession.selectOne(NAMESPACE + ".following_productCount", followingVOList.get(i).getFollowingNickname());
+            followingVOList.get(i).setFollowingProdutCount(result.getFollowingProdutCount());
+            result = sqlSession.selectOne(NAMESPACE + ".following_followerCount", followingVOList.get(i).getFollowingNickname());
+            followingVOList.get(i).setFollowerCount(result.getFollowerCount());
+        }
+
+        return followingVOList;
     }
 }

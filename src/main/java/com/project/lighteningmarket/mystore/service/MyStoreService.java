@@ -28,4 +28,7 @@ public interface MyStoreService {
     // 팔로워 테이블 읽기
     List<FollowerVO> follower_listAll(FollowerVO followerVO) throws Exception;
 
+    // 팔로잉 테이블 읽기
+    List<FollowingVO> following_listAll(FollowingVO followingVO) throws Exception;
+
 }
