@@ -10,6 +10,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
@@ -36,6 +37,16 @@ public class UserSignupController {
     // 회원가입 처리
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signupPOST(@ModelAttribute("userVO") @Valid UserVO userVO, BindingResult result, RedirectAttributes redirectAttributes) throws Exception {
+        // 아이디 중복 체크
+        int idCheck = userService.idCheck(userVO);
+        System.out.println("idCheck 숫자 : " + idCheck);
+
+        if(idCheck == 1) {
+            redirectAttributes.addFlashAttribute("msg", "IDEXIST");
+            return "redirect:/user/signup";
+        } else if(idCheck == 0) {
+            redirectAttributes.addFlashAttribute("msg", "IDNOTEXIST");
+        }
 
         // 유효성 검사
         if(result.hasErrors()) {
@@ -52,6 +63,7 @@ public class UserSignupController {
         userService.signup(userVO);
         redirectAttributes.addFlashAttribute("msg", "SIGNEDUP");
 
-        return "redirect:/login/login";
+        return "redirect:/user/signup";
     }
+
 }

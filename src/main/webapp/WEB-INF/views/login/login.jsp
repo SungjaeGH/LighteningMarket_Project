@@ -56,9 +56,7 @@
 <script>
 
     var msg = "${msg}";
-    if (msg === "SIGNEDUP") {
-        alert("회원가입이 완료되었습니다. 로그인 해주세요!")
-    } else if (msg === "UPDATEPW") {
+    if (msg === "UPDATEPW") {
         alert("비밀번호가 변경되었습니다. 로그인 해주세요!")
     }
 </script>

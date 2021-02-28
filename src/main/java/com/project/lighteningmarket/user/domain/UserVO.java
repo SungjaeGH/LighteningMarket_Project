@@ -13,7 +13,8 @@ public class UserVO {
 
     @NotEmpty
     @Size(min = 8, max = 16)
-    @Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}")
+    // 최소 8~16자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수문자
+    @Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&~])[A-Za-z\\d$@$!%*#?&~]{8,16}$")
     private String password;
 
     @NotEmpty

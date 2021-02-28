@@ -24,6 +24,12 @@ public class UserServiceImpl implements UserService {
         userDAO.signup(userVO);
     }
 
+    // 아이디 중복 체크
+    @Override
+    public int idCheck(UserVO userVO) throws Exception {
+        return userDAO.idCheck(userVO);
+    }
+
     // 로그인 처리
     @Override
     public UserVO login(LoginDTO loginDTO) throws Exception {

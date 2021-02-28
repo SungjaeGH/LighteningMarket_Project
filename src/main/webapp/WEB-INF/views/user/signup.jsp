@@ -20,23 +20,19 @@
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <label class="labels">아이디</label>
-                                <form:input path="id" class="form-control" placeholder="아이디는 영문 또는 숫자 6~10자리로 입력해 주세요" />
+                                <form:input path="id" class="form-control" placeholder="아이디는 영문 또는 숫자 6~10자리로 입력해 주세요." />
                                 <span class="error">
                                     <form:errors path="id" />
                                 </span>
-<%--                                <input type="text" class="form-control" name="id"--%>
-<%--                                       placeholder="아이디는 영문 또는 숫자 6~10자리로 입력해 주세요">--%>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
-                                <label class="labels">비밀번호</label>
-                                <form:input path="password" class="form-control" placeholder="비밀번호를 입력해 주세요. (8~16자 / 문자, 숫자, 특수문자 혼용)" area-hidden="true"/>
+                                <label class="labels" aria-hidden="true">비밀번호</label>
+                                <form:input path="password"  class="form-control" placeholder="비밀번호를 입력해 주세요. (8~16자 / 문자, 숫자, 특수문자 혼용)" aria-hidden="true"/>
                                 <span class="error">
                                     <form:errors path="password" />
                                 </span>
-                            <%--                                <input type="text" class="form-control" name="password"--%>
-<%--                                       placeholder="비밀번호를 입력해 주세요. (8~16자 / 문자, 숫자, 특수문자 혼용)" aria-hidden="true" required>--%>
                             </div>
                         </div>
 
@@ -48,7 +44,6 @@
                                 <span class="error">
                                     <form:errors path="name" />
                                 </span>
-                            <%--                                <input type="text" class="form-control" name="name" placeholder="실명을 입력해 주세요." required>--%>
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -58,7 +53,6 @@
                                 <span class="error">
                                     <form:errors path="nickname" />
                                 </span>
-                            <%--                                <input type="text" class="form-control" name="nickname" placeholder="닉네임을 입력해 주세요." required>--%>
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -68,8 +62,6 @@
                                 <span class="error">
                                     <form:errors path="email" />
                                 </span>
-                            <%--                                <input type="text" class="form-control" name="email" placeholder="이메일을 입력해 주세요." required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">--%>
-<%-- required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" --%>
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -79,7 +71,6 @@
                                 <span class="error">
                                     <form:errors path="pNumber" />
                                 </span>
-                            <%--                                <input type="text" class="form-control" name="pNumber" placeholder="휴대폰 번호를 입력해 주세요." required>--%>
                             </div>
                         </div>
 
@@ -106,11 +97,6 @@
 </html>
 
 <style>
-
-    .form-control:focus {
-        box-shadow: none;
-        border-color: #BA68C8
-    }
 
     .signup-button {
         background: rgb(99, 39, 120);
@@ -143,3 +129,12 @@
     }
 
 </style>
+
+<script>
+    let msg = "${msg}";
+
+    if (msg === "SIGNEDUP") {
+        alert("회원가입이 완료되었습니다. 로그인 해주세요!")
+        self.location = "/login/login";
+    }
+</script>
