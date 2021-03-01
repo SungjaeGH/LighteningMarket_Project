@@ -119,7 +119,7 @@ public class MyStoreController {
 
 
         mystoreservice.storeQaAddReply(storeQaVO); // 상점문의 테이블 insert처리
-       return "redirect:/mystore/storeQa";
+        return "redirect:/mystore/storeQa";
     }
 
     // 상점문의 페이지 삭제
@@ -127,7 +127,7 @@ public class MyStoreController {
     public String storeQaDeletePOST(StoreQaVO storeQaVO, RedirectAttributes redirectAttributes) throws Exception {
         mystoreservice.storeQaDelete(storeQaVO); // 상점문의 테이블 delete처리리
 
-       return "redirect:/mystore/storeQa";
+        return "redirect:/mystore/storeQa";
     }
     //------------------------------------------------------------------------------------------------------------------
 

@@ -21,4 +21,7 @@ public interface ProductsService {
 
     // 04. 상품삭제
     void deleteProduct(int productId) throws Exception;
+
+    // 05. 검색 후 목록
+    List<ProductsVO> searchProduct(String searchData) throws Exception;
 }
