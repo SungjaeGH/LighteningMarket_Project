@@ -70,23 +70,23 @@ public class MyStoreController {
 
     // 팔로워 페이지로 이동
     @RequestMapping(value = "/follower", method = RequestMethod.GET)
-    public String followerGET(Model model, HttpServletRequest request, FollowerVO followerVO) throws Exception {
+        public String followerGET(Model model, HttpServletRequest request, FollowerVO followerVO) throws Exception {
 
-        Cookie[] cookies = request.getCookies();
-        String sessionkey = "";
-        if(cookies != null){
-            for(int i=0; i < cookies.length; i++){
-                Cookie cookie = cookies[i] ;
-                // 저장된 쿠키 이름을 가져온다
-                String cName = cookie.getName();
-                if(cName.equals("loginCookie")){
-                    sessionkey = cookie.getValue();
-                    break;
+            Cookie[] cookies = request.getCookies();
+            String sessionkey = "";
+            if(cookies != null){
+                for(int i=0; i < cookies.length; i++){
+                    Cookie cookie = cookies[i] ;
+                    // 저장된 쿠키 이름을 가져온다
+                    String cName = cookie.getName();
+                    if(cName.equals("loginCookie")){
+                        sessionkey = cookie.getValue();
+                        break;
+                    }
                 }
             }
-        }
-        followerVO.setLoginId(sessionkey); // 세션키를 로그인된 아이디값에 넣는다
-        List<FollowerVO> fo = mystoreservice.follower_listAll(followerVO); // 직접 VO에 값넣기
+            followerVO.setLoginId(sessionkey); // 세션키를 로그인된 아이디값에 넣는다
+            List<FollowerVO> fo = mystoreservice.follower_listAll(followerVO); // 직접 VO에 값넣기
         model.addAttribute("follower", fo); // 팔로워 테이블 읽기 (jsp로 값만 넘기고 실제로 VO에 값은 넣지않음)
 
         return "/mystore/follower";

@@ -44,4 +44,10 @@ public class ProductsServiceImpl implements ProductsService {
 
     }
 
+    // 05. 검색 후 목록
+    @Override
+    public List<ProductsVO> searchProduct(String searchData) throws Exception {
+        return productDao.searchProductList(searchData);
+    }
+
 }

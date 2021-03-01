@@ -52,4 +52,9 @@ public class ProductsDAOImpl implements ProductsDAO {
 
     }
 
+    // 05. 검색 후 목록
+    @Override
+    public List<ProductsVO> searchProductList(String searchData) throws Exception {return sqlSession.selectList(NAMESPACE + ".searchProductList", searchData);
+    }
+
 }

@@ -1,12 +1,13 @@
 package com.project.lighteningmarket.products.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.project.lighteningmarket.commons.category.domain.CategoryDTO;
 import com.project.lighteningmarket.products.domain.ProductsVO;
 import com.project.lighteningmarket.products.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
@@ -14,20 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 
 @Controller
-@RequestMapping("product/*")
+@RequestMapping("product/")
 public class ProductsController {
 
     @Autowired
     private ProductsService productService;
 
     // 1. 상품 전체 목록
-    @RequestMapping("/productList")
-    public ModelAndView list(CategoryDTO categoryDTO, ModelAndView mav, HttpServletRequest request) throws Exception {
-        System.out.println(categoryDTO.getCateCode());
-        String[] liValues = request.getParameterValues("cateCode");
-        for(int i = 0; i < liValues.length; i++){
-            System.out.println(liValues[i]);
-        }
+    @RequestMapping(value = "/productList", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView list(@RequestBody String param, ModelAndView mav) throws Exception {
         mav.setViewName("/product/productList");
         mav.addObject("list", productService.listProduct());
         return mav;
