@@ -1,11 +1,12 @@
 package com.project.lighteningmarket.mystore.domain;
-
 public class FollowingVO {
 
     private String loginId; // 로그인한 아이디
     private String followingNickname; // 팔로잉 할 사람
     private int followingProdutCount; // 팔로잉 한 유저 상품개수
     private int followerCount; // 팔로잉 한 유저 팔로워수
+    private String productUrl; // 경로
+
 
     @Override
     public String toString() {
@@ -14,8 +15,11 @@ public class FollowingVO {
                 ", followingNickname='" + followingNickname + '\'' +
                 ", followingProdutCount=" + followingProdutCount +
                 ", followerCount=" + followerCount +
+                ", productUrl='" + productUrl + '\'' +
                 '}';
     }
+
+
 
     public String getLoginId() {
         return loginId;
@@ -49,12 +53,12 @@ public class FollowingVO {
         this.followerCount = followerCount;
     }
 
+    public String getProductUrl() {
+        return productUrl;
+    }
 
-
-
-
-
-
-
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
+    }
 
 }

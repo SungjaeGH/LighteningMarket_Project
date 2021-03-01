@@ -116,6 +116,8 @@ public class MyStoreDAOImpl implements MyStoreDAO{
             followingVOList.get(i).setFollowingProdutCount(result.getFollowingProdutCount());
             result = sqlSession.selectOne(NAMESPACE + ".following_followerCount", followingVOList.get(i).getFollowingNickname());
             followingVOList.get(i).setFollowerCount(result.getFollowerCount());
+            result = sqlSession.selectOne(NAMESPACE + ".following_img", followingVOList.get(i).getFollowingNickname());
+            followingVOList.get(i).setProductUrl(result.getProductUrl());
         }
 
         return followingVOList;

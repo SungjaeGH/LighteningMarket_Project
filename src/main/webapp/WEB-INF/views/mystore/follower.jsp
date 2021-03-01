@@ -50,7 +50,7 @@
 
                                         <h5>상품수  ${follower.followerProdutCount}  | 팔로워 수 ${follower.followerCount}</h5>
                                         <button type="submit" id="storeQaInsert" class="w3-button">
-                                            <i class="far fa-paper-plane"></i> 팔로워하기
+                                            <i class="far fa-paper-plane"></i> 팔로우
                                         </button>
 
                                     </div>

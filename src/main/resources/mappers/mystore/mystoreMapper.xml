@@ -142,6 +142,17 @@
         ]]>
     </select>
 
+    <!--     팔로잉 페이지 (이미지 파일)-->
+    <select id="following_img" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingimgResultMap">
+        <![CDATA[
+        select url
+        from tbl_product
+                 INNER JOIN tbl_member ON tbl_product.id = tbl_member.id
+        WHERE tbl_member.nickname = #{followingNickname}
+        order by tbl_member.nickname DESC limit 1;
+        ]]>
+    </select>
+
 
     <!-- 쿠키를 이용해서 ID 찾기 -->
     <select id="searchId" parameterType="string" resultType="string">
@@ -198,6 +209,10 @@
 
     <resultMap id="FollowingCountResultMap" type="FollowingVO">
         <result property="followerCount" column="followerCount"/>
+    </resultMap>
+
+    <resultMap id="FollowingimgResultMap" type="FollowingVO">
+        <result property="productUrl" column="Url"/>
     </resultMap>
 
 </mapper>
