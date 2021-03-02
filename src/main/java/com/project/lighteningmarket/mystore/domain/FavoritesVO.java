@@ -4,6 +4,32 @@ public class FavoritesVO {
     private int favor_idx; // 찜고유번호
     private String id; //아이디 (member.id)
     private int proIdx; //상품번호(product.proidx)
+    private String productUrl; // 이미지 파일 경로
+
+
+    @Override
+    public String toString() {
+        return "FavoritesVO{" +
+                "favor_idx=" + favor_idx +
+                ", id='" + id + '\'' +
+                ", proIdx=" + proIdx +
+                ", productUrl='" + productUrl + '\'' +
+                ", imagesVO=" + imagesVO +
+                ", productVO=" + productVO +
+                '}';
+    }
+
+
+
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
+    }
+
+
 
     public ImagesVO getImagesVO() {
         return imagesVO;
@@ -47,16 +73,6 @@ public class FavoritesVO {
     public void setProIdx(int proIdx) {
         this.proIdx = proIdx;
     }
-
-    @Override
-    public String toString() {
-        return "FavoritesVO{" +
-                "favor_idx=" + favor_idx +
-                ", id='" + id + '\'' +
-                ", proIdx=" + proIdx +
-                '}';
-    }
-
 
 
 }

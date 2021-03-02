@@ -12,7 +12,8 @@
                         title,
                         price,
                         regDate,
-                        tradeArea
+                        tradeArea,
+                        url
         FROM tbl_product
         WHERE tbl_product.id = #{id};
         ]]>
@@ -26,7 +27,8 @@
                         title,
                         price,
                         regDate,
-                        tradeArea
+                        tradeArea,
+                        url
         FROM tbl_product
                  INNER JOIN tbl_favorites ON tbl_product.proIdx = tbl_favorites.pro_idx
         WHERE tbl_favorites.id = #{id};
@@ -178,6 +180,7 @@
         <result property="tradeArea" column="tradeArea"/>
         <result property="price" column="price"/>
         <result property="regDate" column="regDate"/>
+        <result property="productUrl" column="url"/>
     </resultMap>
 
     <resultMap id="StoreQaResultMap" type="StoreQaVO">

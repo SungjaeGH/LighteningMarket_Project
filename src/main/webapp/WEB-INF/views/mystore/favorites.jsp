@@ -42,8 +42,8 @@
                     <c:forEach items="${products}" var="products">
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="${products.proIdx}"><img class="card-img-top" src="http://placehold.it/700x400"
-                                                                  alt=""></a>
+                                <a href="${products.proIdx}"><img class="card-img-top" src="../../../resources/upload/img/${products.productUrl}"alt="" height="180px" width="100px"></a>
+
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="${products.proIdx}">${products.title}</a>

@@ -13,6 +13,36 @@ public class ProductVO {
     private String description;// 설명
     private int count; //수량
     private Date regDate; // 등록일자
+    private String productUrl; // 이미지 파일 경로
+
+    @Override
+    public String toString() {
+        return "ProductVO{" +
+                "proIdx=" + proIdx +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", tradeArea='" + tradeArea + '\'' +
+                ", statement='" + statement + '\'' +
+                ", exchange='" + exchange + '\'' +
+                ", price='" + price + '\'' +
+                ", description='" + description + '\'' +
+                ", count=" + count +
+                ", regDate=" + regDate +
+                ", productUrl='" + productUrl + '\'' +
+                '}';
+    }
+
+
+
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
+    }
+
+
 
     public int getProIdx() {
         return proIdx;
@@ -92,22 +122,6 @@ public class ProductVO {
 
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductVO{" +
-                "proIdx=" + proIdx +
-                ", id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", tradeArea='" + tradeArea + '\'' +
-                ", statement='" + statement + '\'' +
-                ", exchange='" + exchange + '\'' +
-                ", price='" + price + '\'' +
-                ", description='" + description + '\'' +
-                ", count=" + count +
-                ", regDate=" + regDate +
-                '}';
     }
 
 }

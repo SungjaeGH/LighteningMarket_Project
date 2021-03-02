@@ -63,7 +63,6 @@
                                             <a href="hi">
                                                 <img class="card-img-top" src="../../../resources/upload/img/${following.productUrl}" alt="" height="90px" width="10px">
                                             </a>
-
                                         </h4>
                                     </div>
                                 </div>
