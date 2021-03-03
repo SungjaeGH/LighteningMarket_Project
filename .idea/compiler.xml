@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="LighteningMarket_Project" />
         <module name="lighteningmarket" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="LighteningMarket_Project" options="-Xlint:all" />
       <module name="lighteningmarket" options="-Xlint:all" />
     </option>
   </component>
