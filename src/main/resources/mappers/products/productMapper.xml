@@ -71,4 +71,23 @@
         FROM bunjang.tbl_member
         where session_key = #{id};
     </select>
+
+    <!-- 05. 검색 후 목록 -->
+    <select id="searchProductList" parameterType="string" resultType="com.project.lighteningmarket.products.domain.ProductsVO">
+        SELECT
+            proIdx AS productIdx,
+            id AS id,
+            title AS productTitle,
+            tradeArea AS tradeArea,
+            statement AS statement,
+            exchange AS exchange,
+            price AS productPrice,
+            description AS description,
+            count AS count,
+	        regDate AS regDate,
+            url AS productUrl
+        FROM tbl_product
+        WHERE title like CONCAT('%',#{searchData},'%')
+        ORDER BY title;
+    </select>
 </mapper>

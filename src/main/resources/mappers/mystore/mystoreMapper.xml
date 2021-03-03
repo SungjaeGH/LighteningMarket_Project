@@ -14,8 +14,7 @@
                         regDate,
                         tradeArea
         FROM tbl_product
---                  INNER JOIN tbl_images ON tbl_product.proIdx = tbl_images.proIdx
-        WHERE tbl_product.id = 'gold01130';
+        WHERE tbl_product.id = #{id};
         ]]>
     </select>
 
@@ -30,7 +29,7 @@
                         tradeArea
         FROM tbl_product
                  INNER JOIN tbl_favorites ON tbl_product.proIdx = tbl_favorites.pro_idx
-        WHERE tbl_favorites.id = 'gold01130';
+        WHERE tbl_favorites.id = #{id};
         ]]>
     </select>
 
@@ -44,30 +43,22 @@
                       , unknown_check
         FROM tbl_store_qa
                  INNER JOIN tbl_member ON tbl_store_qa.nickname = tbl_member.nickname
-        WHERE tbl_member.nickname = 'sdfqwe';
+        WHERE tbl_member.nickname = #{loginId};
         ]]>
     </select>
 
-    <!--    상점문의 테이블에 추가하기 + 번호 자동으로 정렬하기-->
+    <!--    상점문의 테이블에 추가하기-->
     <insert id="storeQa_create">
         INSERT INTO tbl_store_qa (
                                     nickname
                                  , store_qa_des
                                  , unknown_check
         ) VALUES (
-                   'sdfqwe'
+                   #{nickname}
                  , #{storeQaDes}
                  , #{unknownCheck}
                  )
     </insert>
-
-<!--    상점문의 테이블에 수정하기-->
-<!--    <update id="update">
-        UPDATE tbl_store_qa
-        SET
-            store_qa_des = #{store_qa_des}
-        WHERE store_qa_idx = #{store_qa_idx}
-    </update>-->
 
 <!--    상점문의 테이블에 삭제하기-->
     <delete id="storeQa_delete">
@@ -76,16 +67,116 @@
     </delete>
 
 
+    <!--     팔로워 페이지 (팔로워한 유저들 불러오기)-->
+    <select id="follower_listAll" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultMap="FollowerNicknameResultMap">
+        <![CDATA[
+        select DISTINCT nickname
+        from tbl_member
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.from_user
+        WHERE tbl_follower.to_user = #{loginId};
+        ]]>
+    </select>
+
+<!--    팔로워 페이지 (상품수) -->
+    <select id="follower_productCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultMap="FollowerProductCountResultMap">
+        <![CDATA[
+        select count(*) AS productCount
+        from tbl_product join tbl_member
+        where tbl_product.id = tbl_member.id
+        and tbl_member.nickname = #{followerNickname};
+        ]]>
+    </select>
+
+    <!--     팔로워 페이지 (팔로워 수)-->
+    <select id="follower_followerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultMap="FollowerCountResultMap">
+        <![CDATA[
+        select count(*) AS followerCount
+        from tbl_member
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.to_user
+        WHERE tbl_member.nickname = #{followerNickname};
+        ]]>
+    </select>
+
+<!--    &lt;!&ndash;     팔로워 페이지 (팔로워 수)&ndash;&gt;
+    <select id="follower_selectFollowerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultType="FollowerVO">
+        <![CDATA[
+        select count(*) AS followerCount
+        from tbl_member
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.to_user
+        WHERE tbl_member.nickname = #{followerNickname}
+            < foreach
+            collection="fo" item="item" separator=","> #{item.followerCount}
+            </foreach
+            >
+        ]]>
+    </select>-->
+
+
+    <!--     팔로잉 페이지 (팔로워한 유저들 불러오기)-->
+    <select id="following_listAll" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingNicknameResultMap">
+        <![CDATA[
+        select DISTINCT nickname
+        from tbl_member
+                 INNER JOIN tbl_following ON tbl_member.id = tbl_following.to_user
+        WHERE tbl_following.from_user = #{loginId};
+        ]]>
+    </select>
+
+    <!--    팔로잉 페이지 (상품수) -->
+    <select id="following_productCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingProductCountResultMap">
+        <![CDATA[
+        select count(*) AS productCount
+        from tbl_product join tbl_member
+        where tbl_product.id = tbl_member.id
+          and tbl_member.nickname = #{followingNickname};
+        ]]>
+    </select>
+
+    <!--     팔로잉 페이지 (팔로워 수)-->
+    <select id="following_followerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingCountResultMap">
+        <![CDATA[
+        select count(*) AS followerCount
+        from tbl_member
+                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.to_user
+        WHERE tbl_member.nickname = #{followingNickname};
+        ]]>
+    </select>
+
+    <!--     팔로잉 페이지 (이미지 파일)-->
+    <select id="following_img" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingimgResultMap">
+        <![CDATA[
+        select url
+        from tbl_product
+                 INNER JOIN tbl_member ON tbl_product.id = tbl_member.id
+        WHERE tbl_member.nickname = #{followingNickname}
+        order by tbl_member.nickname DESC limit 1;
+        ]]>
+    </select>
+
+
+    <!-- 쿠키를 이용해서 ID 찾기 -->
+    <select id="searchId" parameterType="string" resultType="string">
+        SELECT id
+        FROM bunjang.tbl_member
+        where session_key = #{loginId};
+    </select>
+
+    <!-- 쿠키를 이용해서 NickName 찾기 -->
+    <select id="searchNickname" parameterType="string" resultType="string">
+        SELECT nickname
+        FROM bunjang.tbl_member
+        where session_key = #{loginId};
+    </select>
+
+
+
+
     <resultMap id="ProductResultMap" type="ProductVO">
         <id property="proIdx" column="proIdx"/>
         <result property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="tradeArea" column="tradeArea"/>
-        <result property="statement" column="statement"/>
-        <result property="exchange" column="exchange"/>
         <result property="price" column="price"/>
-        <result property="description" column="description"/>
-        <result property="count" column="count"/>
         <result property="regDate" column="regDate"/>
     </resultMap>
 
@@ -96,11 +187,32 @@
         <result property="unknownCheck" column="unknown_check"/>
     </resultMap>
 
+    <resultMap id="FollowerNicknameResultMap" type="FollowerVO">
+        <result property="followerNickname" column="nickname"/>
+    </resultMap>
 
-    <!--    <resultMap id="FavoritesResultMap" type="FavoritesVO">
-            <id property="favor_idx" column="favor_idx"/>
-            <result property="id" column="id"/>
-            <result property="pro_idx" column="pro_idx"/>
-        </resultMap>-->
+    <resultMap id="FollowerProductCountResultMap" type="FollowerVO">
+        <result property="followerProdutCount" column="productCount"/>
+    </resultMap>
+
+    <resultMap id="FollowerCountResultMap" type="FollowerVO">
+        <result property="followerCount" column="followerCount"/>
+    </resultMap>
+
+    <resultMap id="FollowingNicknameResultMap" type="FollowingVO">
+        <result property="followingNickname" column="nickname"/>
+    </resultMap>
+
+    <resultMap id="FollowingProductCountResultMap" type="FollowingVO">
+        <result property="followingProdutCount" column="productCount"/>
+    </resultMap>
+
+    <resultMap id="FollowingCountResultMap" type="FollowingVO">
+        <result property="followerCount" column="followerCount"/>
+    </resultMap>
+
+    <resultMap id="FollowingimgResultMap" type="FollowingVO">
+        <result property="productUrl" column="Url"/>
+    </resultMap>
 
 </mapper>

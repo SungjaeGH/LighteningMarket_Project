@@ -8,9 +8,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../product/uploadAjax">AJAX</a>
-                    </li>
+                    <form id="search" name="search" enctype="multipart/form-data" method="get">
+                        <li class="nav-item">
+                            <div class="input-group rounded" align="center">
+                                <input type="text" name = "searchData" id = "searchData" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                       onkeypress="if( keyCode == 13 ){searchData();}" />
+                                <button class="input-group-text border-0" id="search-addon">
+                                        <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </form>
                     <li class="nav-item">
                         <c:if test="${not empty login}">
                             <a class="nav-link" href="../product/productRegister">상품 등록</a>
@@ -39,3 +47,13 @@
             </div>
         </div>
     </nav>
+
+<script>
+    $(document).ready(function(){
+        // 상품 등록 유효성검사
+        $("#search-addon").click(function(){
+            document.search.action = "${path}/search.do";
+            document.search.submit();
+        });
+    });
+</script>

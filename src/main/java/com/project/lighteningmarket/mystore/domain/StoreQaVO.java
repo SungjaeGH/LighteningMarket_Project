@@ -1,6 +1,7 @@
 package com.project.lighteningmarket.mystore.domain;
 
 public class StoreQaVO {
+    private String loginId; // 로그인 된 아이디
     private int storeQaIdx; // 상점문의번호
     private String nickname; // 닉네임(member.nickname)
     private String storeQaDes; // 상점문의내용
@@ -10,11 +11,20 @@ public class StoreQaVO {
     @Override
     public String toString() {
         return "StoreQaVO{" +
-                "storeQaIdx=" + storeQaIdx +
+                "loginId='" + loginId + '\'' +
+                ", storeQaIdx=" + storeQaIdx +
                 ", nickname='" + nickname + '\'' +
                 ", storeQaDes='" + storeQaDes + '\'' +
                 ", unknownCheck='" + unknownCheck + '\'' +
                 '}';
+    }
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
     public int getStoreQaIdx() {
@@ -48,6 +58,11 @@ public class StoreQaVO {
     public void setUnknownCheck(String unknownCheck) {
         this.unknownCheck = unknownCheck;
     }
+
+
+
+
+
 
 
 

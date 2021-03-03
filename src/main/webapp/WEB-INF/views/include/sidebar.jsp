@@ -9,9 +9,9 @@
         <a class="list-group-item main" class="list-group-item">옷
             <ul class="sub" style="display:none">
                 </br>
-                <li class="list-group-item test1"><input type="hidden" value="201" name="cateCode">상의</li>
-                <li class="list-group-item test1"><input type="hidden" value="202">하의</li>
-                <li class="list-group-item test1"><input type="hidden" value="203">신발</li>
+                <li class="list-group-item test"><input type="hidden" value="201" name="cateCode">상의</li>
+                <li class="list-group-item test"><input type="hidden" value="202" name="cateCode">하의</li>
+                <li class="list-group-item test"><input type="hidden" value="203" name="cateCode">신발</li>
             </ul>
         </a>
         <a href="../product/productList" class="list-group-item">동물</a>
@@ -30,7 +30,7 @@
         });
 
         $(document).ready(function(){
-            $(".test1").click(function(){
+            $(".test").click(function(){
                 document.categoryLink.action = "../product/productList";
                 document.categoryLink.submit();
             });

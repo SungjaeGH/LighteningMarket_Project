@@ -17,14 +17,14 @@ public class MyStoreServiceImpl implements MyStoreService{
 
     // 상품 테이블 읽기
     @Override
-    public List<ProductVO> product_listAll() throws Exception {
-        return myStoreDAO.product_listAll();
+    public List<ProductVO> product_listAll(ProductVO productVO) throws Exception {
+        return myStoreDAO.product_listAll(productVO);
     }
 
     // 찜 테이블 읽기
     @Override
-    public List<ProductVO> favorites_listAll() throws Exception {
-        return myStoreDAO.favorites_listAll();
+    public List<ProductVO> favorites_listAll(ProductVO productVO) throws Exception {
+        return myStoreDAO.favorites_listAll(productVO);
     }
 
 
@@ -35,8 +35,8 @@ public class MyStoreServiceImpl implements MyStoreService{
 
     // 상점문의 테이블 읽기
     @Override
-    public List<StoreQaVO> storeQa_listAll() throws Exception {
-        return myStoreDAO.storeQa_listAll();
+    public List<StoreQaVO> storeQa_listAll(StoreQaVO storeQaVO) throws Exception {
+        return myStoreDAO.storeQa_listAll(storeQaVO);
     }
 
     // 상점문의 테이블 추가
@@ -45,11 +45,6 @@ public class MyStoreServiceImpl implements MyStoreService{
        myStoreDAO.storeQaCreate(storeQaVO);
     }
 
-    // 상점문의 테이블 수정
-    @Override
-    public void storeQaUpdate(StoreQaVO storeQaVO) throws Exception {
-        myStoreDAO.storeQaUpdate(storeQaVO);
-    }
 
     // 상점문의 테이블 삭제
     @Override
@@ -57,5 +52,16 @@ public class MyStoreServiceImpl implements MyStoreService{
         myStoreDAO.storeQaDelete(storeQaVO);
     }
 
+    // 팔로워 테이블 읽기
+    @Override
+    public List<FollowerVO> follower_listAll(FollowerVO followerVO) throws Exception {
+        return myStoreDAO.follower_listAll(followerVO);
+    }
+
+    // 팔로잉 테이블 읽기
+    @Override
+    public List<FollowingVO> following_listAll(FollowingVO followingVO) throws Exception {
+        return myStoreDAO.following_listAll(followingVO);
+    }
 
 }
