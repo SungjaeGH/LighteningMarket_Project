@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.lighteningmarket.mappers.mystore.mystoreMapper">
+
+    <!--    상품페이지 -->
+    <select id="product_listAll"  resultMap="ProductResultMap">
+        <![CDATA[
+        SELECT DISTINCT proIdx,
+                        title,
+                        price,
+                        regDate,
+                        tradeArea
+        FROM tbl_product
+--                  INNER JOIN tbl_images ON tbl_product.proIdx = tbl_images.proIdx
+        WHERE tbl_product.id = 'gold01130';
+        ]]>
+    </select>
+
+
+    <!--        찜페이지-->
+    <select id="favorites_listAll" resultMap="ProductResultMap">
+        <![CDATA[
+        SELECT DISTINCT proIdx,
+                        title,
+                        price,
+                        regDate,
+                        tradeArea
+        FROM tbl_product
+                 INNER JOIN tbl_favorites ON tbl_product.proIdx = tbl_favorites.pro_idx
+        WHERE tbl_favorites.id = 'gold01130';
+        ]]>
+    </select>
+
+
+    <!--        상점문의 페이지-->
+    <select id="storeQa_listAll" resultMap="StoreQaResultMap">
+        <![CDATA[
+        SELECT DISTINCT store_qa_idx
+                      , tbl_store_qa.nickname
+                      , store_qa_des
+                      , unknown_check
+        FROM tbl_store_qa
+                 INNER JOIN tbl_member ON tbl_store_qa.nickname = tbl_member.nickname
+        WHERE tbl_member.nickname = 'sdfqwe';
+        ]]>
+    </select>
+
+    <!--    상점문의 테이블에 추가하기 + 번호 자동으로 정렬하기-->
+    <insert id="storeQa_create">
+        INSERT INTO tbl_store_qa (
+                                    nickname
+                                 , store_qa_des
+                                 , unknown_check
+        ) VALUES (
+                   'sdfqwe'
+                 , #{storeQaDes}
+                 , #{unknownCheck}
+                 )
+    </insert>
+
+<!--    상점문의 테이블에 수정하기-->
+<!--    <update id="update">
+        UPDATE tbl_store_qa
+        SET
+            store_qa_des = #{store_qa_des}
+        WHERE store_qa_idx = #{store_qa_idx}
+    </update>-->
+
+<!--    상점문의 테이블에 삭제하기-->
+    <delete id="storeQa_delete">
+        DELETE FROM tbl_store_qa
+        WHERE store_qa_idx = #{storeQaIdx}
+    </delete>
+
+
+    <resultMap id="ProductResultMap" type="ProductVO">
+        <id property="proIdx" column="proIdx"/>
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="tradeArea" column="tradeArea"/>
+        <result property="statement" column="statement"/>
+        <result property="exchange" column="exchange"/>
+        <result property="price" column="price"/>
+        <result property="description" column="description"/>
+        <result property="count" column="count"/>
+        <result property="regDate" column="regDate"/>
+    </resultMap>
+
+    <resultMap id="StoreQaResultMap" type="StoreQaVO">
+        <id property="storeQaIdx" column="store_qa_idx"/>
+        <result property="nickname" column="nickname"/>
+        <result property="storeQaDes" column="store_qa_des"/>
+        <result property="unknownCheck" column="unknown_check"/>
+    </resultMap>
+
+
+    <!--    <resultMap id="FavoritesResultMap" type="FavoritesVO">
+            <id property="favor_idx" column="favor_idx"/>
+            <result property="id" column="id"/>
+            <result property="pro_idx" column="pro_idx"/>
+        </resultMap>-->
+
+</mapper>
