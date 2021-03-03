@@ -37,6 +37,7 @@
 
                 <br/>
                 <div class="row">
+                    <c:if test = "${not empty list}">
                     <c:forEach var="products" items="${list}">
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
@@ -57,6 +58,17 @@
                             </div>
                         </div>
                     </c:forEach>
+                    </c:if>
+                    <c:if test = "${empty list}">
+                        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active" style="size: ">
+                                    <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide"
+                                    value = "검색된 항목이 없습니다.">
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
                 </div>
                 <!-- /.row -->
 
