@@ -99,20 +99,6 @@
         ]]>
     </select>
 
-<!--    &lt;!&ndash;     팔로워 페이지 (팔로워 수)&ndash;&gt;
-    <select id="follower_selectFollowerCount" parameterType="com.project.lighteningmarket.mystore.domain.FollowerVO" resultType="FollowerVO">
-        <![CDATA[
-        select count(*) AS followerCount
-        from tbl_member
-                 INNER JOIN tbl_follower ON tbl_member.id = tbl_follower.to_user
-        WHERE tbl_member.nickname = #{followerNickname}
-            < foreach
-            collection="fo" item="item" separator=","> #{item.followerCount}
-            </foreach
-            >
-        ]]>
-    </select>-->
-
 
     <!--     팔로잉 페이지 (팔로워한 유저들 불러오기)-->
     <select id="following_listAll" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingNicknameResultMap">

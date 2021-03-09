@@ -30,8 +30,6 @@
                     </button>
                     <button type="button" class="btn btn-info" onClick="location.href='../mystore/storeQa'">상점문의
                     </button>
-                    <button type="button" class="btn btn-warning" onClick="location.href='../mystore/storeReview'">상점후기
-                    </button>
                     <button type="button" class="btn btn-light" onClick="location.href='../mystore/following'">팔로잉
                     </button>
                     <button type="button" class="btn btn-dark" onClick="location.href='../mystore/follower'">팔로워
@@ -60,7 +58,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="hi">
+                                            <a href="${path}/product/detail/4">
                                                 <img class="card-img-top" src="../../../resources/upload/img/${following.productUrl}" alt="" height="90px" width="10px">
                                             </a>
                                         </h4>

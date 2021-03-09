@@ -29,8 +29,6 @@
                     </button>
                     <button type="button" class="btn btn-info" onClick="location.href='../mystore/storeQa'">상점문의
                     </button>
-                    <button type="button" class="btn btn-warning" onClick="location.href='../mystore/storeReview'">상점후기
-                    </button>
                     <button type="button" class="btn btn-light" onClick="location.href='../mystore/following'">팔로잉
                     </button>
                     <button type="button" class="btn btn-dark" onClick="location.href='../mystore/follower'">팔로워
@@ -42,7 +40,9 @@
                     <c:forEach items="${products}" var="products">
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="${products.proIdx}"><img class="card-img-top" src="../../../resources/upload/img/${products.productUrl}"alt="" height="180px" width="100px"></a>
+                                <a href="${path}/product/detail/${products.proIdx}">
+                                    <img class="card-img-top" src="../../../resources/upload/img/${products.productUrl}"alt="" height="180px" width="100px">
+                                </a>
 
                                 <div class="card-body">
                                     <h4 class="card-title">

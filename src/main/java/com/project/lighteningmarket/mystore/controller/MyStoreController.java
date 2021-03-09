@@ -143,7 +143,7 @@ public class MyStoreController {
                 Cookie cookie = cookies[i] ;
                 // 저장된 쿠키 이름을 가져온다
                 String cName = cookie.getName();
-                if(cName.equals("loginCookie")){
+                if(cName.equals("loginCookie")){ // JSESSIONID
                     sessionkey = cookie.getValue();
                     break;
                 }
