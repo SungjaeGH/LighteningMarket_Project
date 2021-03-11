@@ -90,4 +90,25 @@
         WHERE title like CONCAT('%',#{searchData},'%')
         ORDER BY title;
     </select>
+
+    <select id="selectCategory" resultType="com.project.lighteningmarket.commons.category.domain.CategoryDTO">
+        SELECT
+            CONCAT(A.groupID,  A.categoryLev,  A.categoryDetailLev) AS n_key,
+            A.categoryNm as categoryNm,
+            CONCAT(repeat('',A.categoryParentLev * 3), A.categoryDetailNm) as categoryDetailName,
+            CASE A.categoryParentLev
+                WHEN 0 THEN C.categoryDetailNm
+                WHEN 1 THEN CONCAT(B.categoryDetailNm,' > ', A.categoryDetailNm)
+                WHEN 2 THEN CONCAT(C.categoryDetailNm, ' > ', B.categoryDetailNm,' > ', A.categoryDetailNm)
+                END as navigator
+        FROM tbl_category_test A LEFT JOIN tbl_category_test B
+                                           ON A.categoryParentLev = B.categoryLev
+                                               AND A.categoryDetailParentLev = B.categoryDetailLev
+                                 LEFT JOIN tbl_category_test C
+                                           ON A.groupID = C.groupID
+        WHERE A.categoryID > 0
+          AND C.categoryID = any(SELECT categoryID FROM tbl_category_test sub2 where  categoryID > 0 and categoryLev = 1)
+        ORDER BY navigator;
+    </select>
+
 </mapper>

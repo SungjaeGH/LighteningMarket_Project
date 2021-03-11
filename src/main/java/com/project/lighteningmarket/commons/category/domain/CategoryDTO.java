@@ -1,50 +1,50 @@
 package com.project.lighteningmarket.commons.category.domain;
 
 public class CategoryDTO {
-    private String cateName;
-    private String cateCode;
-    private String cateCodeRef;
-    private int level;
+    String n_key; // 고유키
+    String categoryNm; // 카테고리 분류
+    String categoryDetailName; // 카테고리 이름
+    String navigator; // 네비게이터
 
-    public String getCateName() {
-        return cateName;
+    public String getN_key() {
+        return n_key;
     }
 
-    public void setCateName(String cateName) {
-        this.cateName = cateName;
+    public void setN_key(String n_key) {
+        this.n_key = n_key;
     }
 
-    public String getCateCode() {
-        return cateCode;
+    public String getCategoryNm() {
+        return categoryNm;
     }
 
-    public void setCateCode(String cateCode) {
-        this.cateCode = cateCode;
+    public void setCategoryNm(String categoryNm) {
+        this.categoryNm = categoryNm;
     }
 
-    public String getCateCodeRef() {
-        return cateCodeRef;
+    public String getCategoryDetailName() {
+        return categoryDetailName;
     }
 
-    public void setCateCodeRef(String cateCodeRef) {
-        this.cateCodeRef = cateCodeRef;
+    public void setCategoryDetailName(String categoryDetailName) {
+        this.categoryDetailName = categoryDetailName;
     }
 
-    public int getLevel() {
-        return level;
+    public String getNavigator() {
+        return navigator;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setNavigator(String navigator) {
+        this.navigator = navigator;
     }
 
     @Override
     public String toString() {
         return "CategoryDTO{" +
-                "cateName='" + cateName + '\'' +
-                ", cateCode='" + cateCode + '\'' +
-                ", cateCodeRef='" + cateCodeRef + '\'' +
-                ", level=" + level +
+                "n_key='" + n_key + '\'' +
+                ", categoryNm='" + categoryNm + '\'' +
+                ", categoryDetailName='" + categoryDetailName + '\'' +
+                ", navigator='" + navigator + '\'' +
                 '}';
     }
 }
