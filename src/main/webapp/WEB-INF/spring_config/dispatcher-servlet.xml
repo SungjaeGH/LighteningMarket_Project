@@ -75,4 +75,9 @@
     <!-- String uploadPath = new String("업로드 경로") -->
     <bean id="imagePath" class="java.lang.String"/>
 
+
+    <!-- category 서비스 -->
+    <bean id="categoryService" class="com.project.lighteningmarket.commons.category.service.CategoryService"
+          abstract="true">
+    </bean>
 </beans>

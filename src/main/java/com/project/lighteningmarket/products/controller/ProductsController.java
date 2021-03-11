@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.project.lighteningmarket.commons.category.domain.CategoryDTO;
 import com.project.lighteningmarket.commons.category.persistence.CategoryDAO;
 import com.project.lighteningmarket.commons.category.service.CategoryService;
+import com.project.lighteningmarket.commons.category.service.CategoryServiceImpl;
 import com.project.lighteningmarket.products.domain.ProductsVO;
 import com.project.lighteningmarket.products.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,15 @@ public class ProductsController {
     @Autowired
     private ProductsService productService;
 
+    @Qualifier("categoryService")
     private CategoryService categoryService;
-
     // 1. 상품 전체 목록
     @RequestMapping(value = "/productList", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView list(@RequestBody String param, ModelAndView mav) throws Exception {
         mav.setViewName("/product/productList");
         mav.addObject("list", productService.listProduct());
-        categoryService.categoryList();
+        System.out.println();
         return mav;
     }
     // 2. 상품 상세보기
