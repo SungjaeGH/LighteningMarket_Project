@@ -6,6 +6,7 @@ public class StoreQaVO {
     private String nickname; // 닉네임(member.nickname)
     private String storeQaDes; // 상점문의내용
     private String unknownCheck; // 익명여부
+    private String storeNickname; // 상점 주인 닉네임
 
 
     @Override
@@ -16,8 +17,19 @@ public class StoreQaVO {
                 ", nickname='" + nickname + '\'' +
                 ", storeQaDes='" + storeQaDes + '\'' +
                 ", unknownCheck='" + unknownCheck + '\'' +
+                ", storeNickname='" + storeNickname + '\'' +
                 '}';
     }
+
+
+    public String getStoreNickname() {
+        return storeNickname;
+    }
+
+    public void setStoreNickname(String storeNickname) {
+        this.storeNickname = storeNickname;
+    }
+
 
     public String getLoginId() {
         return loginId;

@@ -44,7 +44,7 @@
                       , store_qa_des
                       , unknown_check
         FROM tbl_store_qa
-                 INNER JOIN tbl_member ON tbl_store_qa.nickname = tbl_member.nickname
+                 INNER JOIN tbl_member ON tbl_store_qa.store_nickname = tbl_member.nickname
         WHERE tbl_member.nickname = #{loginId};
         ]]>
     </select>
@@ -55,10 +55,12 @@
                                     nickname
                                  , store_qa_des
                                  , unknown_check
+                                 , store_nickname
         ) VALUES (
                    #{nickname}
                  , #{storeQaDes}
                  , #{unknownCheck}
+                 , #{nickname}
                  )
     </insert>
 
@@ -133,7 +135,7 @@
     <!--     팔로잉 페이지 (이미지 파일)-->
     <select id="following_img" parameterType="com.project.lighteningmarket.mystore.domain.FollowingVO" resultMap="FollowingimgResultMap">
         <![CDATA[
-        select url
+        select url, proIdx
         from tbl_product
                  INNER JOIN tbl_member ON tbl_product.id = tbl_member.id
         WHERE tbl_member.nickname = #{followingNickname}
@@ -202,6 +204,7 @@
 
     <resultMap id="FollowingimgResultMap" type="FollowingVO">
         <result property="productUrl" column="Url"/>
+        <result property="followingProIdx" column="proIdx"/>
     </resultMap>
 
 </mapper>

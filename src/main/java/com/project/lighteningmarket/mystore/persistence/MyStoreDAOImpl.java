@@ -67,9 +67,7 @@ public class MyStoreDAOImpl implements MyStoreDAO{
         String sessionValue = storeQaVO.getLoginId();
         String nickname = sqlSession.selectOne(NAMESPACE + ".searchNickname", sessionValue);
         storeQaVO.setNickname(nickname);
-
         System.out.println(storeQaVO);
-
 
         sqlSession.insert(NAMESPACE + ".storeQa_create", storeQaVO);
     }
@@ -118,6 +116,7 @@ public class MyStoreDAOImpl implements MyStoreDAO{
             followingVOList.get(i).setFollowerCount(result.getFollowerCount());
             result = sqlSession.selectOne(NAMESPACE + ".following_img", followingVOList.get(i).getFollowingNickname());
             followingVOList.get(i).setProductUrl(result.getProductUrl());
+            followingVOList.get(i).setFollowingProIdx(result.getFollowingProIdx());
         }
 
         return followingVOList;

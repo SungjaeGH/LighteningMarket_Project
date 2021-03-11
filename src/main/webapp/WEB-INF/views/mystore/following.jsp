@@ -39,18 +39,21 @@
                     <div class="row">
                         <div class="col-4">
                             <c:forEach items="${following}" var="following">
+                                <form class="form" action="${path}/mystore/followingdelete" onsubmit="return removeCheck()"
+                                      method="post">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">
+                                        <h4 class="card-title" id="name1">
                                                 ${following.followingNickname}
                                         </h4>
                                         <h5>상품수 ${following.followingProdutCount} | 팔로워
                                             수 ${following.followerCount}</h5>
-                                        <button type="submit" id="storeQaInsert" class="w3-button">
-                                            <i class="far fa-paper-plane"></i> 팔로우
+                                        <button type="submit" id="followingdelete" class="w3-button">
+                                            <i class="far fa-address-book"></i> 팔로잉 해제
                                         </button>
                                     </div>
                                 </div>
+                                </form>
                             </c:forEach>
                         </div>
                         <div class="col-6">
@@ -58,7 +61,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="${path}/product/detail/4">
+                                            <a href="${path}/product/detail/${following.followingProIdx}">
                                                 <img class="card-img-top" src="../../../resources/upload/img/${following.productUrl}" alt="" height="90px" width="10px">
                                             </a>
                                         </h4>
@@ -76,5 +79,14 @@
 
 <script>
 
+    let deleteNickname;
+    function removeCheck() {
+        if (confirm("'"+deleteNickname+"'"+"님의 팔로잉을 해제하시겠습니까?") == true) {    //확인
+            alert('해제되었습니다.');
+            return true;
+        } else {   //취소
+            return false;
+        }
+    }
 </script>
 </html>

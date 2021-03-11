@@ -98,12 +98,10 @@
 <%@include file="../include/footer.jsp" %>
 
 <script>
-    var unknown_check; // 익명체크 여부
     <%--    등록 버튼 이벤트 처리--%>
     $("#storeQaInsert").click(function () {
         if ($('input[name=unknownChecked]').is(":checked")) {
             $('input[name=unknownCheck]').val('Y');
-
         } else {
             $('input[name=unknownCheck]').val('N');
         }
